@@ -15,7 +15,7 @@ window.PARTY = {
 
   /* Countdown target. Format: YEAR-MONTH-DAY T HOUR:MIN:SEC (24hr, your local time).
      This is the only place the date lives. */
-  countdownTo: "2026-07-04T13:00:00",
+  countdownTo: "2026-07-05T12:00:00",
   countdownLabel: "FIREWORKS IN",
   countdownDone: "IT'S GO TIME. GET TO THE POOL.",
 
@@ -26,7 +26,7 @@ window.PARTY = {
        - "Half pool party, half tailgate, fully American."
   */
   hero: {
-    kicker: "FRIDAY \u2605 JULY 4TH \u2605 THE FASANO POOL PARTY",
+    kicker: "SUNDAY \u2605 JULY 5TH \u2605 THE FASANO POOL PARTY",
     line1: "AMERICA TURNS",
     bigNumber: "250",
     line2: "AND WE'RE GETTING",
@@ -36,7 +36,7 @@ window.PARTY = {
   },
 
   facts: [
-    { icon: "\uD83C\uDF7B", label: "WHEN",  value: "Fri July 4th \u2022 1PM til the fireworks quit" },
+    { icon: "\uD83C\uDF7B", label: "WHEN",  value: "Sun July 5th \u2022 12PM\u20135PM" },
     { icon: "\uD83C\uDFE1", label: "WHERE", value: "The Fasano Compound \u2022 address texted to confirmed patriots" },
     { icon: "\uD83E\uDDE2", label: "DRESS", value: "Red, white & questionable \u2022 trashy encouraged, never required" }
   ],

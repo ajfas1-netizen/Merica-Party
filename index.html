@@ -128,6 +128,20 @@
   .success h3{ font-family:"Black Ops One",system-ui; color:var(--navy); font-size:clamp(20px,6vw,28px); line-height:1; margin-bottom:10px; }
   .success p{ font-size:15px; font-style:italic; color:#5a5345; max-width:36ch; margin:0 auto; }
 
+  /* ---------- ROSTER ---------- */
+  .roster{
+    background:var(--navy); padding:30px 22px 34px; border-top:3px solid var(--gold);
+    background-image: radial-gradient(circle at 50% 50%, rgba(237,183,58,0.12), transparent 60%);
+  }
+  .roster h2{ font-family:"Black Ops One", system-ui; font-size:clamp(28px,8vw,40px); line-height:0.92; text-align:center; color:var(--cream); letter-spacing:0.5px; }
+  .roster .rstsub{ text-align:center; font-size:14px; font-style:italic; color:var(--aqua); margin:8px auto 20px; max-width:36ch; }
+  .roster .count{ text-align:center; font-family:"Black Ops One",system-ui; font-size:clamp(36px,10vw,52px); color:var(--gold); margin-bottom:16px; }
+  .roster-list{ display:flex; flex-direction:column; gap:8px; }
+  .roster-item{ background:var(--navy2); border:2px solid var(--navy3); border-radius:4px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; animation:bubpop .3s ease; }
+  .roster-item .rname{ font-weight:700; font-size:15px; color:var(--cream); text-transform:uppercase; letter-spacing:0.5px; }
+  .roster-item .rcostume{ font-size:13px; font-style:italic; color:var(--gold); text-align:right; max-width:55%; }
+  .roster-empty{ text-align:center; color:#7f88a5; font-style:italic; font-size:14px; padding:12px; }
+
   /* ---------- WALL ---------- */
   .wall{
     background:var(--navy);
@@ -224,6 +238,13 @@
       '<div class="success" id="ok"><div class="badge" id="okBadge"></div><h3 id="okHead"></h3><p id="okBody"></p></div>'+
     '</div>'+
 
+    '<div class="roster" id="roster">'+
+      '<h2>WHO\u2019S IN</h2>'+
+      '<div class="rstsub">Confirmed patriots. Updated live.</div>'+
+      '<div class="count" id="rosterCount"></div>'+
+      '<div class="roster-list" id="rosterList"><div class="roster-empty">Loading...</div></div>'+
+    '</div>'+
+
     '<div class="wall">'+
       '<h2>'+esc(W.heading)+'</h2>'+
       '<div class="wsub">'+esc(W.sub)+'</div>'+
@@ -301,6 +322,28 @@
     renderFeed();
     document.getElementById("wMsg").value = "";
   });
+
+  /* ---- ROSTER (fetch guest list) ---- */
+  fetch(P.endpointUrl)
+    .then(function(r){ return r.json(); })
+    .then(function(guests){
+      var list = document.getElementById("rosterList");
+      var count = document.getElementById("rosterCount");
+      if(!guests.length){
+        list.innerHTML = '<div class="roster-empty">No confirmed patriots yet. Be the first.</div>';
+        count.textContent = "0";
+        return;
+      }
+      count.textContent = guests.length;
+      list.innerHTML = guests.map(function(g){
+        return '<div class="roster-item"><span class="rname">'+esc(g.name)+'</span>'+
+          (g.costume ? '<span class="rcostume">'+esc(g.costume)+'</span>' : '')+
+          '</div>';
+      }).join("");
+    })
+    .catch(function(){
+      document.getElementById("rosterList").innerHTML = '<div class="roster-empty">Couldn\u2019t load the list. Refresh to try again.</div>';
+    });
 
   /* ---- COUNTDOWN (real, client-side) ---- */
   var target = new Date(P.countdownTo).getTime();
