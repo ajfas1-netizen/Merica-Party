@@ -137,9 +137,10 @@
   .roster .rstsub{ text-align:center; font-size:14px; font-style:italic; color:var(--aqua); margin:8px auto 20px; max-width:36ch; }
   .roster .count{ text-align:center; font-family:"Black Ops One",system-ui; font-size:clamp(36px,10vw,52px); color:var(--gold); margin-bottom:16px; }
   .roster-list{ display:flex; flex-direction:column; gap:8px; }
-  .roster-item{ background:var(--navy2); border:2px solid var(--navy3); border-radius:4px; padding:10px 14px; animation:bubpop .3s ease; }
+  .roster-item{ background:var(--navy2); border:2px solid var(--navy3); border-radius:4px; padding:10px 14px; text-align:center; animation:bubpop .3s ease; }
   .roster-item .rname{ font-weight:700; font-size:15px; color:var(--cream); text-transform:uppercase; letter-spacing:0.5px; }
-  .roster-item .rcostume{ font-size:13px; font-style:italic; color:var(--gold); margin-top:3px; }
+  .roster-item .rdash{ color:var(--aqua); font-size:12px; margin:4px 0 3px; letter-spacing:3px; }
+  .roster-item .rcostume{ font-size:13px; font-style:italic; color:var(--gold); }
   .roster-empty{ text-align:center; color:#7f88a5; font-style:italic; font-size:14px; padding:12px; }
 
   /* ---------- WALL ---------- */
@@ -336,8 +337,8 @@
       }
       count.textContent = guests.length;
       list.innerHTML = guests.map(function(g){
-        return '<div class="roster-item"><span class="rname">'+esc(g.name)+'</span>'+
-          (g.costume ? '<span class="rcostume">'+esc(g.costume)+'</span>' : '')+
+        return '<div class="roster-item"><div class="rname">'+esc(g.name)+'</div>'+
+          (g.costume ? '<div class="rdash">\u2014 \u2605 \u2014</div><div class="rcostume">'+esc(g.costume)+'</div>' : '')+
           '</div>';
       }).join("");
     })
