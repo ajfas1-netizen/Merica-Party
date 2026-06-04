@@ -167,12 +167,6 @@
   .bubble .who{ font-weight:700; color:var(--red); font-size:13px; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:3px; }
   .bubble .txt{ font-size:15px; line-height:1.35; }
 
-  /* share */
-  .share-wrap{ text-align:center; padding:20px 22px 6px; background:var(--navy); }
-  .share-btn{ display:inline-block; cursor:pointer; border:2px solid var(--gold); background:transparent; font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; font-size:14px; color:var(--gold); padding:12px 28px; border-radius:3px; transition:transform .05s ease; }
-  .share-btn:active{ transform:translateY(2px); }
-  .share-msg{ color:var(--aqua); font-size:13px; margin-top:8px; min-height:16px; }
-
   /* footer */
   .foot{ background:var(--navy); color:#7f88a5; text-align:center; font-size:11px; letter-spacing:0.5px; padding:16px 20px 24px; line-height:1.6; }
 </style>
@@ -262,11 +256,6 @@
         '<div class="werr" id="wErr"></div>'+
       '</div>'+
       '<div class="feed" id="feed"></div>'+
-    '</div>'+
-
-    '<div class="share-wrap">'+
-      '<button class="share-btn" id="shareBtn">\u2605 SPREAD THE WORD \u2605</button>'+
-      '<div class="share-msg" id="shareMsg"></div>'+
     '</div>'+
 
     '<div class="foot">'+esc(P.footer)+'</div>';
@@ -381,22 +370,6 @@
       });
   }
   loadRoster();
-
-  /* ---- SHARE button ---- */
-  document.getElementById("shareBtn").addEventListener("click", function(){
-    var msg = document.getElementById("shareMsg");
-    var shareData = { title: "America Turns 250", text: "Pool party July 5th. RSVP here:", url: location.href };
-    if(navigator.share){
-      navigator.share(shareData).catch(function(){});
-    } else {
-      navigator.clipboard.writeText(location.href).then(function(){
-        msg.textContent = "Link copied!";
-        setTimeout(function(){ msg.textContent = ""; }, 3000);
-      }).catch(function(){
-        msg.textContent = location.href;
-      });
-    }
-  });
 
   /* ---- COUNTDOWN (real, client-side) ---- */
   var target = new Date(P.countdownTo).getTime();
