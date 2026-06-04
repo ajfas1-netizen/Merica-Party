@@ -81,11 +81,7 @@ window.PARTY = {
     msgLabel: "Your message",
     msgPlaceholder: "Drop your hot take, patriot...",
     postButton: "POST IT",
-    seed: [
-      { name: "Big Mike", text: "Bringing the deep fryer AND a fire extinguisher. For balance." },
-      { name: "Aunt Carol", text: "I call dibs on the eagle float. It is MINE. Do not test me." },
-      { name: "The Hendersons", text: "We're in. Bringing potato salad and three loud children." }
-    ]
+    seed: []
   },
 
   footer: "Sunburn, food coma, and excessive freedom are known side effects. RSVP responsibly."
