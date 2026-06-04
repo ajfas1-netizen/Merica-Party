@@ -301,16 +301,22 @@
       });
   });
 
-  /* ---- WALL behavior (FAKE, in-memory only) ---- */
-  var messages = (W.seed || []).slice();
+  /* ---- WALL behavior (saved to Google Sheet) ---- */
   var feed = document.getElementById("feed");
-  function renderFeed(){
+  function renderFeed(messages){
+    if(!messages.length){
+      feed.innerHTML = '<div class="roster-empty">No posts yet. Be the first.</div>';
+      return;
+    }
     feed.innerHTML = messages.map(function(m){
       return '<div class="bubble"><div class="who">'+esc(m.name)+'</div>'+
         '<div class="txt">'+esc(m.text)+'</div></div>';
     }).join("");
   }
-  renderFeed();
+  fetch(P.endpointUrl + "?action=wall")
+    .then(function(r){ return r.json(); })
+    .then(function(posts){ renderFeed(posts); })
+    .catch(function(){ feed.innerHTML = '<div class="roster-empty">Couldn\u2019t load posts. Refresh to try again.</div>'; });
   document.getElementById("wPost").addEventListener("click", function(){
     var wErr = document.getElementById("wErr");
     var nm = document.getElementById("wName").value.trim();
@@ -318,10 +324,25 @@
     if(!nm){ wErr.textContent = "Add your name first."; return; }
     if(!tx){ wErr.textContent = "Say something, patriot."; return; }
     wErr.textContent = "";
-    messages.unshift({ name:nm, text:tx });   // newest on top
-    console.log("Wall post (not saved yet):", {name:nm, text:tx});
-    renderFeed();
-    document.getElementById("wMsg").value = "";
+    var postBtn = document.getElementById("wPost");
+    var postText = postBtn.textContent;
+    postBtn.disabled = true;
+    postBtn.textContent = "POSTING...";
+    fetch(P.endpointUrl, { method: "POST", mode: "no-cors", body: JSON.stringify({ type: "wall", name: nm, text: tx }) })
+      .then(function(){
+        postBtn.disabled = false;
+        postBtn.textContent = postText;
+        document.getElementById("wMsg").value = "";
+        // reload wall posts
+        fetch(P.endpointUrl + "?action=wall")
+          .then(function(r){ return r.json(); })
+          .then(function(posts){ renderFeed(posts); });
+      })
+      .catch(function(){
+        postBtn.disabled = false;
+        postBtn.textContent = postText;
+        wErr.textContent = "Something broke. Try again in a sec.";
+      });
   });
 
   /* ---- ROSTER (fetch guest list) ---- */
