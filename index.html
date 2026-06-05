@@ -167,6 +167,16 @@
   .bubble .who{ font-weight:700; color:var(--red); font-size:13px; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:3px; }
   .bubble .txt{ font-size:15px; line-height:1.35; }
 
+  /* ---------- FALLEN ---------- */
+  .fallen{
+    background:var(--navy); padding:28px 22px 32px; border-top:3px solid var(--navy3);
+    text-align:center;
+  }
+  .fallen h2{ font-family:"Black Ops One", system-ui; font-size:clamp(24px,7vw,34px); line-height:0.92; color:var(--red); letter-spacing:0.5px; }
+  .fallen .fsub{ font-size:13px; font-style:italic; color:#7f88a5; margin:8px auto 18px; max-width:34ch; }
+  .fallen-list{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+  .fallen-name{ background:var(--navy2); border:2px solid var(--navy3); border-radius:3px; padding:6px 14px; font-weight:700; font-size:13px; color:#7f88a5; text-transform:uppercase; letter-spacing:0.5px; text-decoration:line-through; }
+
   /* footer */
   .foot{ background:var(--navy); color:#7f88a5; text-align:center; font-size:11px; letter-spacing:0.5px; padding:16px 20px 24px; line-height:1.6; }
 </style>
@@ -256,6 +266,12 @@
         '<div class="werr" id="wErr"></div>'+
       '</div>'+
       '<div class="feed" id="feed"></div>'+
+    '</div>'+
+
+    '<div class="fallen" id="fallen" style="display:none">'+
+      '<h2>MISSING IN ACTION</h2>'+
+      '<div class="fsub">These patriots chose the couch over the pool.</div>'+
+      '<div class="fallen-list" id="fallenList"></div>'+
     '</div>'+
 
     '<div class="foot">'+esc(P.footer)+'</div>';
@@ -370,6 +386,18 @@
       });
   }
   loadRoster();
+
+  /* ---- FALLEN (fetch no-shows) ---- */
+  fetch(P.endpointUrl + "?action=fallen")
+    .then(function(r){ return r.json(); })
+    .then(function(fallen){
+      if(!fallen.length) return;
+      document.getElementById("fallen").style.display = "block";
+      document.getElementById("fallenList").innerHTML = fallen.map(function(f){
+        return '<div class="fallen-name">'+esc(f.name)+'</div>';
+      }).join("");
+    })
+    .catch(function(){});
 
   /* ---- COUNTDOWN (real, client-side) ---- */
   var target = new Date(P.countdownTo).getTime();
