@@ -1,400 +1,1116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>America Turns 250 - Fasano Pool Party</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAL Leadership Weekly</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#0c1a3c;
-    --navy2:#13265a;
-    --navy3:#1c3270;
-    --red:#cc1f33;
-    --cream:#f6efdd;
-    --gold:#edb73a;
-    --aqua:#27b6c9;
-    --ink:#13110d;
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
-  body{ font-family:"Oswald", sans-serif; background:var(--navy); color:var(--cream); }
-  .wrap{ max-width:560px; margin:0 auto; background:var(--navy); overflow:hidden; }
-
-  /* ribbon */
-  .ribbon{
-    background:var(--red); color:#fff; font-weight:700; font-size:12px;
-    letter-spacing:2px; text-transform:uppercase; white-space:nowrap;
-    overflow:hidden; padding:7px 0; border-bottom:3px solid var(--gold);
-  }
-  .ribbon span{ display:inline-block; animation:scroll 18s linear infinite; }
-  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-
-  /* hero */
-  .hero{
-    position:relative; padding:34px 22px 36px; text-align:center;
-    background:
-      radial-gradient(circle at 20% 12%, rgba(237,183,58,0.25), transparent 30%),
-      radial-gradient(circle at 82% 16%, rgba(39,182,201,0.22), transparent 32%),
-      radial-gradient(circle at 50% 95%, rgba(204,31,51,0.30), transparent 45%),
-      linear-gradient(180deg, var(--navy2), var(--navy));
-    overflow:hidden;
-  }
-  .hero::before{
-    content:""; position:absolute; inset:0; pointer-events:none;
-    background-image:
-      radial-gradient(1.5px 1.5px at 15% 25%, rgba(255,255,255,.5), transparent),
-      radial-gradient(1.5px 1.5px at 65% 18%, rgba(255,255,255,.4), transparent),
-      radial-gradient(1.5px 1.5px at 40% 60%, rgba(255,255,255,.35), transparent),
-      radial-gradient(1.5px 1.5px at 88% 50%, rgba(255,255,255,.4), transparent),
-      radial-gradient(1.5px 1.5px at 25% 80%, rgba(255,255,255,.3), transparent);
-  }
-  .hero > *{ position:relative; opacity:0; transform:translateY(14px); animation:up .6s ease forwards; }
-  .hero .kicker{ animation-delay:.05s; } .hero .l1{ animation-delay:.15s; }
-  .hero .big{ animation-delay:.25s; } .hero .l2{ animation-delay:.40s; }
-  .hero .punch{ animation-delay:.50s; } .hero .sub{ animation-delay:.62s; }
-  .hero .cta{ animation-delay:.74s; }
-  @keyframes up{ to{ opacity:1; transform:translateY(0); } }
-
-  .kicker{ font-weight:700; letter-spacing:3px; font-size:12px; color:var(--gold); text-transform:uppercase; margin-bottom:16px; }
-  .l1, .l2{ font-weight:600; letter-spacing:2px; font-size:clamp(18px,5.5vw,26px); text-transform:uppercase; }
-  .l2{ margin-top:6px; color:var(--aqua); }
-  .big{
-    font-family:"Black Ops One", system-ui; font-size:clamp(120px,42vw,230px);
-    line-height:0.82; color:var(--cream);
-    text-shadow:5px 5px 0 var(--red), 10px 10px 0 rgba(0,0,0,0.35);
-    letter-spacing:4px; margin:2px 0 4px;
-  }
-  .punch{
-    font-family:"Black Ops One", system-ui; font-size:clamp(34px,11vw,60px);
-    line-height:0.9; color:var(--gold); text-transform:uppercase; margin-top:6px;
-    text-shadow:3px 3px 0 rgba(0,0,0,0.4);
-  }
-  .sub{ font-size:clamp(15px,4.3vw,19px); font-style:italic; margin:16px auto 22px; max-width:34ch; color:#e9e2d0; }
-  .cta{
-    display:inline-block; cursor:pointer; border:none; font-family:"Black Ops One", system-ui;
-    font-size:clamp(20px,6vw,28px); letter-spacing:1px; color:#fff; background:var(--red);
-    padding:15px 38px; border-radius:2px;
-    box-shadow:0 6px 0 #7d0f1c, 0 14px 26px rgba(0,0,0,0.4);
-    transition:transform .07s ease, box-shadow .07s ease;
-  }
-  .cta:active{ transform:translateY(5px); box-shadow:0 1px 0 #7d0f1c, 0 6px 14px rgba(0,0,0,0.4); }
-
-  /* countdown */
-  .countdown{
-    background:var(--navy); border-top:3px solid var(--gold);
-    padding:16px 14px; text-align:center;
-  }
-  .countdown .clab{ font-weight:700; letter-spacing:3px; font-size:12px; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
-  .clocks{ display:flex; justify-content:center; gap:10px; }
-  .unit{ background:var(--navy2); border:2px solid var(--navy3); border-radius:4px; padding:8px 4px; min-width:62px; }
-  .unit .num{ font-family:"Black Ops One", system-ui; font-size:clamp(24px,7vw,32px); color:var(--cream); line-height:1; }
-  .unit .ulab{ font-size:10px; letter-spacing:1px; color:var(--aqua); text-transform:uppercase; margin-top:4px; }
-  .countdown.fired .clab{ color:var(--red); font-size:16px; }
-
-  /* facts */
-  .facts{ display:grid; gap:1px; background:var(--gold); border-top:3px solid var(--gold); border-bottom:3px solid var(--gold); }
-  .fact{ background:var(--navy); padding:14px 18px; display:flex; align-items:center; gap:13px; }
-  .fact .ic{ font-size:26px; flex-shrink:0; }
-  .fact .lab{ font-weight:700; letter-spacing:1.5px; font-size:12px; color:var(--gold); text-transform:uppercase; }
-  .fact .val{ font-size:14.5px; color:var(--cream); line-height:1.25; }
-
-  /* rsvp card */
-  .rsvp{ background:var(--cream); color:var(--ink); padding:30px 22px 34px;
-    background-image:radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px); background-size:5px 5px; }
-  .rsvp h2{ font-family:"Black Ops One", system-ui; font-size:clamp(30px,8.5vw,44px); line-height:0.92; text-align:center; color:var(--navy); letter-spacing:0.5px; }
-  .rsvp .rsub{ text-align:center; font-size:14.5px; font-style:italic; margin:8px auto 22px; max-width:38ch; color:#5a5345; }
-  .field{ margin-bottom:16px; }
-  .field label{ display:block; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:12px; margin-bottom:6px; color:var(--navy); }
-  .field input, .field textarea{ width:100%; font-family:"Oswald", sans-serif; font-size:16px; padding:12px 13px; color:var(--ink); background:#fff; border:2px solid var(--navy); border-radius:3px; }
-  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--red); }
-  .field textarea{ resize:vertical; min-height:52px; }
-  .toggle{ display:flex; gap:10px; }
-  .toggle button{ flex:1; cursor:pointer; font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:15px; padding:13px 6px; border:2px solid var(--navy); border-radius:3px; background:#fff; color:var(--navy); transition:transform .05s ease; }
-  .toggle button:active{ transform:translateY(2px); }
-  .toggle button.on-yes{ background:var(--red); color:#fff; border-color:var(--red); }
-  .toggle button.on-no{ background:var(--navy); color:var(--cream); }
-  .submit{ width:100%; cursor:pointer; margin-top:6px; border:none; font-family:"Black Ops One", system-ui; font-size:clamp(22px,6.5vw,30px); letter-spacing:1px; color:#fff; background:var(--navy); padding:16px; border-radius:3px; box-shadow:0 5px 0 #061029; transition:transform .07s ease, box-shadow .07s ease; }
-  .submit:active{ transform:translateY(4px); box-shadow:0 1px 0 #061029; }
-  .err{ color:var(--red); font-weight:600; text-align:center; margin-top:12px; min-height:16px; font-size:14px; }
-  .success{ display:none; text-align:center; padding:14px 6px; }
-  .success.show{ display:block; animation:pop .45s ease; }
-  @keyframes pop{ from{ transform:scale(.8); opacity:0; } to{ transform:scale(1); opacity:1; } }
-  .badge{ display:inline-block; font-family:"Black Ops One", system-ui; font-size:clamp(26px,8vw,40px); color:#fff; background:var(--red); padding:10px 26px; border-radius:3px; transform:rotate(-3deg); box-shadow:0 6px 0 #7d0f1c; margin-bottom:18px; letter-spacing:1px; }
-  .success h3{ font-family:"Black Ops One",system-ui; color:var(--navy); font-size:clamp(20px,6vw,28px); line-height:1; margin-bottom:10px; }
-  .success p{ font-size:15px; font-style:italic; color:#5a5345; max-width:36ch; margin:0 auto; }
-
-  /* ---------- ROSTER ---------- */
-  .roster{
-    background:var(--navy); padding:30px 22px 34px; border-top:3px solid var(--gold);
-    background-image: radial-gradient(circle at 50% 50%, rgba(237,183,58,0.12), transparent 60%);
-  }
-  .roster h2{ font-family:"Black Ops One", system-ui; font-size:clamp(28px,8vw,40px); line-height:0.92; text-align:center; color:var(--cream); letter-spacing:0.5px; }
-  .roster .rstsub{ text-align:center; font-size:14px; font-style:italic; color:var(--aqua); margin:8px auto 20px; max-width:36ch; }
-  .roster .count{ text-align:center; font-family:"Black Ops One",system-ui; font-size:clamp(36px,10vw,52px); color:var(--gold); margin-bottom:16px; }
-  .roster-list{ display:flex; flex-direction:column; gap:8px; }
-  .roster-item{ background:var(--navy2); border:2px solid var(--navy3); border-radius:4px; padding:10px 14px; text-align:center; animation:bubpop .3s ease; }
-  .roster-item .rname{ font-weight:700; font-size:15px; color:var(--cream); text-transform:uppercase; letter-spacing:0.5px; }
-  .roster-item .rdash{ color:var(--aqua); font-size:12px; margin:4px 0 3px; letter-spacing:3px; }
-  .roster-item .rcostume{ font-size:13px; font-style:italic; color:var(--gold); }
-  .roster-empty{ text-align:center; color:#7f88a5; font-style:italic; font-size:14px; padding:12px; }
-
-  /* ---------- WALL ---------- */
-  .wall{
-    background:var(--navy);
-    background-image:
-      radial-gradient(circle at 85% 8%, rgba(204,31,51,0.18), transparent 40%),
-      radial-gradient(circle at 10% 95%, rgba(39,182,201,0.15), transparent 45%);
-    padding:32px 22px 36px; border-top:3px solid var(--gold);
-  }
-  .wall h2{ font-family:"Black Ops One", system-ui; font-size:clamp(28px,8vw,40px); line-height:0.92; text-align:center; color:var(--cream); letter-spacing:0.5px; }
-  .wall .wsub{ text-align:center; font-size:14px; font-style:italic; color:var(--aqua); margin:8px auto 22px; max-width:36ch; }
-  .poster{ background:var(--navy2); border:2px solid var(--navy3); border-radius:6px; padding:14px; margin-bottom:22px; }
-  .poster .row2{ display:flex; gap:10px; }
-  .poster input, .poster textarea{ width:100%; font-family:"Oswald",sans-serif; font-size:15px; padding:10px 11px; border:2px solid var(--navy3); border-radius:3px; background:#fff; color:var(--ink); margin-bottom:10px; }
-  .poster textarea{ resize:vertical; min-height:46px; }
-  .poster input:focus, .poster textarea:focus{ outline:none; border-color:var(--gold); }
-  .poster .post{ width:100%; cursor:pointer; border:none; font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; font-size:15px; color:var(--navy); background:var(--gold); padding:12px; border-radius:3px; transition:transform .05s ease; }
-  .poster .post:active{ transform:translateY(2px); }
-  .werr{ color:#ff9aa6; font-size:13px; text-align:center; min-height:14px; margin-top:2px; }
-  .feed{ display:flex; flex-direction:column; gap:12px; }
-  .bubble{ background:var(--cream); color:var(--ink); border-radius:4px 14px 14px 14px; padding:12px 14px; position:relative; animation:bubpop .3s ease; }
-  @keyframes bubpop{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:translateY(0);} }
-  .bubble .who{ font-weight:700; color:var(--red); font-size:13px; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:3px; }
-  .bubble .txt{ font-size:15px; line-height:1.35; }
-
-  /* footer */
-  .foot{ background:var(--navy); color:#7f88a5; text-align:center; font-size:11px; letter-spacing:0.5px; padding:16px 20px 24px; line-height:1.6; }
+:root{
+  --green:#04300f; --green2:#0a4a21; --green-logo:#006018;
+  --gold:#d8a848; --gold-lt:#ebc878; --cream:#f5f2e8; --ink:#10210f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Mulish',sans-serif;background:var(--green);color:var(--cream);
+  -webkit-font-smoothing:antialiased;min-height:100vh}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px 60px}
+h1,h2,h3,.disp{font-family:'Oswald',sans-serif;letter-spacing:.5px}
+.logo{display:block;margin:22px auto 6px;width:230px;max-width:64%}
+.tag{text-align:center;color:var(--gold);font-family:'Oswald';font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;font-size:13px;margin-bottom:18px}
+.card{background:linear-gradient(160deg,var(--green2),var(--green));
+  border:1px solid rgba(216,168,72,.35);border-radius:16px;padding:22px;margin:16px 0;
+  box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.btn{display:block;width:100%;text-align:center;font-family:'Oswald';font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;padding:20px;border-radius:14px;border:none;
+  cursor:pointer;font-size:18px;margin:14px 0;transition:transform .12s ease}
+.btn:active{transform:scale(.98)}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-out{background:transparent;color:var(--gold-lt);border:2px solid var(--gold)}
+.gate-title{text-align:center;font-size:30px;font-weight:700;text-transform:uppercase;margin:30px 0 6px}
+.gate-sub{text-align:center;color:rgba(245,242,232,.7);margin-bottom:20px;font-size:15px}
+.lesson-banner{background:linear-gradient(160deg,var(--green2),var(--green));
+  border:2px solid var(--gold);border-radius:16px;padding:24px 20px;text-align:center;margin:8px 0 18px}
+.lesson-week{color:var(--gold);font-family:'Oswald';font-weight:600;letter-spacing:3px;font-size:14px}
+.lesson-name{font-family:'Oswald';font-weight:700;font-size:46px;color:var(--gold-lt);
+  text-transform:uppercase;line-height:1.05;margin:4px 0}
+.lesson-take{font-style:italic;color:var(--cream);font-size:17px;margin-top:10px;opacity:.92}
+.sect-label{font-family:'Oswald';font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-size:14px;margin:4px 0 10px;display:flex;align-items:center;gap:8px}
+.video{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;border:1px solid rgba(216,168,72,.3)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.action-box{background:rgba(216,168,72,.12);border-left:4px solid var(--gold);
+  border-radius:8px;padding:14px 16px;font-size:16px;line-height:1.5}
+.missing{color:rgba(245,242,232,.55);font-size:14px;font-style:italic;padding:10px 0}
+input[type=text],input[type=password]{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(216,168,72,.4);
+  background:rgba(255,255,255,.06);color:var(--cream);font-size:16px;font-family:'Mulish';margin:6px 0}
+input::placeholder{color:rgba(245,242,232,.45)}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--gold);background:none;border:none;
+  font-family:'Oswald';font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  font-size:13px;padding:18px 0 4px}
+.pill{display:inline-block;background:rgba(216,168,72,.18);color:var(--gold-lt);border-radius:20px;
+  padding:4px 12px;font-size:12px;font-family:'Oswald';letter-spacing:1px;text-transform:uppercase}
+.row-links a{display:block;text-align:center;color:var(--gold-lt);text-decoration:none;border:1px solid rgba(216,168,72,.35);
+  border-radius:12px;padding:14px;margin:10px 0;font-family:'Oswald';font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:15px}
+.note{background:rgba(0,0,0,.25);border:1px dashed rgba(216,168,72,.4);border-radius:10px;padding:12px 14px;
+  font-size:13px;color:rgba(245,242,232,.75);margin:14px 0}
+.ok{color:#7fd18c;font-weight:700;text-align:center;padding:14px;font-size:17px}
+.err{color:#f0a3a3;text-align:center;padding:8px;font-size:14px}
+.docrow{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:rgba(255,255,255,.05);border-radius:10px;padding:14px;margin:8px 0;font-size:15px;cursor:pointer}
+.docrow .dl{color:var(--gold);font-family:'Oswald';font-weight:600;font-size:13px;letter-spacing:1px}
+a.docrow{text-decoration:none;color:var(--cream)}
+.time-btns{display:flex;gap:8px;margin:10px 0}
+.time-btn{flex:1;padding:12px 8px;border-radius:10px;border:2px solid var(--gold);background:transparent;
+  color:var(--gold-lt);font-family:'Oswald';font-weight:600;font-size:16px;letter-spacing:1px;cursor:pointer;
+  text-align:center;transition:background .15s,color .15s}
+.time-btn.active{background:var(--gold);color:var(--ink)}
+.ib-detail{margin-top:12px}
+.ib-detail h3{font-size:20px;color:var(--gold-lt);margin-bottom:8px}
+.ib-field{margin-bottom:10px;font-size:15px;line-height:1.5}
+.ib-field strong{color:var(--gold);font-family:'Oswald';font-weight:600;letter-spacing:1px;
+  text-transform:uppercase;font-size:13px;display:block;margin-bottom:2px}
+.affirm-text{font-style:italic;font-size:17px;line-height:1.6;color:var(--cream);opacity:.95;
+  padding:14px 16px;background:rgba(216,168,72,.12);border-left:4px solid var(--gold);border-radius:8px}
+.pdf-thumb{display:block;cursor:pointer;border-radius:12px;overflow:hidden;border:1px solid rgba(216,168,72,.3);
+  position:relative;text-align:center;background:var(--green2);text-decoration:none}
+.pdf-thumb img{width:100%;display:block;border-radius:12px}
+.pdf-thumb:active{opacity:.85}
+.pdf-thumb-label{position:absolute;bottom:0;left:0;right:0;padding:10px;
+  background:linear-gradient(transparent,rgba(0,0,0,.7));color:var(--gold-lt);
+  font-family:'Oswald';font-weight:600;letter-spacing:1px;font-size:13px;text-transform:uppercase}
+.pdf-viewer-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);
+  display:flex;flex-direction:column;overflow:hidden}
+.img-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);
+  display:flex;flex-direction:column;overflow:hidden}
+.img-overlay-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;flex:0 0 auto}
+.img-overlay-top span{font-family:'Oswald';font-weight:600;color:var(--gold-lt);font-size:16px;letter-spacing:1px}
+.img-overlay-top button{background:none;border:none;color:var(--gold);font-family:'Oswald';
+  font-weight:600;font-size:16px;letter-spacing:1px;cursor:pointer;padding:4px 8px}
+.img-overlay-body{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;display:flex;
+  justify-content:center;padding:0 8px 20px}
+.img-overlay-body img{width:100%;max-width:700px;height:auto;object-fit:contain}
+.hidden{display:none}
+.vidcard{display:flex;align-items:center;gap:14px;text-decoration:none;background:#000;
+  border:1px solid rgba(216,168,72,.4);border-radius:12px;padding:18px 16px;color:var(--cream)}
+.vidcard .playbtn{display:flex;align-items:center;justify-content:center;width:46px;height:46px;
+  background:var(--gold);color:#000;border-radius:50%;font-size:16px;flex:0 0 auto}
+.vidcard .vidlabel{font-family:'Oswald';font-weight:600;letter-spacing:1px;font-size:17px;flex:1}
+.vidcard .vidhint{font-size:11px;color:rgba(245,242,232,.5);text-transform:uppercase;letter-spacing:1px}
+.switcher{display:flex;align-items:center;justify-content:center;gap:14px;margin:10px 0 4px}
+.switcher button{background:rgba(216,168,72,.18);color:var(--gold);border:1px solid rgba(216,168,72,.4);
+  width:42px;height:42px;border-radius:50%;font-size:18px;cursor:pointer}
+.switcher span{font-family:'Oswald';font-weight:600;letter-spacing:1px;color:rgba(245,242,232,.8);font-size:14px}
+.checkin-live{border:2px solid var(--gold);box-shadow:0 0 0 4px rgba(216,168,72,.15),0 10px 30px rgba(0,0,0,.3);
+  background:linear-gradient(160deg,rgba(216,168,72,.16),var(--green2))}
+.live-dot{display:inline-block;color:var(--gold-lt);font-family:'Oswald';font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;font-size:13px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.checkin-quiet{display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:rgba(245,242,232,.55);font-size:13px;padding:14px 0;margin:6px 0}
+.demo-toggle{background:none;border:none;color:var(--gold);font-size:12px;cursor:pointer;
+  text-decoration:underline;font-family:'Mulish';padding:6px 0}
+.foot{text-align:center;color:rgba(245,242,232,.4);font-size:12px;margin-top:30px;line-height:1.6}
+.admin-link{text-align:center;margin-top:8px}
+.admin-link button{background:none;border:none;color:rgba(245,242,232,.3);font-size:11px;
+  cursor:pointer;font-family:'Mulish';text-decoration:underline}
+.admin-field{margin:12px 0}
+.admin-field label{display:block;font-family:'Oswald';font-weight:600;letter-spacing:1px;
+  text-transform:uppercase;color:var(--gold);font-size:13px;margin-bottom:4px}
+.admin-row{display:flex;gap:8px;align-items:center;margin:8px 0}
+.admin-row input{flex:1}
+.admin-evt{background:rgba(255,255,255,.05);border-radius:10px;padding:12px;margin:8px 0;
+  display:flex;justify-content:space-between;align-items:center}
+.admin-evt-info{flex:1}
+.admin-evt-del{background:none;border:1px solid rgba(245,100,100,.5);color:rgba(245,100,100,.8);
+  border-radius:8px;padding:6px 12px;cursor:pointer;font-size:12px;font-family:'Oswald';letter-spacing:1px}
+.override-btns{display:flex;gap:8px;margin:6px 0}
+.override-btn{flex:1;padding:10px;border-radius:10px;border:2px solid var(--gold);background:transparent;
+  color:var(--gold-lt);font-family:'Oswald';font-weight:600;font-size:14px;cursor:pointer;text-align:center}
+.override-btn.active{background:var(--gold);color:var(--ink)}
+.hs-banner{background:linear-gradient(160deg,rgba(216,168,72,.18),rgba(216,168,72,.08));
+  border:1px solid rgba(216,168,72,.4);border-radius:14px;padding:16px;margin:14px 0;
+  display:flex;align-items:center;gap:14px}
+.hs-banner .hs-icon{font-size:28px;flex:0 0 auto}
+.hs-banner .hs-text{font-size:14px;line-height:1.5;flex:1}
+.hs-banner .hs-text strong{color:var(--gold-lt)}
+.hs-close{background:none;border:none;color:rgba(245,242,232,.5);font-size:18px;cursor:pointer;
+  padding:4px 8px;flex:0 0 auto}
+.status-msg{padding:10px;border-radius:8px;margin:8px 0;text-align:center;font-size:14px}
+.status-ok{background:rgba(40,167,69,.2);color:#6fdc8c}
+.status-err{background:rgba(220,53,69,.2);color:#f5948a}
+.evt{border-left:3px solid var(--gold);padding:8px 0 8px 14px;margin:12px 0}
+.evt .d{color:var(--gold);font-family:'Oswald';font-weight:600;font-size:14px;letter-spacing:1px}
 </style>
 </head>
 <body>
-  <div class="wrap" id="wrap"><!-- injected --></div>
-
-<script src="data.js"></script>
+<div class="wrap">
+  <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcwAAAD1CAYAAADd2cVXAADFg0lEQVR4nOy9ebxdZ1no/33ed621hzNnntqkaZKmaelISymFpC1Ti8iYgigoAhdEuXrx53jRNP4crz+9jije61WvXPU2oogiiNg2ZR4KtJRSOs9DkmY40957rfd9nt8fa+2Tk+SkTdoMJ8n+fj777HPW2XvN633eZxYOwqZNm9zmzZv1yiuvXP5f/+t/ve+0007zMUZzzomqRuecf/jhhz/3yle+cv0NN9zgrrvuurjfKmTTpk3yB3/wBwMf+9jH7li2bNmyEII655yqapIk7p577nn8Na95zXlmtlNEAOxg+3PDDTf4jRs36l/8xV+88JJLLvlKmqaYGWaG956JiYk9//t//+91v/d7v/dEd9+faV3XXXddfM973nP5u9/97i8MDw+rqrpqH/bBzHDO2eTkpKjqY41G42u33HLLZ9/3vvf9GVCYmYiITfu8ExH96Ec/+rlLLrnkihhjdM75g+3LwVDV6L33RVFsPffcczdU+6xmhojw0Y9+9NZLL730whCCApqmaRJj/ODatWv/+0033ZRceeWVYfr+3HTTTV9csmTJi2OMsTpOf/PNN//2j/3Yj/2smXkR2ef6iQhmxi233HLvwoULzwwhqPfe7dmzR2+55ZZVP/MzP/PAs53ng+AAXfvSixc/tTD/5EQ9eFExoLwBBMT2vj+vZVLeUNOXWXWJj8ey5308h7jsuB4jQO+4T53jPkbHeDSOu1qvATLUzsJIaL72e5/44uNswrGZGce1ZKaF02k0Gqxdu5alS5dOX+wBXbFixRV//ud//rK3vOUtW/cfdKuBOv7VX/3VO6+88splQJi2PQEYHx9fCDScc0Y5kB5UYG7cuNFExLZu3fpfzj33XAFitR9U6x6+77773vt7v/d7119//fWHNJAvWbKEc889l2az+Wwf7UrSpcDSs8466/VXXXXVuz/5yU++X0S+tL/QBFizZg1r1qx5tvUeMhs3bgQgSRID3Pz58+euXr16xs9u2LDhgGVr165l0aJF3T8doPPnz/+pTqfzCRH5fHcSsf/31q1bx9y5c6f+npiY4Mknn3zuB7IJ2AyNgSyTfr2QpiI6baIyTdhNndHnumzagzIblj3v4zkBjrsrOHrHfYoc97E6xqNw3NMFcV53tJ+OGc/CswpMgE6ng5mhqjjnAIgxWq1Wcy972cs2m9mV0z9vZgLYxRdfPPTiF7/456vvumnfxXtPCCHwDEJy//X9wi/8wvxzzz33Vfuvr/v7xRdfvBH4TSA/lOMKIdDpdGg2m6jqlFZlZnF/AVjtg/Peq3OO1atXX/CmN73pi2Z2sXPuG11Nrvv5drttRVGYldJ0n3V572V/bTbGaGZ7P9b9XjWZOABVDWZGjBERwTmH6sHnCHmeT2nkgKiqzZ07N7322ms/sWvXrpVvfetbd8+kMXavffeadTodOp3Os53aZ6XjnAU0D6qJUwzraZhHallP0+od98l2Tx+N467GCDNBghZR/LQB+CAcksAUkX1eAM45r6q6fPny9TfeeOPLnHPTtUwnIvGTn/zku1evXr0QiN57v//6mJL9z4oXkfAP//AP75ozZ84cIHjvk66Acc45EYlLly5d97u/+7tXi8gnN23alGzevDkcyrHtf4zs1VwPIMboRERUNZx22mnJG9/4xv/1wQ9+8EKm5pcl9Xq9lqapcIjnOEmS/c9F93vpwXd93+sy7RTP9OGpV2XGdjHGuHr16pGNGzd+fPPmza+9/vrrJ6+//vp9tOX9tzGT2fq5YiYOEmdgyN5z173BbdqmToZlx3v7x2JZOR2bXft0LJadssc9C/fpMPfdDMTv1WOfkUMazGeiq9GkaWorVqz4/8zsCiqfHmA/8zM/M3DhhRd+ENAYo3umwfwQiIC78MILf4BKMFXargGoqsQYybLMXv7yl/8w8Knrr7/eNm/efNgbarfbPPLIIx+PMY5676W7jWazOVir1b5/zpw5DjDnXKKqcfny5ef/2Z/92dtF5H+bma/2j+985zv3tdvtVV1/r6p2/aFy0UUXDff390tX4BdFwa233jrebrfzJEm6WmAUER9C2AWwZcuW53P+9mG/SU8455xz1t94442bReSDX//611OgOGIbOwjtBphTxPSQZ009evTocTQwEhrtZ//ccxaYlELDAXHFihUv/MM//MN3i8gf33TTTfUrr7yy/eUvf/m9ixcvXqKqwTmXsJ8GdqjccMMNXkT0Ix/5yMuXLVt2HqUA9s45HnzwQRkZGWFwcBBKv5zMmzfvTR/4wAeWiMijhxOUUplApdVq8Ud/9Efv+4M/+IOnZtiXK173utf9Y5Zlc6vjN8DOPvvsK4H/Tan1RYB3vvOd7wAa074u1TkYeuKJJ77T398/qKrmvY9FUSQ/93M/94HPfe5zH6O8JtM14whQ+RePqGwREVQ1AYqXvOQl/+VP/uRPvvPCF77wz2+66abkqquuelbtvEePHj1OJdxz+VLlK5PqdxERffnLX/6zQHPDhg3Fb//2b/etXbv2pwA1s+42ntNgXwW72Ite9KJ3JUlCjNEotS9uvPHG3925c+fnpkXYhsWLF8u11177ToDrr7/+sLfpnOPqq6+ed8cdd2QPPPBA/Y477sjuuOOOzMzq11133edvv/32r1fHot3zcMUVV0zuvx4RCc65se7Lez/qnBv7/Oc/v8d7b/t9lrPPPnvCOTeWJMmu6d9zzh2w7iOBqqKq5pyjKIokyzL9gR/4gf9v06ZNF1111VVBVZ/TvdGjR48eJyuHNSjGWAZRfvnLX27fddddBWAxRqeqtnbt2tP/6Z/+6T+JSLzooot+dWhoaCmVFioifOELXwiPPfaYAdiz+1aBMrVFROLb3/72NaeddtrrAKUMvHE7d+6MH/7wh39l9+7dfw+QJImGEBwgq1ev/iFKP+ShbWgaZkZ/f//4ueeem59xxhntc889Nz/33HNzEWkDDA8Pz93/K/fee29jhvWIqk69PvShDzlVlX/5l39JZvIDTk5OelWVH/3RH02nf09Vj7jFsnsdy0sjlqapxBgZGhoafutb3/oPF110UZokiVL6oo/05nv06NHjhORwtQgDSJLkO7fccssfAOK9jzFGB9hFF130Y69//esvPfvss3+CUgNzImKdTif+3d/93f+otMNDFmLXX3+9A/jxH//xN82ZM6cGaBWJKvfdd9+Xbr311j3/8A//cNPTTz8dKQODHBBPP/30NX/8x3/8WhGxyq94yIgIX/ziF8981ateteJtb3vbyte+9rVnvPGNb1z5kY985MzPfvazH1mxYsUllILbO+cEkO9+97t3Atx88837n6up1/XXX2+A1Wq1GY+/CrSxxYsX2/7fPZz9PxScc4yNjemOHTsKQKYHAa1du3b5n/7pn/5DjDG74YYbjorA7tGjR48TkcMSmF1to9FoDLz3ve/9jW3btj3iSszMZNGiRWs2bdr0qcWLFyeVKVYB2b59+5b/+3//70eHhoa6yw5pc5T+u6GhoaH/DFPpIwZw2223/fXXv/71dNu2bXc99thjX6byH6qqpWnKS17ykh/hMARON8+jv7+fd7zjHf/+4Q9/+L5f/dVfvef3f//37/3t3/7te970pjfdc/XVV/+nJEkAXIxRAXbs2DH+6U9/eouIcPPNNx9uEv8xp5s+0263w1/+5V/+t1arVYhIoLQGeKB44Qtf+H2f/vSnf+a66657TkUXevTo0eNk5DkF/YQQGsDT3/72t3/96quv/hPvfQRckiRccMEFc7r5fs45RkdH9eabb/5/V61aNdw1BR4KN910kxeR8Od//uevWrVq1SJK4SlA8sADDzz8nve858+6n73yyit/85xzzvnnKhLXA3b66ae/6ud//udXisj9hxP8473n9NNPP9hEIgK+ykk0ymo5//XDH/7wQzNVy5nFaLPZzD7xiU/8+RVXXLH9sssu+z2gEJGU8p4orrjiil/97d/+7W8557YDy4/r3vbo0aPHLOC5BnYEwP3Ij/zIX913330PAq4bAaOqVilrEfBf+9rXbnz7299+54oVK4afKbF+fzZs2KBA8oIXvOADSZJYlZYhAE899VT8zd/8zf/xR3/0R//zd37nd/7Hk08++dadO3cC+OozOjIyUn/d6163Efaadg8VVTXdl25RAa+qeO919+7d/hOf+MSvbdy48Q9OMGEJlEUbrrnmmgUvfvGL//Cb3/zmJ4FUVSNlyo7v6+vj7W9/+0eKolhRfaVnmu3Ro8cpzXPSMCt/m3/00Udbn/nMZ/7b+973vg8754JZGeNTRV/K+Pj46H/8x398wMzkta99rR1qAElVNcd+7dd+bc2qVauuoDSrOu+9AFx22WVnXHbZZe/e7zvdfUNVxTnH3LlzPwD8AdBmb1rHs9L1Tc6wXzjndGxsTH/nd37nLb/6q7/69yeisOyyc+dO55zT973vfW/7y7/8y++effbZS2KM6r13qsrChQun6iE+zzzaHj169DjheT6pA9HM3Pvf//7/dd99932FUruLAM45Bdx99933p7/xG79xl4hYURSH498TwC688MKfGhkZMSBWQswotduCUgh2Xx0RCVN5HlXwz8qVK5f+7d/+7Sur4J9nPNauCjk2NsYDDzzweuBC4MLPfe5z72i1WsZe36s2m83khS984XmHWa1o1uGci6rK1772tdEvfOEL1+zYsSOvShZaVXbwqAQd9ejRo8eJyPMRmN1CBJ2vfvWrHyqKQijNeQbI008/vecf//Ef//sNN9xwuKqJAPrqV7968Lzzzvs+QGKMrlsDlVIrToH6tFcNSKroI0SEoijw3rNq1aoPTNvfZ0VV+dSnPvUNEfmWiHzrZS972V8/9thjH6cq9xdC8N57Lrnkkp95//vfvwSImzZtOqFzFr/97W9n73nPe27/h3/4h5+PMbokSeK0833CTgh69OjR40jyvAZ673286aabkh/8wR/87P333//ZqvJPDrivfOUrf7J58+Yn+/v7D8vsWwX72Nve9ra3Ll26dDGldukA8jyfUNW/n+H1MVX9+/Hx8VsrrU+99w6wNWvWXPErv/Irq0VED0WwiQinnXZan5m5u+++u2Zm8q//+q+/Njk5mcOUuTYuWbKk/s53vvMXRMSeS4GE2cSdd94Zv/71r6fvfe97//uXv/zljwCJqobD8Tn36NGjx8nO89aMtm/fbpVQ+ZWxsTGcc/7ee+8d/eVf/uU/MDP38Y9//LBG3SrYh8svv/ytdGsaiwQRsccee+zvvPcbZ3i92Xu/8d3vfvcbdu/e3am+I0AcHBysXXzxxT8Ghx78E0JQEdHVq1cXgPvJn/zJWx9++OGPUUbgxiq3U1esWPET733ve18C6HPQpGcVF198cTCz5Iorrvh/vv3tb3/Te5+oalfTPDqYQ/Aw7SX7vR/pZXIcl/WOsXfcveOefccNHhVo1XlWnk8tWQCqpsbywQ9+8HMvfOELP/XSl770mrvvvvunb7311icAv2vXrkMWmFXd2Pirv/qrly5cuPBKytJ6XkQ0hCBf+tKXtphZcs899/jVq1fvH2jjROTxn/3Zn/3aRRdddIWZxSoIiXPOOefNK1eu3AyMcpgmxuuvv942bdrkvvKVr/zasmXL3tzf3++r9mI2d+5c3vGOd2wSkVfaUZUsRx8RsU2bNqlzbvxDH/rQuz784Q/fuHTp0n4tax8eeZNzC6wfotjhXZAePXr0OIKYgB1iQOohCUwzC+WbKaVWekBUqIhwxx13/FKWZQtf85rX/EW3rN3GjRt99X+r1hOrdUj19xTdJslXXXXVO/r7+4OqxhijS9PU3XvvvY/94A/+4Jfe9ra3xTVr1kT280nedNNNiYjERx999CMXXXTR5c65QDl9KJYuXbrsF37hF14jIn9z0003Jdu3by/bgZSVhwJVgYVqn6j8sABs3ry5K7S/c/bZZ//9pZde+lYz61SdPvILLrhgw1/+5V9eKiJfPVgT5uns3r27ez67vUDj/ts8FKoAqwBoFWQFz1wUovv5burIVBGIbieUzZs360033ZRceeWV33zjG9/4lje/+c3/1tfXV2j54a7P+ojZaT0heM1xyN5+mOwNZ+7ewkdyWfckH49lR+N4TtVj7B1377iPyPEIpoYkWo8Nnl3FfFaB6b13/f39NYA0LVszquqc6Z/pNk5+//vf/43+/v5Xi0jcv7WWqmaDg4MJkFTVcqjX6wmVWXjjxo0iIvGnfuqnFq9aterHAZxzSbdJ9EMPPfR/KDXE/bt5ALBhw4YI8NGPfvSfL7744s7SpUu79V2TJEm44oorPgh8bMOGDUXXNOu9T4eGhpJqWwAMDg5SFEUCcP3113dXb2Ym119//a+fffbZPzAwMFDrfqfZbHLFFVf8j1e84hWXb9y4scW+1+MAGo2GiMjcavsAaV9fH8652sG+cxDmAMn0dI8YY/NgH1bVYcrAqARgeHgYVT2g1+aVV14ZzCwRkc8sXLhw86tf/epN3XMD5flJkuR5a5ypT5wktbpknulN62S/9yO97GitdzYtO97bP17Ljvf2j9ey473947XsiK3XGbXgk7SIzzquHVRgdvtJjo6Ojt15551/02q1XLvdtkajIY8++ug24IAi6iJi4+Pj26cvW7dunQEURfHI7bff/ncLFizQTqcjtVpN7r///gBMmBkbN25ky5YtXHLJJUtardbfPfDAA90+mlYUhX7pS1/6CCDXX3/9jBpOpcGKiOx5+9vf/ssicvHk5GS3WDvbtm1zl19++VwReXzjxo0C8NRTTz35rW996+/mzJljMUZERHbv3s0TTzyxe/o5EBE1M7d58+Y7Lr744k0XX3zx2e12W1XVee91cnKytnz58hUi8p2qqtBBBebOnTs7Dz300P+amJhoFkVhWZbp2NiYHxsbuxfgzjvvfEZNszrn9uSTT3700UcfXdBut01EtFar+U6ncxvAli1bpq/DAB599NF/9N7f0W63NU1T2bFjh+zevfup6ddo2rkM1bm8/jOf+czIOeecs2BiYsKSJJE9e/bYfffdNzb9/BwWm8v9KSbGd7kn8//V561ZHtT0Vq89evTocSwQMzEJ1g75pIwCU2PUMaFbjec4ctS2PwuO7ZjybLmrPXr06HEqcUgC4Kabbko2bNgwfZE9h+o2sn/nkJtvvpkrr7xyH/NqJZT2+VxFrCoMPSs33HCD72qR+21rf9/nAfsEUB3bjNuqPn8o6z4oM5zPZ9zmTMx0jOzt5nJI+30o23yu3zsk1q9/3kFnPXr06HFE2Lr1AFdfjx49evTo0aNHjx49evTo0aNHjx49evTo0aNHjx49evTo0aNHjx49evTo0aNHjx49evTo0aNHjx49evTo0aNHjx49evTo0aNHjx49evTo0aNHjx49evToMcsQNm70bNt2ShUVPyVYsNXYckDvymNXhX+2sAnHzet7ReSPBRu2KpuPXL/U48Imju+9ciw7ZTx/TqR9PSL0BOWpxKaq2PnNwIIFxrotVj2gp9yN36NHjx6Hiyx69QvePDHAGWkoiqDWDN6bU3fUplnTpp+WNJLHQ5KMe5i5P0mPgxKrXjEeiHRPnycWheUTHck7k2MLQt/tlzZXjD388MNy++23t+Ags39DuH69584pIXpiawklAtjINS94QbJwcHUsWubNJPf73mgeiHmk1cmJMe6zHPae23gElnXXfrSXHY19P9jxeKBRYD4gNpHfvetL998Bz9xEfbaybt267OGhiZVFloRj28qvA9QQDfHMxWdsa7QGFGDxsduBw+aJJ57g1ltvbXECXufngyx82yWf2b2AV7i8TXQOJcGbYjN3iTpyGOVjpQYCguzzlMl+H7OjtGz69o71sue+73vXKghaLXOAKKAKIeLURr24NoWJ5fpUmmVfcyrqJvJbm1nfXZOPbdu57QsP3C7s1zata8bca9Y98R6K9esTtm4Nw284/0+K5X3vy/MWKUZwB14VUdsrfWDmC3Ui3WzH4uGZtl2vDucT6jvjV3fc8I0XsQl3Qk26qv1d9eqLz9w1R++crOUqWh318zm3z3TN9kHKl5iKc+No+SE3G586wUyMWp6SPRGueeLGb3/jhLvez4Okk+hozPOQxyKmhfcmBeE4jI8CB9583X+c6IPLkR5A2f8zgmEoeyce4nFFKoMmOig1wUkyvxDOBSPtT9/VspzY6Iv9Z533UH97zb1pcF+v2fBn2LHnwSc3f/ch2Lr3Adi40cMWTkThWaS6pwjjIcYiqLnkYEp297yVk7hp/7D93p/PsiOxjlm4LDoXNVHv+vzh9sidVewZgnbDsjxj/ynk0cUMsGqciA1BMDnYnXr8MTFCouRJXgfgzlPHtZco4kESEHHmvErERJBjaZHoIs/y+8m27PmsY7+/Zdo/qscPiVRX0TCChVIZxRSJHqwp3mMrs6y+Mhd55TidX0z6kol5b7/gc7Vct+ZjnVvco7tve2rLlomplW/c6E8ss605QRIxQ3DP2LDapn5MXzDD+2xfdiy2Ne13ZyaYeewEuSWeATOz4zYtrB5cEwPjOEcfHRwTIBpIOKEmz0eCXsf7k5npUhQRqZ5BAZyCgqmZ5RbNiBZdcLHh+6JPX+1JXq3DGbZ44f2D5y36x3SUT577ids+t3XLlrIr+QknOHv0OCSOr7Y00yR5tlFZkE9FegLzVESm/SaICgiOVBNQMYJqQWGI92miK4s6P93udz/95R89/7bhSf379InJv9u+Zcu9QOn/uRNhCye0Oa5Hjx49no2DCMzpjreDeqp7nKBEKX00TqurKyAmePOAiCLeIyhGVFW1qCbeu7o/v93w57cb9V8YWnTeP7jd+uFdm+/4EgBmwnXiTgbBOf3uP5Upn/z9gwp69Dh1OYjATCqtO2AY5jyCx5mgAiaKs66h/xTWz48LMw1gBmal0VUrS6yVQQSKltewCiQAI4lpNRgaJkbp3xMKJ6grQCJYgtMMlcyBOqcG0TS4XK1GM/b5H8r6/A/Nedv5/yot+52nRW4EIps2OdjMiWSqdQiIQzESUwQlCljlRTreMV7HKo6t+3sZnekIDhwdBAeaEUUROzUFZ3lOZJ/4DhMwiTiT0v3owKnizNDDcEBWLsupdR5tfLWx4DyigjcjigEOE8FES7MThorNzmjd48SMAjOKISZkwRG80OkE6HRABJyUAyoFmAdLq7+fA64a2KE3gT1kqqw4s/J6mEEiQABcFb/ly8+JgROcCIkIrpJh4o2IEpG9Ux4Dw5fC0wTMI1Zl23WjhwQH4iRihI5OZvhWn7+22U6uXfjWC/4t2ZP/t8c2b74R6KZ1RE6AK5uHTnUvJygRFSvP4QFRQKcCQnnNDQlNYjYJRLJOijROtXOxF0GIlQDRGMoHRgQsAYvlc1gJVUwgHLrErGLxpr5+tJX6ojsr0jKQIVaKEBbBlcfmtUmCIK5dTRx7ShHMKDCFzCYxSZnM+nCdca49Y4QXDQqdvMWkpeSagjnMlTdFauGZp6z7T2nZG8mpqujh3V+nOHtPlIiQdzq0CyW4jOAcezptRjsdJotJcjM60RhrBTqFJ7caioesA4kD58lIyNSBRdq+g1kD0xRcDn4MMcGsxj5PryBenZdoFIQ46cyFkfRVWV/jVUM/cMEN7smxX9l109bvALARP1vNtCJCCMr585oskA67gmDawItgzhCKcvJwiqmYJgnRKX2tHLU5uEwpDG6dGEdP0bAHlQAS6BNYOtgkKwqCRXJRMvU4HCoepw4BCl8c8rqdpqU1SCCqlpor5d9HGgMSFRRHJzW8GmkMdHzEMBrmMJ/xZMdox0hNoXCn3rTxYMxw91t5AS0hpIpJQaNe47RFC1lcS1k7nLIki5gzxoqinIk+h6Qlg6kbo+clPRzctAFOUI0QIVGPOsjV6JhSmIEKE53I4+MtdqjjyU7gwW072TY5wCNP7+HJVodtxSTjLgHvSXEkroUlk0QgSlKZ4g+8Ol2TUxrFRxdpS4ztFGmO1K6TWv/3zdt43m+9cMvtv/XpLXRmq7bpRLAYOG/uIj54/hKGkxb9DWiFgOYFTuqYVZr6KYQhRFoMppGOn8PTUfnCE+Pc/tnbabsBHDa7LuQxQF0DiklOq0c+9PJLOde1mZcUZElkzJRWEchMMB8JYriubXWmico+VGVDpDKBTvv40aCMWSiFctQEM0fdCwNe6LiUiUl4Qgb52X/7PN8YLch9H1g4int0YjHjdLGQOqkKtaIgpH187M7tfOyb20gageX1NhfNHeCVa1ax4bR++to7KaxWXm9Kv5gYWHUDdMcak33Hne79NHVf9a7HISL7/SUgSiGxtMAi9JW2Uwrn6Wt6lg00SaQ0/bhVTYJ5dnYW83jHcdeuDt/bMcYdT+3g9tFJtrUMpAmuRlMSRHI6Eg7Yi+gUQfDRkUbDq3pzSju2o6snTZr1zV/5oYteu/Cp8HNP/fvWGzGE62dXRZCois9S/u7up/jsvY+yZgQuXjiPa9cs5/z+SCcfK60op9C9aUAaHS4d4j+e3MMnvvsA39i+nZ2TSp4MV3ENpx4uGiZ1Hui0+LmP38hIBksWDHPhyBCXrRjghXOF5sQYk9pHJ2mSaaQKGdjLQU6cECrXVGmP7Y6Jzqb5N6eNn92xdGpM7Soetu//2H9ZuXaiZJhB3SZwzTr3THg++eAYX925m8e272D7WM6DvglZBjGf2sseBzHJClomz7qIilKrC7XUMZF47gsN7nvc8fcP3827VjX4r1ecQRIKIoJg1U9gn58c8Dvse1F7juVD5YCzWGnqKSZleE9XlXMWkRgoAgR1lNqpUKSTNLxwdl/KCwbqyIom7biIJ8aFb23bzS1P7uSLT+zigbEOUTIkrZN6AdNu1a6p4I+iqgXgUMQiiHg0WtvGYxisvVAz/x9z33z+r/+E3PZLm0HZuNGzZcusMdEKQkyVJ1Ce2OnYum2MG779RX5j/UquPmMORaeNiJu6q09WyqMTzJSsVudv7n6Cn/3Sd+iEISRrIoniXAss45SaQVQkFjCE3KU8bgmPdIzbHxzl0/dO0PetSV63fA6/dOlFLLA2aJvoD5xkPhNd4SrYVFiHdv2ZR+p0d8dbjSRWY9Sfxp9++bt89N5HebxTK7XczEHaj1gDHwBpM3tLKBx7ErCydqwpJhF1ilEADmcpoo5CjOAgyz0iOTEVSBv8zzt2IIPz2XzhMG6ihbiM3AUyVVSe/SRPt/RNObxPFH/PLPJpiQleXWnm7s48piaEhjrDHFP1gZ2mSBCCQbCiDPJysLSpnLUy480rT+PBfDlf2baL/7h/G59/dDePTwqkA9SSBGihZigNME9CB6QgiseZI4qIh0SKPI5nTpJFtV/8/bedd/n8+3e+Z/uWLfeyaX3C5q2HN6I8R7yqlCUDbX83+tT5ceppxCYhaeHTwFOTffz0V57g44vnsdIntLU03560iCCqCBHxKfe3hd++9UHatRGatZSoQnAQxBDKqMnuAF+WcBO8Cs5O7IG1To1J4tQEXiiFlgp0fGnGlOpYvThwCT4zOjLA39y1i8fzu/n9V53BSL4H075pVrdnGwoERaZi+LpMRczu//48lhlC4sbYPdDHL37+u3zi6w8Rh+eS9in13NHGUFN8NBxKcL7cj+p8SPluAlI4f2Jf8OdA4gy8CtEEcIgZzhJAKCsQ65QpoCinHKCGI0eGR/jH2x7g7Weezdm1jE4BMTVMy4focGbl+5gvZlJLj9ayY7mto7bMULev0jbdxD2lvU+PWRfba/qpVlNEx9PBEHLmi3DdaYO8/vR53D0a+NQD2/j4fU9x564xSPtouIw8bWOmaKyDZQgF5QSsnBoHwUuEqBOhPZJtsNXzvzBvwfyNOzZvveWoa5oLFhiAmkuCCIarDNUzWYQLOq6OUUN1kiQdYVtnjMd3bGft0mHaeWVeO0nNUoYr/ZIaSepN7nx4O0+2hbTp6FjEIzgLU5Pg7sCp1cipAl4gHO2GDccAQ6i8HHQVPITSJ9k1iVK6nrAqvlXa1EYGufn+p/jkbcK7LlhMe6KNuH3vmmeSbTONlUfDTaVmNGp9fPaeMT7+nYfoHxyiLRA0UJBMudTUhaknZZ/9kGnDj52kD8Qz4ApxdBJPSDxBEkQT5KDnYe9yNcEDu/OCrz2yE5dl4NokGlHxlQ+zx4lCd3DwUqahRIM97YJ8coLVfQU/edECPvaa8/nDl6zjhf3QyncR2wUJCdFLacKfSX8TSGOWxLbG0cG4oLXA/m3o9ev+E1u2xLKo+9F+6MrApSxCdpDSl95AnZKoEX1G7mGO5fTXM2I3r/UkHRsEBQMVh0qC+JSnd4+WNiZLyKJRJKX1IAsp3vaLRQC8RbwV+NkZDH1YqJSFPaKjysU9uOASIFEIkmHRkyY1/vWhJ2h1rIy0PpY7fqiYEl2TT937CEqddpKSV7nY8VkkdHdyFF03TTOe+Bf8MHGpaUw1BCFEb4WmGtSbPvu1nppVJmzTDFwZeu1VTsWJx0mHCHgnmPfkAcJYixFrcd3Zw/z1687hD69YxXnDdYrJAgk5dZnEkx9w5QUoPIhz3uctncjatbCw9pGRN7zgN9iyJbJ+/VEWmkGMGIqkCMHlM6pABngt3Q7OMmJoc868OmfOm0snBE7uuV9ZgKTUrIQQAgtGhkldrEytgATMgVc/JTy6KQ+iZoqpYrFyn5+41Gq40oOhBlVhgikz5Ax0J4kJpoKlKd9rOyY7Ee9m301jgPeO8YnIvXsK8H1lGrdCFvc1QD0TYqXdVqwya62bnXODo4FTGJFamiRJkmktce2mc0UiYoaZmZo9UwsCA+8QcaSmBCeIJTgi7gR/dnqUOGljvkM7TcmpU4xPMhBa/OCaQW54zVlsetFiTjNlYkJQn8w4sng1QIlJ4tICNORhYmn680NvfcFvsHVrYNPRE5qizidpPZG0Xi/qmUOkrIg0DRWhFBxKYoIUk7xixTzmOCubMhyNHZt1lC4UDS3OXjqP1U1H0A5KhtfSaN8VIF1h6QxSceJdLaXe703Sucf1EJ4nWUulJs6liPNgpXPJFCwYFsD2G9SM6MBpef9E30Hpo/Saz04ZIkBhRjuWlgWxQKKKIXtTYboYZlhQKY9f1NQpmoCkiXeJaFlF5VRq7yWt+Kd9Y/7GfFd4SdrMlnXSTDrWPtvVvBcRiWJYPHgPQVCyGEhjJIrHLAHpNuJOj+Wx9DjCGEYS62BCJw14Ih5HtITRtjIogZ9eN59Xnb6Q37n1YT5x73aKWo1a4lHdm6sXqzaJElOiiJjXxMJ4Ucxt/Pyc685n5+atv9Bt+HzEdn7LFgXIdrb/OBV70otbkady2cSArjKR+vSPOhPyBJqFEQgMNhKuWjYfOpPgTva4hq652fAoschZOjDAS5bM4c77d2B+iLTIiWmszLblk+2sTGFyRdzdN5487Ha07wT3bwBsnqXS4llo7dnRcUny7SSLfUFY6WqJmAjOO2cCaooW+8rM6JQkOgTFXEEWGpgLTFXkmoWYM8xHcAXqFDFH4T1JcEyv2uYSJ+JdYlLFrQQlUdBWEQy7x9TGgFNKw5SZ/kivOn1d/7KRftmTD0w2/YfiiGyIIaqIuOmnxjuhM9nhly5dxM+cN4+drTJAQH2B1+TUOYsnNR4xwRFQqWqsisOrp2wdmJMlHrJB/uXux/n1rz7Ag3mgns0l6QjtNBKSSBrLGWwUQ6XM3xTaQZrNJHk8/tbE33/754+40DyQevbDa++TerJEoxpORAW8KVE8dVUm2oFXnzHIX1y9jNgKqHOnwPS5G5yiqBl9mefmJwre9m/3QgNcyGinQhYiikckkjsNTd9IkofH/mD0n+/9yeN8AEeaWvM1p5/bGJ7j4mhnSSNtrKfhdDxOvmBiSF4hoqBOEhXUGWIedQVBYalP+NfXn8ECX5agm033jlG60UZjwsZP3skdbUfmylSi4DxZcBhK9NFMRAZ32pOJZP8mafp0MToZLJVPNerpxM5HnhzPb3nyu8f7eI4HSdnXcJvAVrXrMQTLb3z4zp08DMDgOy9eYz5s0BDVjBks86XPUrvVLVzlDzFXhpr1OMGJZYd1BMFNJVNDABG8JRQRdHI3b1o9l/MWLORDX7yHzz65nbSRkuUpUtQxF4kuginOPOoEIU2k3QnJ3L6fm/PadRM7/3nr/3sUhKbjh9dnrCDM+/aO17XqfkkRQxQRv3dCV6ZKdHyKp8O1K4dJcOS4UyQDzaqfAuJoFTnnLRzm3LlNvrF7D2lSKyNCq/QCp4o4k6BGo9G8Gsi4YWPkj7fJUZ7wHAsE6Ex+8uFbJ6sxcDf8U/ef9Xe+4DGt65IgptGJ81ZFzYpBFWW6b97X7KMMZCrrwzoTIt2o56oZA2ZpcMLjo2/d8flHt07/7p7jssezh2Sf0P7N1fsmHDtXpTx5YZB4T5+PVtX3mE3zpR7Hjn3jpq1a1n1zAC5htN3izIbjr686n9/41p384d33EpN5NBQmhTKtw1GlLuUEl1IPzk/48ZAtrv3K3Nesu+3pT279xBEWmsqKDTmbN6u96Zx3x25mybTweGcQnCOosXIwYcPihJALIgdLQzl5EYzCPCNp4Joz+rn1K5OQgdOuKCgnxoniA0FbQ9k5fW9Yd8XEdVturKKeT3TKw9zYnStthJH7HYv77eJ/OUsejLcWkwoFZc66iyfPmKiuTJjxKtRCSqM+GHdv3OhZ9M2E25fGMlVrS2mCnUUVu44lM1dS3oyyaWnkD7fE9O0X6pREnd0Tpx7HkLLp9N4IQmeGJ2HMFCdPsPmSVZwxMMgvf/luxpKUTJSg+86+vQrtREUs+laSq1vQ+Oj8l6x+6fatW287gkXbhc2bdd5L1y7u9PnLoqqVZRqqfxpYt/NLZ5KrzhxiecOzZ7yA5GQY/w+fhIQYWrx6+Qj/85vb2RFiGQZT5Shqt8WVqHYa5gbT5F0TcOPx3u8jiO2997ZAFUrcv56k45Cyn6zhtRsqdeIxdc9PI4lWaZlC7kC0kDL9C9h6by+Kk0OoedQ9S0ejcn6PExub9hIoC12I4GKDp4sdvOOcYX5//XksimNY3ibtqnY4MIdQthJylooUWKehA8WK+t/NX7+un3WbjoxJo0xbQRf6t+SDrj+i0dxUS8PyOMSjZjSt4LWnD5CHJiExRIojsgsnGgK0C2XlUJ0rFzcIeUFSuV4Mo/BS+qFNvBQ5ZO6axevXzKusVSf1CYuiRCndTnKCVjYSZFrlKtlnueAwKXNrTvjSTUeBQzohcbYm4fY47kwXPM7KABr1OX0xZWJ8kmvOqvObrz6HQYmYgidB1IM4glPSoIh5ElLvOu0wMU/WhnnpR9i8WbvC7nmxYYMCSZG4dxVExGao2egEzQvWzRvkknkDjAUpY+dP0dQokwiakRi8ZvUCXCKgSjf8qVsuzhniQ4yxz4+EBY3vAzgi12yWsoHy/nZVprmegHX5RYQQI+28W1R9r9UnilS9YEUoimiTk6XL8hSKgn02DkFgOqJzeJVeR5EeU5QT0L1l97p+TanUtyiCeE9ndILXLGvwO1edQ38noKrU1FAiZYd3h4miElHvk9AOob3Av23h9697J1u3huflF9uIZ/NmPf01Lzg/9Ms5FEEdONmvWo0nh07Bq1bOZyBJEcaohRn6gJ4imCjmQduBFy3pZ+1wSsci3UbHXqv+ww4iTtpJzlgtfHDVqlW1aoJycmqZW8u7QaVM9j8RnXgCFOLJq/R6McUsZW/gF+ZBxPntrlN/ADhh04SOBoescp+cT0CPI8neIJpuiyLDO8/uiZzvX9bHr284Cx+3066NUo8JWZB9Bh0DEhWvmltrMPvvy9evW8S6Lcam5xqsuhGA8T55p9acOJUDSlgJkMeUkf6Uq5fNYVQ6JJrizLATckh8/jjziECwNn39GdecNg/rFMT9fLoGIOKsiObq2Qt2nJleyubNtjdgpses5RAGdA0nUUTTEaJ3Y/c4qhgwoMZ4a4I3r+nnv15wFrEzRkgUpwkzaHCiWmhn2A+Nz0v+8HlE4wlbtsQ5l64anKjZdUEDbgZzrIgQC7hiwSBnD0MecqCGoMgpmRZV6hjOjJAaedHhdaeNMD91qNqMIS6GxaLuzA3V3lauYOOx3+0ePY4BPYHZ46hSBgMZIUmYnBznx85dxnWnnUWnPUqo5QcU+lcH0TmveSu05vg3979qzevYXPXRPBwqX5o/beDlcdDPR2NEDizboyIk1uINy0dIXE4aEoI3orhT1AVRFtJ3pqgTrBM4Z07G5YubWLtdpdrsi4l4YiEhszfx+rVzqypLPe2kx0lHT2D2OOrkrqw1nLuUGHfxKy9axUXDDYqig9tvAC6FlEcxiWnED9d+HRBu2HJ46l7pS6NV530ihWF2QI9WQYghsrqvxkXLmxRtQ6iDFATn9w2lPZWQSPQKlpFER+IKrjlrLj5qVXd36oMAqIhkeYydITe/P03fCFhVH7hHj5OKnsDscdRJrCzunEikozCvNsovvWQVc/NIxMDFMmmhbDFYBhIJPoRODMPJuuHXn/uDCMYNh6hlbsKxebMOX3v28nY9vkyKKLUovtvf1aqoQOdyrB142fK5LOh3xFhWs3FEnHEKt6gzzBw+lukHoyHyoqVzOWswI4YOHvCagBRVXVnrWhJMM30HANdvPTVDjHuc1PQEZo+jjlUl9RIVnHhGi8D6xQ1+5PzTiK0W4soGxVgdIWKiJCpEh7STaLXM//KqVatqfGfLIeZmrncA0vRvtn5q0Xz05jEUZ7FMvndlw+Smg6tWzqXWLmvlIgGnDmd66oYGmsPh8ATM5XRUWFTPeOWKESzvgHM49VR9wvEGucO7djBtyKUjrzrzHARj4yyuQN6jx3OgJzB7HBOmChxYGTk73s750QuWcP5Qg9AWcJ4gniQCeAxHos5ZCDEfTlbvOS/7ATZzaLmZm7dGILFEflRyRQxpJ5WhlxQxAw9Fu87ZCzMunt9gsojTkrl7aLcgu0BGxEKLV65czEiS0hEj+hy0jmHEyiogmIZmkjHYeHe5ll7wT4+Ti57A7HHU6TbjBUAEZ0ZUZUnS5oMXL0O0QyF9iBun8ClmHqwqv2bmRtOcvO5+cf3y5XW2bn1mX2YVHDT/ledcWvT5s12M6hBXuDJ/MIhHMNJYdml43ekjjPg2h9Ay/ZShO7lREcxKE3XMJ7lwJOWFCwahaIGvopylDOoqv+hcsECoubecd97CvlOh8k+PU4uewOxxTNhHaAKJOMbbBa9Y0WTDaQPoZIfUdYgiOMrSXCaCw7kYg2pfsvqBdUOXw7NEzJZKjYU56Q9YXUQxLZvjVoO6GN4CMTgW1HNevWyYvFBkhj48pzJdX2+ZieNRExpScM2qEZJ2B7EUc+0pU7shBC/OFTEW/X7xE6sWvho4qSv/9Dj16AnME4wTWRGavu8OIVqGk4KfWLeMQSax0E+qAUcHk1iVXxOyINbJxPYM+f/CM2sswnVb4qpLLx3sZGykyFGHjw5qQcg9eFUSjBCFKxb3cfrcjCLPZpEaZNPej8/VrmJfq5+eSAKSMRkLXnb6AGf09RNzD34SrNTc1UFw0MiNIom0G/I+YCpauUePk4GTXmCaQOEjwRdVVF/Zt46qIuRsfZUl5lyVpzh9OPcYHqrKns6s8h9BdEbhjOgckDJbLu9UV5Np47+iaBKZ7CS8dEGDK5Y1yUOBp1vYWvb2NRFxMRSS1+I1Q69Ys4ItW+KM1X8qbWb30va11pSFAYtiTgQjOkUsLc+TJDib4LUrFuMsEPyxDug0kMDeOp7dBs4RT4FIpGzc7UmswHHsLZtiMnXNundlCMaypufK5XMJYYKEBKp70bCyEbfznqAWavbSwStXncnmzcpsuRF79HienPQ3sqinVjRJiwyCw1QJ1qGwQLBYvpjh/Vgsm2n71e8FgYKCYAXRCrR6eW3htI1ZTpBIx0PhyiHNm5JaQaYdEmvNquLh+4v9snktJGokLuf155xOo2gRSTHK5rZlmomhgphptGbis4FmaeqrImH3YcECA0Rr7kfUa9UYVxAzVARnCuJoG6wcqHHxkhFi3mGGXPyjzPSzUf0upQk00odps9TsnNLxKVFmrIh0lPewO1WbNo0zhxWRl6+eT7/LCdoA9nYyEjMKB6hGa7hasmDgrQCsn+Fa9ehxAjJzP8yTCHMB04IkqeNrfSQxggSCq9rzdNWY/d85Bsu6Y+YMn1NzUwEyolrN4Y1ghlrZ5t0MYlDUQDF8lQ6gDoIvhYU7tuPsYZHGFKTNaHS8dOEgFw318YW2kqaCzRCFE0VxafIG4E9gv+CfTTg2b4mDr1y3Ks/sKg3RZD9RKERSSckL5cpli1nULGi3lEQSoMMx1eIsmbY97e4gUQu8GuLaqDOi9IE5/GyY/HgocuPieRkXze/nlqchqQcs7j3NZQlhccEiRS1513nnLfy927dunTxu+9yjxxHkJBeYQqTA1RJue3yUrY/vpEGTKJHojERnr09weoPmWpKQJQmpgwXNGv31hGZi9CUwMtCk6ZWmBExTNEBHjRgVJ6WxbLZiAiGJtM2xMC145ZqFfOGbD0La5IArI+Y1FtZJZcPA1WvXjG2+6+5SSFbS5ub1Draqjfg35EMu1U4RBNnn/jZANdJ0yjVnzCOJE5gkiOkBzXSPPtNnSwAOU6GROZK0jcRh2q0UlT3gFCPjeN+thiEqzHcdXrVyPp9/8hGkkVbhQdPOn+A0qHaadsbDZyy8ituf+hc2bvRV1GyPHicsJ7nALB/wTObwpcce4Ne/cj80FwEBfGQ2TNoPinSb7dm0sdVwPiEVo2YFA6kwd6CfBZlwzkiD0+cPsW5BH6v6YIHLCUGYKHxZjWUW5hiqK1ASEhJikXPFGU3mfDuyOxpeDhQPzmIMA0nqJmuvBO4pzbKVprlhg/LYYzVJ/A8HzRGbat+49/supd1pc9VwxgXzPZO54KhjrjgOZfCMvQ2iPESHrze5/eEWd35HGOjPedGFNebWmoSYMxtMBSqGd9DpGC9fPof/8c0HeKRISzfmfqE9DjVLo+XN5F3AP7Nu3fE/gB49nicnucAUvEVq2sLVBDfSR+Zr+OjoJIabxbVCXXcAqiIvujGThiMaTFjGmBmP7SpAhc8+ngM7mJcGzhmocdlpi7nytGHOm18jlYLJdo6Jx4lWwTf7azjH/lw4IknM8CpYhFXDKZfMH+bfnpgkrWXEbioI5bUSMymc0khlA/BHsEFh61Tfy7mvOf/FrYY7xxVREedKK3dVBs/KuntmyrUr5jOY5OwpMurR0UkiaTzWj4JiUu1dVOr1Ojd+fZQ/uuFBJoomqsp5X3uSn37Xaub35dgsyGi0yuTRihlnDDhefNowD97bJutz6D4+BnCKd3lBrGevWPiK8854avPmB/axCPTocQJykjvjjUiKuoAS0cIj1iFaBI3YLH5FlGhGNIgqqIIqmEWomvkmAlnqqdUctYYnbTTY6frZulv4rW8+zlv+9S7e++93c+Pjo7i+PlwiEGNZr8wcJqWPV9DjMnlQHMEpKqVAbMgAL1vaRGJBag5HxKtDXYFXT/Q4CzlFzV7Muvn9VQSmVMmXpoPhR4q+3HwsMwOTWFYPcqY0opIDC+vGy5cP0wogYiTSwuuxTRUUyshmJUNUqEmbHWGCv/nsbmIYYLhZp3+OcPt9xn985WmyWlb6rY8zZS5rgo8ZiY5z7eqFZKK4IDiJBFeWNXRmII4YLViT5vhg/JFyDb3gnx4nNif9DSwISIKYByujL1W6KSVuFr/KJsx7NcsqmtIcVFGkBqhZKVjVMFU8RpolZH0Z4zXjn58Y44c/dR+/+O93s71Voz8doLCIOkPxBDLKcnHHXmB6LdNHooPgI1q0uXDpPAZrjo52z0EZr1nungga1VK3ZM5Zi84FylSSLVviqisumB8Svt+KIAi+G1nqKDAxCp9B0eGli+eweLiB5QFPWdZN7Ng/BuYCoGAe7/poTSRMjhe4GnQsUKgjqUe275xAZXb4DqYijtM2kwVctHAu549kdNRQSRH81DUtvKFOnI/Rkix9A9AryN7jhOekF5jloGtMdtrdpL5pr5MPA8ysbParTWppg9Ds468fKHjLP3+Tz+waJenrx4ecTCPgCE5Qd+wtZWLgTaZyZbUYZ/VQH6sHmxQKuMr/qh4TrbRiNctAHBcDLF9BAsjTc+Pr8sHaiBQSTURUUqKPJFZg4mj7BB87fN/y+Xg6+FhqeYU79vdCqStK+fCJ0onKyEDGmYvqtCcKnKRIqCOtjBesXoDNEiNmN80kJJPkmrHMGdesGMJiGyTBa4JXj4mVL+ecFcFiw62b//rzrkDgsPua9ugxizjpBaZSmf5iOerYSSooZyLVFi4GIkIyCA/mBT/+r99l66M5aWMQH9t4K4iufB1rTMqMy24rrWiROR7Om1OHGBCpPGPmUMCpYGAxUayWXADw0IrtClinT3+gcGVVdcVwqqhote4ELTqcM5By6eIBOsUkSFKZDg+xAcoRxWFWK7V6VxBdi8Tt4e1vWcYZy5tYrrgwyjWvGuby8xuEtnFg6+tjT/fZEQAH0mnx8jPmMT8NaCzAdNrzVfqMo1MtGuI7Nd7L8Q7z7dHjeTILHsOjjJQpGmVNzO7hlibN/TFMDQvMgpdVr+rveMCrTMvcp3rO/nR8QidRMm3hOwGXDbBLG3zo09/g1nEHtXqZ46kJ3o59/FfwipmRaHltgnN4K7hgfgMs4i0gEhFLid28WcwFAjnx0lWrVtXYfGe+4JqVL7CGvTRtFabiPU5JLBBdLP2E1PGdUV5x+gLm9kFuiroMdXt7OR5bhG5vTjFBJcNyY/kC6B9K6FikCHD6MhiodwgWmA0WEZWyhEEaGnhpM6aRFXP6uHzRENKexCWRwgM4agGyKBSJeI0FoeavHbxs3ZwqteTkH3d6nJSc9DfuXoNbqUmUTYGtytbYOxtWETKpuTTNEpcd/1eSpkmSponL0kSy1JevxPsk8S5JPKmIeqPwUaPTYFjE1JyVUbDl4ObwMUE0IUiNYOAbjvtlkN/53G3sThuIJNSKDNXj4Mfrnn+zqoiEI6hyxnCDepqj6qsSeWFvXRxzoiiSyeK1Q2s9gDb7fyj2+dSIamJVwYaIUXbTsFgwmKa8fOU8NHRKjXNKe51eMeJYHnkElMI5JKb0Z0Pc/t2CO+7eRVqrIzLATTe32T3exPkCwxMFSpvJzBO+o41QWgVEPQ6j44TMAq9dvaTU68WBBKIzsO61U1Erova5OdmSpPRl9ir/9DhBOcnTSihzF7tOoGqGDBFEQVNEDMjVEu/YEW/PWvmnQyKps1ngORLMTM3jznHeNXEeaabEGLOgts5SP0SWOJd4Fz10yNFQxCyaiCbORMviAOJLoWNlpG1aq3PzI0/yqXse5a1rluJ2B9p9gTT4YzoMe/UgNhXU4s3RicqyoQEW1QseaveTCSCTeMtKE64lgkYL3gY+P/i91QK34bkuKsRUXRoDRkJ0AdEmuA6xPcoLFs3jvHkQOwWJpEBeppnMlER41Cmjgs0Sggv0aQezBv/6rScpYsqACHm9xT2PG9+8Z5wN59eZaCnqKhO2lj7nZ7IuHA26HV+iL0BrJGLE9iQvXdjHyqEB7moLNVcGoRUuw2GkwSi8SnQF4vnJ9fBXWzdsVbYe233v0eNIcPILzGegWxfAgWbiXKdo39D6xPd+7Xjv16HQXLd80bzT5/VZ7JyXDdbWjPnwUt9Xuzg0s0XqCiSECM7vb3AUM5AWJMNs+c4TXLtiGUNJwMVpZQKPI2ZGX+JZUG/w4GRA06QMjkWoEiuRaJolvj5neGRueP2aK4qhZIWGdvSGdwZBIoLHURCp4WKHa1f2kzrPJGV07PFDQEqLulNHVkDSEO56Uvn2d7bTyOaWtYPFiCbc8tUnedELVuHl8dJsrvVKO9Zu2NDxPBIKM4b6Mt5w+lx+4/YnoK9GEhwmSvCKU0dquBiihmZ2zjevXnMhm+/+Wq/yT48TkVNPYE4bK21a+bkkCp5EJtevT2g0PAMD4bjt4zOyBdZhk5sfenLyzocA7qv+8VtLrl4715YNv3rCws9PDtbOjSGojzhxZd3ZEsNrAbV5fG1Xm9ufHGX9kjouj8fdTSaAWmQwhTOHhvnqjp3gEhTpWtHLHpkKeKUIk74YyN7TqRuSg1dX1nmYOg4jRuOMesbLT2sQ8oiI57jPCqYVi0iiEdM+bvrmbkbHG/Q3HEobMyOt93PbPXv47kPKeSsytJUDCcG1Zk3JQxFHCJO8cuUgf3bno+zESJxHKKAS6i4KKuhkv0v8wtrbga+xbdvxd8r26HGYnHoCcz9MKmFS1l31bN0aWL8ePv3p2T77FTYh3LlR1m/bJls3bNXHN9/1NPB/VsHf73rTuX+cz83eNenyKIifPkgrDicFHU255bGneenyldCZROT4q5gRI3ORuc4Be1tgTXUuMYcYUljB0679brK+9VELnIoDqfIqq+PwHibGueqsuazorzExXuD88XafWZVLC8HlNHzKo7vrfPFbD5JldYxYmZ49TmBP2/O5b+zk3DPngD6OOVAX8DGhNNAeX8+BA0JRsHJBPy9e1OBfnuwQGykulGbn6AxRh4AvNCdJ3dvWrF/zK3dv3fo0s8Km0aPHoXO8R49jz37zWgWigyjHe+g5bIzNKFu2xK1bt4aq5Jiwfn1yr1m+82N3vNsm889K6ryZTRP+jtxlZDaGCHxr9yQTHalqzR7vsUswZ2AFI7Ua+KoYoArepoVoibjCAvnc2nWa2kJfRAQkuPJaMk2UNLzyilVDWOFKVfu4H6MhluDUU0gbqad89fadPLFdaPgAVpSWD01xmlNrpHz19h08usNIsgwlYhJwVUDU8T8eSIInI/Ka1YvwAUzapCp4dUSRqnMO4kOINPzcnSP9bwCs27+0R48ThVNPYALdia1M1Rit6mTOhgrXzw9j69bAhg3eDLFd8c+TkKFiZkIZaILhFdQ8LlEe3lmwJwipC7Ng6C21ETPHgqEEp8LeaYxV/teyqKqaYF7MpBv9vDci2gTUC9YOnDO3xgsXDFB0ABeZDQKmm+qUiWNPu8bnvjRKknoULSsbVW3nIkrqHTt2Gl+9bQdSb5ZF2rVGcFYWczjednTKiGxtF7x08RCrBzLohLKSlEyLUS8rNVG4aO1m8U4ANmw9weaoPU51Tj2BaXvfujU9py0+Odi6NSLYqvGFn5Y2252TpMzaBKSMGi6khjpoR89YEXBOZ8U58Dgwz0Cfx0dX5dDC3itUhTGZh277xW5CfZWXagImHoqcl6+cx3DmMSvQWTEfEowIBOpZxu3fa3P/Yy2y1KNT6SLlxMYq57PPEr749afZ2XJ4X/pw1dmsuF4A6g0NyqL+lKtXDGMdQ12Va7rPNREfYoHV5UVLX3vueWxG2UhPy+xxwnDqCcxTiNu2bh11IbSS0nQ3laJfamUKztMqcnaNjiE+mR4ZdFwxU3ySPGflyRnE4BmpR64+fR6xEzCfI5oxG255wUhjQS41bvraTjouIqQz1rQ1g7TmeOCRyDfvbOP6DCzHa7e43iy4ZiKICEXIuWbVHAYSj1YpQwdgxKLpXSt1P1Eu2Hhs97VHj+fB8R89ehxNvIUoewua7R3AyrK6QlQjj4rK7Jjol+WLZEp2zyQzrfqnHKTHp8dhnRYvWTLAOUMJMQ+oN2bL7W7qSOsZ33vI8a27R/H1PszCMxSBdxSuxk1fnqBlUglXmDVe97JOAdrpcP68jBcv6ifmndJasB9OzBdWkNfdW+eeddqSKrXk+NuVe/Q4BGbHCNLjaGFlCy9BK19f1+DnrMrJtGrJLFBUpvN8+l1HEVLr8Loz5lDXSBQBSykFzPE/UCMQ0gG2fnmCsU4kkTJUOx6kAL4opE3hjvvHufsBJUkHyDFMjoSs2b8v6nNbhxFRgzqeN6waJIltdEZrq4gLMRZDyUBYN3wtAJt6wT89Tgx6AvMkZiMbzXlvwbTyIZXmyq4rz5nDieDE4WbZrbCv9nioQsFwCEUMLB+u85IlIxSFEr3DxwwhMLPnb3rHkr0N1fb95PNptF0G6JQpTA5fg0d2BG69bZQ0S/FaVMFKM2cyiZV9JidCzpe/PIb5BHPdgJ+9fs8Du/AcbPl0qm1aV2ZNP+r9j/lgQlXK4Dnv6HTg8tOanD7UpFCbyhfduwYjUyP4aEUzfecmcLB1dkQv9ejxLMyuUbLHEeXzF3++VjNJTASvEa8RJUHFEZMWUniaWcHAcA0pUzOOOyqCSaTTMZCAWYaLKerLgX1/c6w6RcnwCuYKTDKkM8k1yxuM9A8huZGYEV2kLIx44FGWgSm+ik7VcrsIwRvdAkhCBIlVYM7MdLX3vQJSSWKGQzE/WdbN1wKX1fj8bW2e3jNOTYZQA5O87Nk6A7Eq1tBM63zl9hYP7GrRdBmmZU1cFauChMrePIjSLQLp1E1LQTkQ58Zx5kH7yh6drgP48nhdXtXbreOjxx+kWqSg5K5BcB6LOxkeGOBVpw0hk2OI96iDJHbtGw5FvIaOUbfL//QVZ19SBv9s7I1FPWY9vZv0ZGRjeV3b8wcuskQWqZqK4KSrNVVNqAsPWaKMpCnReH520COFGSKO0XZR7tPef8z4ca9l70UVweMJAsPeuOqMZZB3UB+JztCqKPuBCOZbaDJWCmtrYFrDMNJYNrkGXxZyR3AycwEowyrhRVmf1jLQBoWPBGe4fD61fJA6wuSePr506xOQ1VBC1blEcDqzwCxboCk+Sdk2PslXbt1FmmaIhrLbylQAcZleo1JOEKIriEmLkI4TXT7jukOcTyGGpttBAmgGVmriFgcAT/R7KJJAkNqM60g1kqjh1ZGYI+sUXLNyCXMTIxfDqyc6IVbhsiqQRNVYF2yw9kMzrrRHj1lIT2CejGxbX/a1aCaXFk3nDNMoZYqGVIW/s5iCi8xvpoyIY7aUNXIGmOfJ8UnUPCIRdVrlZB7k8yjRQRJSrGhzwYJBLhoZRtujxESrLh9yEKOfIdqHCwNlMofluCSS1go8Bc5yVApUHFhyUE1NpsosGs4i3go8ObkPdJKA4incJMWQ8oXvTXL/Yzm+Vkd9XppizcNBMiycRsQchRRYI+MrX5tk50RC4hLQDGcpYkkppC1DYoZoDayGWR3TJpDOuG51AVzAWYIUjbJMZBZxPkU04ikQCahQ5VXOcOyUrcoUj0kdWhNcNLfJxYsGsdAi0ZTCgTmrTM9CquILCzbRJ2+ae/lZA73gnx4nAj2BebKxEc/NG1QAlyXv6lBQ9mkWVNxU7VxEoGizbqif4Zojqs6K0Uooza3bOwFIcERUtNSeZoiOnZYaD87hOxO88sz5jEiZ66iVGVagCnzaH8OpJ9GIyDhpo8meiTk88sQC2m4xWq8TpVOaWi3BzJclL4yplxpYdEiRQHSYRcw6KJM085SBdkrDJkmzFm1rcMtXdqIMlOk9FnGVxm8HiXo10XLbGD6r89CT0b72nZalgzXU5ajPia5NdONEGwebBG0jscAF8CFBot+7z9PWndIiVZCY4jOPpvN5dNsidoyP4PtqOJQkHySNCZ6ZtdTCCdGVDbtz7ymc0OfbvHr1QpL2RNlSTwyIZU5mecXEtIjFQLLY5tXK3JJe5Z8es5xTvpbsfswGmXH4bMJx58Zy37dsichmRt507oc7Q7LOYh4Tc15dWV3Gm4JAJ3G4VuCF8+ai0qaMIE04nlGkVUlfTGGPWrU/ERNX+RftgFSSKGXBdSdGy3JW1mtcedoIk2Gc6BMEIYsOlUh0ij8gdcNhboIgOZrN5zO3jPPJz97Nnjxy2pKUd2xcx6oFDml1ytQJH0gMxJXlBJ1zOCeYGFG0LO7uGkQcQY1YRFRr5IVDiwV8+y6x++59Umq1OqItvAlQK4WIm9ncGyRBJJKEOpbkBJ/IZ7+yw85fexp1VydNHZlXElFckhBcBhpwRMQKxDqogqqgZpjZlPCUmKHkaAZPjDX56N/fwXfvV1xt0l754vnypitX43UMoz3tCu1/3ZLSZGw5Kp7oMiZDm/WnDbGmWeeuokMq5bedORSl8JAGk5hGrM//IPAXLFhw/EOYe/R4Bk49gdmtGiPlE+y6jZJMSKyqPDL2mGfjM0iOdcdJqtyJsG29sKG7YINy/WZDUNgCwIJrznqBDTZ+Y3yE13SsramJ18p3qVWUrIiiCnNrCS9cNI9CRxE5vsKyi3Mwnhc8vn0U0gSniqvMfTMF7KgI3hSPUoTI5WfM54w+x2SnQFyCV8OpVfXOZ54PBcBlI9x+T8b/2vIQndo8pCZ87Z4J4g3f4Vd+6iIazQmCCR0taIU+8jyQ54FWO6fdaTHeckx0akxM5oyP5+wZD3RyZU/HMdYRxsdHiXnOeMvHVlb3iXVETIGqwo9ETOKMgT8mZSF6HxM0TpLWM+5+tJAP/u691DJhoL9JfyOhUUtoZsKcZmRgoEZ/E/oa0Kg7+psJjZojyzy1zJMm4H3pn82Sp5HaEv7ub+7m32/LqQ/Ph/Zc+et/fpg5w4t45WVC3p5EJK204X0R83gzHJGIw/DkIXB603PlikXc+d2dJElK1CrsysrazTWcC3lhRT156dw3nnvW01u23MUmXFUXuUePWcepJzCnSuF5vApCQB2k0ZHmmvOPRLh3trj0ZmAre5vvbkU2w4or1q7J52SX5YPJKyZTfWPelGYoOpqpd9FB4RUxI6k6fiBgLeVFy/tYOTchzx3iHM6Os8g0QXxkhwlPjzlII6KOmgVaLpmxj6VogkmHwim1KLx85RBeO3jziAIIoYqw9TMG1ZT1a5Mk4Tvf28akGyTr30XSrpM2h3j0sXE+/FePgx9nfLzO2NgokwE6Edo5tAuYbAeceEy72lupvolziFQvJzip4ZwkvptiMvX4lft3sCjZMjo1QX0byKrax549kx4bN554uoWZoWqYVRGyIogrjdEiUEtTmrWELAnU0kAjiwwPNWnUGwzVJ0l9yrfvyxkYHCApBOdbjNUGufP+SV59WQMfG2hykLQXYllPtrJQeAJmCXQir1ozh/9993YmLSPBVakzhjNH4RCnMeT9Lk078uPAB2B9N82kR49Zx6knMCvESq3LxDARyYloLb4oefmK9d5LirkDRwdvIs4KkbQdvBWNejbms3phUUX80StU2gLcnsm5LjCQJP6CpJm5IhWX5/lVSTNbuD0U59PwqXoIIWK5xhTxhTNMhCw4vDEVsJKnKamb4F1rFxNdjsQBJBlFSY+rTdowMpfx+FOTPBXaeF+nnUCtELwys8ddAjhPKFIuHO5wwdI5dIoxnMghC39BSCxn7iC4EBAdRNNJXNhFp1Vn61cKWlkH82PUdICEVimMXILhaWRNIILrpubsl7doe3M6SzfskblVEg94ARK6cU3TtWibVo0iqrFnMmImpTDTBHuwwDFJ23va8hB1hOE0w7mdFEkfjEabUwuauHGfxwFMUpBRDsVzIQIxN9bNG+aKuSmf2iakNY/XSJhuVhfxWkRyL28fuuIFv7xn89bd7F+WqkePWcKpKzDpCksH4INFkpH6G9KR7A0q+w55wr7eG6PsPJUbigvlaCh64Idm+qLs987Mv++Tfm6Gzc+8AjFxBGdEZwSEnJxoEciji5Cac4J4rVpdedMyrF886pXEeUKrzcaVDS5fOkTRmsBLnYJkFkSAKeJqPDwa2aNKw4yWcyjgzQ4SyRtRySBXXn32AIvSgk7bIf7QlRSHJ7THueyiedzy1XFufyDH+z6yrNNeuNyyJ57c5prZIN5yfC4UvlkFAVWFxS2UEbbaFYzHZqyf3hR8rxyeedviCryPgAfxqAoinrpECCmDzTYvWrOKW2/dxra2J9UWZ8yPbLhskdfiASSNIPWqMtQhIEYuypDlvHb1HD791E6Cr+EI7CdwxVRjZ6g25BaG7wf+ivXrE7ZunaUN3Hucypx6ArOahYuVrZRU3FRqQsebdRMsuoORVQF+3XGi+r3qHimu9IAeXAY+07L95ej0301mlKdmaJRoZfSjIamBCi4686WJ2Qiu9O0JRqIAjiIxXGq0W+OsSZUPvnA1IRQ4cySMkTOAUHCsBvsZMQgu4dYdY+BqgCFRMNxB47kdRlBhvm9z1crTkXYbxB8kPGXmjapkxNhhuH8HP/W+07nla9vYswvOW7E0Pee8OXLDJ+7gn2/eTeybi6aT2FQLFUOkKyK7FXdmJ6J1RMvCDIriRPHO2FM4BtJxPvCGNVx53ly+dp7y5ftGadYHeOkLh+S0kXHy1hA4wUlOWWLw2TGB4JU073DZigWs/NZT3F948O6AEriCEKUwbbgfFfgr27BV97odevSYPZx6AhPolj7r5pWVQsUIXkXNISZUQZkHjoH7qX5HS7w4k326c0ppURUTl5hAqF4AXstXqKI1xZREjeDKAxAM58E6bRbmOb9yzXmc1UzYXRjel9pbFu04tr8qhU/ihNGiw21P70akhvqcekdQJ4Tu9dgPJx5tRy5fWmf5vGGK8VHUHyyjceZtB9/CkeImYWFtjOtePgfEk+aTPrbHeNcbT6Ovfw7/51MP4et1MiijTQX2SvLZKywBTALqtQqcMpxztCYD8weFn3rnWi5ZmTM5/gAXnp1x0TlDmM+InTFCHlA/gFjAa3IY0ynDuYh2PEsH+3nV8gE+fMcESbNBONBW4Gvt3IpG44qB15x/6ejm277GRjxbZk16cI8ewKmQhylGqKq9TJ/ZegNnZQSlqxpfdQWPs1KIOqv+hr0Jf9NeTp2k0UsSvSTqy99139+faVkaD/45KdXgqVe3YHoWhVp01KIji440VlGJPkFQEg14MwxfRjSKJ/qMOBFZXEzwW9dewIZl/Uy0cxJREKOQDDlIBZujS3XeaVPgSV2NB0YnuXdPG58IUcGqpsoH03ydGY4WrzrjNPpoowgerVqYHQpSBhmbYdKAIiOOtwljY0wUbXJnFJ0dvPk1/fz4m1dZX76r6KgnEYczR5Syc0gyi8JUylsG9pboK6shiRMUj2eAMC6cscS4/v1ncsmKQGt8kpjUmMiNzriSj+3BcodYDaSNSOew98GZRyTFwgTXrF7IiAhaRT2XdoNuEwAHhlpdXN4n7wVsNrb9unl9+S5WujsOnF/a1LnucXJy0muYXj1Z0Sh7IaorAw5cqXVVVjXC9CIwFg+wj4rN9HAA4kottfqcwdR3u78/07KpVc7wOZV9O2t0g0mCcwfoMl4hi0rwRvACOLwmJBJpqULYyUvmJfzqSy7nBSM1JsbHEO8Q65aLq8qWHXPKYJ6YRDQqaVLjq49PMFoIWTOi6soIX5EZK+wIQh6N0weMFy2bi7V3IC4Fc2UpvEPaB8NrBhjqWuw90w4nCWIZYkYx/hSvWL9UBgYvSv74b2+nVfTjkybeJkGm4lyP1Il5Huy3D5U7IYlpWa82VSZGcy5c5fiJHz6bRf2TTLQmcT7Dm+GRsvArKVpZYsrygIejXVZ7Yg51EMIk58wd5NKFffzb0xNkWVZVe9i7x8E55/LcfK32+oGr1/7s2JYtTzNLg38cUAikB0ySulaHQ3cI9DixOKk1TKMMmClTR3LwOSIdUuuQRoeLNbxm+Fi+XMzwWsPFWvW/6ned+VWWIyurtOzzfqjLOPjnnKZ7t6M1oAaWlZpvVyuuxhwTxUkksYxUmzhNyYtJWq1RVqUtfu2ixfzFtedx9ojRnmzhvT/uj3M5KSgbIHekQZ2cjuV87pEJ8On0iJaDIk4IBbxq6VyWDObkMQFxRFfm1R7e3sCBg1y3XJ2QOKUz+TCXX2jyi++6gOFm1HY+FjI8URwdP1sepVLImQiYRyxB1GMuIi6lNdrhkovb/NSPrWBxY4KiM4lzM+XgPj85ZaKI5JRpOxn9Yrz+rEEkGpEUpQxEK/vLKOpERCUmjXRObbjxOmDWVf5ZcAiFFZzN7DrocXJwUmuYAqhEiqSN+gLnFCEphZDk+EM0M3V9hlPrnQqLN45WE18xV3kfuzUWrBKoKYiVuXZYFbwUmZACtIAQGPDGeXMHeO0ZZ/LalSMs62tTdNq0C4fUIvIM3SuOFaXqUPqR1TxZEvne7g5febqNpDXMFLMDK/tMfV9KP2I9iVy7fAFZsYeOa5S5pK4bpfV8Ry4FiWWUl9apSSAff5oXrBngl9+/yn7/fz4Y7n16Msma/ZoG75CZS8cdWyqToJXF4qHMPMkdFBM5r798IT/y5iFS20YnOJxLOXpKXLUv4qE9yYZlg6wc3MZ9kwWJ91Wheqr0F0ENV7gCS+IHgb/i5q2zo4VOxZavfjXtu3K4nBnNML8Qm5oC9zhJOakFZnkXp0jsRzo1dAI0gVC2dDj0qeABctH2hrLKMZgEdwuAioGvBKMWEAvSBPpcjQWNQVaO1LhkfoOXLGpw7twGQ0nOWBxnfNLTREiI5LFWpsDMAkuXIxLF41Sh2eCzD+1hd5GT1RuoPvP+iQhFHrhkrufC+UPkne2Yj7iQINaNFXl+o61gIDmYLycqluGkQ2tyO2fNW+J//sfX+N/56Hfte3ePaX9fnzs8L9/Rw6bd2k4Mo41NBK67dik/9Oo+6mMTBDI0EzCb2d3wvHEoaelPdkaRKwv7BnnN6QP80W1PkTT7yc1XFhLIgiN34rCOur507ZzXrr1kp9z1ZTZu9FVh9uOJANacNzGCDvXTjaVjX9uEmOHxh2nd6HEicZILTEFFCUyyatBzxYI6jUYg0sGZww6xdqrt96nu70Gg4Oh4K6Lr+o/AISQIHuhLPCPNPhYMNBjxxrzBJitG+lhWi8xtZNQIhBjJQ8GudtmYqu4CHXEIvmz0e/xlJQBiESUlk8BYR/nUvXsgA6zAzE+lbMyIAUG58sy5DHjHaGyCtHGWllrmQdt5Hcb+aQquQH2n0thKrT+1YUY7EywcmuRD71orf/h/Hky+dMcozb5+VGdH9I+V/dxQzQmxw4++aSVv2NDHZPtpQip4bZJqmUZ0qN7ew9wBVDyeQHQF+BpFSLnmzLn81V3bKGKB874yzUM9CnkCZlG1kSWxWf8R4Mts2zZrpI9m/ZkzkrIF3b7/k6pdTZW1NlsesR5HmJNcYEIioK0Obzx7Ca8754yqILVVN/WhP4szdZfSo/5g7N1DsXJKm6AkGN4JiRgWAqoFuSl5p0WnijsV8XhJQSJRAqXoFMrwlNkxBgWXkBYd0maT/3jkaW7bM0ra1wTNyxJvMt24pTgTDI/5gmDGoprnmmUL6OgEOMFrSnDl8R0Jk7NVXVKEpDx31o3uciRpTtExBtJx/p93LOcjH3uET31lF0ONJmhadg+pisYfrbPdNb06FbpNr8twpQJxQivk9PkW/+UtZ7HhIkd7fDfelSb90nwsR0dYVmt2VYRzEhMQaIcxLpjTz2VLBvnMI4G6D6gZncTRSjxOC9ThWxSW1pI3nfGiczc9sHXrNmZN8E8bdf0IroqqVgyH070GKMWmTMw9Tj5OeoEJVbeH0MHT3mf54dzSMxlej/XJKy3DQk7p9ykja6t6oTic1Kd92DAp9V+xhLI5lDKbHmQzwZzSAv72uzvpeK3E+oHapYrHmeJMCS5B2zmXL+vjjKEm+cQYzpUBU0c2pL8rIPcv+162qfLOyEOHVIT3v20Zg/0p//Tvu7FBQURJizKoxeQoaZ2WlFGwrgApyr2NDRIZYKzYzvx6xk++/TwuXKtMjE/gnSv9a9Vkwo6yDOqWnxQrg7vMIt4lvP6MxXz2wfuJUgeLpMETXCTRshhHoTFYvT6vvUB/GPhvs6ryz1RydmX3tu6Uw6bOa4+Tl1PCP136oqQsg/ccXzbDS4/xC3FlikXVVso7h69MbzLlUZluQN4bnDQLpucH4A3qWcJXntjDLQ/nuFqjNMdSmrj2loUwjAQRwxFQc7jouObMITLLqzzNY0V5H3XPcuIiQXJ8ayfvft0wP/DG+YTOBDH0gaSUvVCOzn44lbK5syvKiFOr4RJhsjXB6cMZH3rfmVy2CloTo2haHKX9OHScOFpFh6uWDLJuQMhViS6hVjg85f75KPjoXMcr4/28nYtJ2bBhdti5e5zynBICs8vzGVZnqFtwzF8nG2IJbdfgL299ghYpjgwfbCpoZ/9G0QqYE6wTOGsg4cWL+4md9kEjaY8OhopOmT8BvATUPO2JPbzlFXU++MZzGCpatDUnukMrJfdc9gMJlWbpIPaTaoPOxBhnnVmw6X1ncfaigtHWblIpe4IedwQ0KHP7jWtWzYfQwrwnr7rpdLU3b+KKGDQfSM4dWXLOpWzeXLbd69HjODMLnqIepyLRjEY95Z8fmuDGJ3PSpuBjXmrSB5i2BK85SoJ6D3mbV57Wz6J6ShGOno/w4FQC0xxYgqjDEkV9g7g7cM0VOf/53WcwkrUQPXoCvavlOs2oIWjncS49N+EX3nUhi4f30MrHIEkQczP2sTweJDjyUPCKM+ez0AzVWKZ8qccwCu8wAUdUzcxcX+0DwPHrQdujxzRmx1PU46SmLLBQBuKYKFEcdTG25Tl/+rUHaNdrqAsgnSlT93RKr2aZkleYY8B7rl45TIyGHtU8woPRLQ7gqrJuvso0CpDA6OQOLjk/8hM/dBFJ1KOVqQt4xDKcCJ18F2vXDvKBd57HAvck48ERkpTUciASZkk2vYgj5JF1IxkbFs2DVhsnWkasS2lFUAGn4ikKydP4ujmvfsGyqql0b7zqcVzp3YA9jipGtzavI3hDRIlRSRt9/Olt27lj5xhpoqh61BISU9z+IftUtXFdgRXGJfMGOHdBwkTISeSAdlFHHWcOZ1IGtYhW0ZKQaij7TEqd+qThGKUg4dA7cx4OirmcJNQQAq0kgDap2yS5RWqA07KiDiK4WaKgGUpE6IsdXnXOPJohECUjegXr9m0FdYiaxTDg6gzwwwBs3HgyeiZ6nED0BGaPo4oA0TmQDoUPkAtzap5/frLFX99+P2mjH4uONJYFw8NB7kgzj0kNtMUrVg4yKM2qnsPsEARiglEDVyAWMF/jzu/tppPnODk6j1nZak4xE7K0zkMP7eSJHQGfJZgVQGBv2NTskDVG2e56PBRcumSQ1XMbxA7IDNUTxERyU7MseZeBzIICBj1OcXoCs8fRRwraCfS3HfXE82CR8d+23smubISQ1Mq8Rq2yRN1MBlYDHCHAvD54xfImtBUncowjZA+OA5SM6Mo0k9E84XsPdkgSz9FpAlcet7qA4kklZbztuPfRApcmRAyRiMjsKQtfUqZUFupYnBVcs2oh5GWHnRk+6pSgnX63fOlrXvBaQFi//pRIhesxO+kJzB5HGSGKksYUr3Umav380ufv4ru7oOZTAoY5Qysfm+MgQTxesE6L9QubrBio04kFDp01uW9iRhQl4sgk44md8NBTBT5NDqmQ/HPYImWKSwArm6AHy7jrwfEqv9EjKpUWOlv08LKsgoniRYh5zmtWzGFJrYMGPaB6DoCZkifqWnX5KcDYsLWXYtLjuNETmD2OImUyiLMMNGDDdX731of4lwfHqPf1Q8xxFokSKVwEEfyM6Q+CYmQE3rxiPsQak2nEEWdN9GfZcaNDtJSa7+P+h8bZNRnx/lC8hwfmzR5KIJMzhzkt5wxaIGnCPQ/vZHxcEVenq/dOVQafJTgTRCKTRZ21g8KVpzcpCtuvslNlvlW8hKCTQ+lly9avW9UL/ulxPDmEG09x9swz1Jn+N0sm/j2OIVLVIordgvSSAwkWHFlfP39++3382TceLAtv+6IUkKp0ywCYMC1AxiHmy8LcZoTY5qzhBpcsmMdkbOFEylSEWSMIHCKBNHoUzx0P7SGasH+NoKlPVx1jzDxKiuKqykyKj018rCFEggOlrJQzJfwo38pOH1UDbIEkEx7fFnhke049Kc2ykCEWZ42vt5uSE6Us+p5E49o1i6mT46ygHJIEdaGsYCWOtCg0DFhjfEl2HQCb1vcEZo/jwiHdeF4VxA4qBE32nRPPlkezx7FFxVUVeXIEQ61OQaR/oMn//d4ufmvrIxR9I4i1cdEI4sp0k1imG6js7VjfTUNRV2keRYurV8xnTq1OIWPUosdrgsrsiAMpu64IdQK72vC9RydJU8/MVfG6RQ8UR8Cb4sgRIkhEs1Fi2kFJSLSsbjQTJuAsQYiYebxTJtsZ33ukQ+YgSsQswc8SLRyqo5byXkmlRSs3Llo8l4vmZuR5B/EOh6tM9ELE4UycxraFJPzYqlWrBrl+6+wpiNzjlOL5P0lWNU3d+2c5HPSk5imHGAiCV4hiSHD0NQf4X/c+xq9svYfW4DzU+aqllFaa0UzjnuAIJJT9JSddyoiHV6yci+UtoEYUV3ZoO6ZH+EyUNWddI+fhp5QdT0WS1DFTFmaZoB/B5STWIdUCb5BYHVf0safVZk8sMJ+QacCrYZZUtWO72vtMD5iAM7537yhty6rWWm0i9aqe6/FHTEi0nCgVHpScYQ+vXbUUjZ7oIqKRJNZQKbupFF6czzXGvmzZjnMbb0Cw2dZcusepwbM+RYrO7I2fhp+mXs4eE1mPY41gJBqIeIRAs6/On93+FB/67F3savYTvJa1YsURJQXcAU2ip6wUEsAUT4LlLV68YIgLhhOK0EZIq7ZQs6dVmUKp8qUpdz6U05pM8Myc9lLql2XeoZJR0E/hBxlvG02Z5Lqr1vKSFXMJu9qMu4SQdQ271XmybqHAfTEzksTzwGMFO8Y9qThUQqn9ziIfSbddQHSUPUw7E7zy9Lks7s/Q0MFJ6edEDGdG9JAo0smwvJn8J8D36sv2OB4cXGDeXL5pJ86v2mIcdHDylaemfCZnz4PZ4xhjjpZ4LAu4dA4f+tqD/NKX70MaC/B08NoisYiRoCIH9auJVeklkuCjw4c9XHPGQppE2q5sTewtVJOz2XG/leZRKIpB7nhwvDQlP0P50yQKZimaNAkU5JOPccFa5ef+8wre8wbhF390gHe/eQF9qdGabOOTvOrgMv149z1/XYH51C7loScCNd8k4lEJR6l4wuHTdd8kUcqSgiKEImfFQMI1p/cjraKq9pTj1ONVKneP85oHrM7lS16x+gW9+rI9jgcHF5gLFpRPWNQRzMrBbcaxSfDVambHI9njuGAQyGk0Hbsm5/IT/3oHf/rth0ibA0QBtaQM0rGsrNpDXqaFzIBgmAgqGZobyweElyybx2QRKVKPt0BinerTx9/UWOp7kTQRdu+scd9ju0kbBaYybRK539PhHOZTxtqjjDR38eNvPINfftcazl5WUIyOkrKTN7yiwW++/wxefM4QE+1JohZlG7O9jo8Dd8YJkwHufmAXidQwzTCXTxW0P96oQBTw5kjMo5IQfIbFFq9bNUKfpOQiaNLGa1pVVBKiE9KoUeqO8XmN95dr23h8D6bHKcezm2Qd1p0V7m9ttamfsfQnmZSlrXqi86TBcKgIiIIEoutGbmZ0b5+ggrhIOlDj04/lvOfjW/n4tnHS+nxMjcJFDEHFEaugHm8Cagf4MKXq2ZkUDfAtijjBKxYvYPGgo9BIqgbVQFsa947/vVY+GxHv6zz01Dg79gQS7xBTjJRyPwNCjuAQn9CKik6OcfX5A2z6z+fy2g3DpGEPoVUgUkdtgPboBCsXjPEL71zOf37Laob7O4y292DeSE2qGrbldoSi8vkVeA93PJQzGRx1K4WlUn+WozhGWBntWwZ2WeX3dozHggsW9PPihSNo3sZ8UgUHTZ9UmS9ih5jaDy27bPVStmzpto3p0eOY8KxVM9QkfeY70qqHoJz1lkL1+A9iPY4MIhGpBjZnCUk14w/JOAUOrzBYb/Bw7OcvbrqXv73jMbb31XHNflyumES8KYmVGlHZINoQTWAGrad756RqdBKop8rLz1yKxDZCmYrAlG46e+4zMSDxfO/+HeQFNNIMJOLNEPJygiE1jA7t8cgZ84Q3fv9iXnJhH1me0x4tEB8RJ1D1hnReaOcg7OSay2qsW7OGf/zXXdz8tVEb9yLNWo5Wpl2xDK+Gi0qWKA8/Mcb2PSMsHlKiCTpLxMr+HVqnKuKpY8Ac3796Hlsf307QPpwFdNqU3gRR00hfrVEs6X8D8EdsWJ/ALGku3eOk51kFpsyGKXyP44YzLc2tLiFIt7JMxFlkIPFo0s+n7hvlt791B7dNKH5wCc4HLOY4qvw/LZsdRyf4UuBaBFQODCcrm3ODaECLlAtHEs5f1EfMJ3CSMJuE5HQEx3gI3HV/h9TVMCvzKktjbA0So5hUahZ57fo6b3n5MuYO5+STOzCt47zDXCwjYacpTU5K4ZKPtVlZr/FTb13ARRf2yd/8y0M89pAj66sTEkUtpxYdLnpc6hgb3cW9jxUsnl+DVgGumK2nDgAvnqKVc9XpDc4cbPDdjoALpRY97SZxQEfUfEN+VOCP7Oatsadj9jhWHH8HUI9ZTeEScpciJrhY4ENOI3FktWV8eWed99z0HX74lu9y22RKWm8ALURbpHSoPHtEScgToUgENRQTKfP2Z04pmUo36XS45ox5zPcRs9kbFGlmpGnCk7uE+5+K1HyGEQFDvSeI0NljnLUo4xfeu4L3bVzASGMH+Sg4GyEmLfKkQ6Qx4/q9JnjnaTNGO3+Kl56d8FvvW8v3X70Y0acp2jkiTQpnBJ/jEGLwfPu+SdQ1wcpyAbMZFehgLG7kXLl6PrRbxMQdkPstiI8xWOiT85e87pwNCLBxYy/4p8cxoVfI+KRmenbscyOaw1DqMVBLG0ymC/nutnE+ete3uOH+pxmTQdL6MI0YCB3F+Q5OBcUTXGmAdWZEJxjENPE+Gcvz4GVSmskwGvcN/bTS7JprwpJai6uXDxA6keDczAW6jwv77rIqpAnc9zBsnwwM1msEycFlxInAYK3g1dfO4/teXmdO1ibfk6FuDiRtomtj1HGaHTR32VyOupwogDUpxgIjvsOPXFfjogvX8rGPP8m379mD9PWjWYEPhiQ1vvvoBOOTC2iIIyfBMTsCfw5GdEIIge8/c5iP3fYw29Tj2bdGQdkuTjVmlozV/U8yFc/fo8fR5xQQmHv9q92XAJhgYlVxag54hyO7TKpd2X9b1a4892XVUc002qoEEKuaHJdmQ4AoZbCML5MHUWdV4Iorz44JakoUoyFQT+qMp/CF7aP83ffu498f2s2e3JPU+qiLEi3Scg51AWcpXlOi80SnZJqTqtJySZGktbS2JzxaPLH7A/XT5v5RB4ZtP+EjYiRAKxiXrxxhzWBKexJi5vD7ydbjR0LV6hhTI0kFnwp33bOHQgQRT4hCkY9z2aq5XPf9i1m7sg0TLTrjgmUT5RTGBKxeRoPSBmmjpAdsTUkRrZNaxMjRLDJOSja6h0tOH2TNe9fyqc8/xidufIydE3UajSZZzfPY9lF27GyxZmlK3lbMFCcekwhWlqCbLXZar2X3mVbhuXAw4Ypl8/jYIxNI00G0ymdd9iBNwWueW96XvXLopWvO2LNlywPsLZzbo8dR46QXmM7AmxFcN/DByujFqjXUPimm097LTx65ZVPD0lFYhtlUtGgpsLshMUkZKWHlwNgVN85Kk2fZSqs6D2YIijMhEU9WyxDveHyi4AsPPM0/3f0UX9zeYgxBGg2yhsdUCabV9qQK4FDUlfWxnYKaaC6Kz7K0sdN/ceTB1g+MLpl72XhfbWmMeXTIPuY0UYje4fwErzt9JVmEcR9IdNrJPY6Up9djvjQ5Z9kSntizk4ltI9zz6FP4xDE5UTBnIOONr53DNZcNkbkJOqMdnKTgrYpqparaYyCd6orN/DhKFYluooAHAy8BdQmtdoea286bXj3C+WfP5+8/8RBfvGsCaXpkIuPr38tJa/0M9gXqKYRirCzYjiONGerasyLQNLFILhltL4xo5HWr5/BPjz5NkAGaMaedeIyELOaoU4mSBBkIzcY890N74P9l/XrH1l4nkx5Hl5NaYApGISktn5V5f1YgWFVSrRq0ZOrD+74fi2VHaL0mZcWYUpm26t9Goh4xh7pysC1D9I00GlGMQsqKKg31ZC6BuqAusq1TcOtTE9x8/9NsfWwH9052wPVB3yCpGvWiQ+4UFU/XDV5GvpaqdOEDXiON4EKnliQ+ZvQ9VfzBT9zwjf+yGXT4B8//mKhaonpA9KaIpyiEtcPCRcvmMhFaODyedpWicTwRIODdbnIfyP1i/uafH7f/+MrjWJyQCfPWTCd42Tkmb/y+MzlzrlJMjtFBcM4zpQBZ97Ez9lWKDia4SitJ98rutVZ4nGRgBZ2JbSxfNpeffO8FXPDFp/jHGx/h6aLJP356lH/6zEMsW5Dwo285i5WLBG31g89LYTndLHIcCc4hBikwHtpcumwR5w0/wjf2BDIyQgxEV6BOyJMEF8VpESnq6TvXrVv3W3fevLXo1k853sfS4+TlpBaYhuAkkFqOt1h2XbGUKLXqv4F9/Xwy7f1YLOs+2893WQRpw7QRQ0wI0sacVaZYAfVlIfMsUBdPv6uRi2dMlSdHJ7nr/2/vzePkuKpD/++591Z3z6bdWm1LsmXZyLa8YmMbo5ExeI1jTMYseSHAc+BBgDwekMcvJEhDgPweL3lJSH6BkLwQQoCgIQQSCNjGlsRijC1js3jDu2Vbsqx9tu6qe+/5/VHVo9FoZI1seWYk1VefUvVUd1fdqq66555zz/LUID/ctIsfbhngsd5I8CCVGSSVBNEMsgBEUlPEZo4gGohicSGLapTQ0uLad8lj7Ky/f9t/3P/NbmDBZad29lU5q66p2n1S4eSJ1jXNuPL4qcytenYORio49pPFfJxRFEMa2khaprH+jm303PSYaPs8rKmTNqKcetxsfve35uPYSr3XYa3FmJF9+KHr0xUwOBJJ8I3tmNjHtZe3Elpn8rkvbicmCdFYNj/qCD3389F3nUyrNIgaCLYZpjPxciYzUPUgITJoAnNF+fXFs/npXY8zUJuBqsdpnuZPNcFqMGSE/qnJ4qdPiL+G8K90dVl6eib3RG3JYc0RLTABXBRsqKBWUZebthyD7JnTPFRC64VsOxRCmCFT6lB8ohgQi7HtiHFAQDXPzZp6zxMD8Gwj41fbdnPfjpT7nuvliV0Nnq0XJsKqwVYdLZWIaoZ6nw8uRPBi8CbBxsDIiCMbRSvRxFh11maK7Q2fjY9s/8ju25/azm8vrPGFJ+q7p8p/GWxXSxo9akZ4aQshBo5JPJcvPIbgBzDiEJ0sJRCFKBFvPFVt5eEHHsXKbBJXR8Ig2On0btnF7m2z6Jjh8VVDJe6vwNeLRcnLvGSoOiS24oo51cZgZPPTuwlRScRhQwt0GJ55Ttm21TFl9jbSzEGsgjQOfKhxIPeY1vxXNhbJ+rn0hNn81f2PsFVSBEcSPAybe5foaNQiSZv+LvD1CWx+yVHCES8wlYws8eyMFXrrBhFDNdZBlSh5Ftw9YkiG1hzibXtE3qHephi1GCxeBW+Eeoj01+ts7+tjZ0PZhfB47yBP7u5jRxrYvL3BLp+xSwNgwFZxtoLtiDgN2JARg8VTwVtFXaCIAyF3FvIjhICqQhBrXE0Sqzv9XdqXfXjXv9//PQBWrHB8YX19zvLlbbtbuDJqShLE5vOne4SuEUOaDfKKea2cNnUqu+NuWhRUGgSq+02lN37kv64hkLCdKVMjgxqoSCuJ1hjwSqWW0VJtRXQrFo+8ZGbkZj1Qj0pANU9mDx6nCR0d7YT4JNYp1rfiswGqrQ1qbYP4WEE1wUwKrT1HVEEiQcCRsFsbnDBtGlccO5svPrQNW5uDqidYjwuBKIoVa10j09AqK2Zd87Izt/b03EMXlp5J7g5ccthyxAtMr0K1No01P36Uv/vZM0j7dGL0IHFozg04PC2yQ+sIJhA094BNFXyMpD4jRA8YEAdiwVhIHCZJqBUTiEHyubkky0ilRkOSomZbiomRJDOYmM9XBhMINiAxIipRRaKRxFlrXRzMnq0P9n1i8F8e/GtACxNZHMpLvES7pNXMqw0SohibGoNRj2LyYYsEbFCuPHEmVRPZHS2GfL51sjhBiloqoYJvDPLKCxfx/fsfCI8/tctWxeHcLl7zmlNom7KT0F/JRbzxeLEvgZYpoBZBiaapaRqcCGGwj4vPnc2ddw3wwOPPotJGTTKuunI+06ZD1lfB0Ezd18xNO7FYzavPRBEkCt5AJQzyusXz+cavtlIviktHQz4DkZ85ojGE9sTF/sqbgbvZskJg/QSfzeQmCPmUSqRIabrHaXAIRYiTYHJ7knHEC8yIISFjdwhsstU8lk/zTnh4WamhHu0QOeKMadsh24dhKIeYkp+XAVOtkQwbEzQdgrS4Br75kGjeAeXp2/JixiiYaDBF+E3mAhAQFRIvIRhFK846TUytz2w0/fFL9S3Zpwd+8OAmBPgNRs4nibj4W5lVYnBD2qIQUDGAw8delra3sGL+VAZ8nVoQvJCnfdvT2gkm17jT6Dluesqq3znF3nb3dgYGK5y+9ASWLQ1kjT6MtOAl5KFLL1U7JLcQSGw6XoEaweOZ3baZ33/HXG7b0Ma2Qc+pJy7k7CVTif27SEw+JaHkc/mTQWCK5l12c7rXYsgadc6Z285p86bz4627qJlWPGaotqeRjLoL1gSHWH3bsa849k+eWr9+B5NhUnaSIkAmkCEYFbxVbABTxD97g6oYEUz/mb94srcYepTXsuCIF5g5ihUQAVdMXYrwEnVkk4E9glF1bHd7FPAGbASnEVEliiLqkOhQE6OKjyrRadVaF9qwu/Uh2599Pmzc/rmddz6zDWDI8aJpFluFobsnLLjq1DN62+2rSH20am0UsOoL43KKMIWYGi5d0s6M9hbqA73Yotj03jO2E4uSXyenQLqTYzscb7i0htAKWYNscCtCK14cmbFYGphxS7igKJZIO+r7mN6ym9e/egpi+vAxoz64EyeFo5tEYBCK0KPJhqAEhClOuPaE6dz5dD+2JY/FVYl4A9UASRDxEoNvr85Mj512BTz1ZVatsHSX+WX3h6qiMfeY3++TJWTrobyGI5gMnhTjgh6Fy8GSJ1jPu93MKqnTGGzmxTSCOEwlaXVtaXtM+io31p4LvzXle5vP3P31X/5J753PbGPFijwJ6kgvxXUrDEB/u31zf4c4VGNTizAaUTX54CVAi7VcdeJ0TFbPvXmbGjGTwRhbIGA0ILGC6BRCo5VGnzLQ10ejkaK0E3FgBhC7DSFl/MS9AAFDho0O4xPSXk9jV4XQH0ioY7CoVofNeU5eRCyNRi+vWTiF49uqNEIKWLyJxT0uWLUYhYEkaFpJfhtQKItLj43935diRs1bedRzlGiYJQfC5BWXiEajYjQi1oo1VDDRR5JBeaTi9ZstO+VLm751z08BdkLu0LN+fWD9qCN6Yf36cPLJJ3dsNvqWEAMiYohNVyvFO0hiFZ/2c/H8KqdP78CnA4jJI04U9sqUNNE0q7aA4E0kujw+UEXx0RVVQwxGwflm7OV4Nlwx5OEvKkpMUiIGpw6jFNHHAriigPPklS0CNNQzv62V1yyewt/e+zSuMh2ljo1SZKwCq1gf0uhbKpfMvOasc7d1d28onX/2j8Cw6aj935tHlF37EOUbLgXm0YoSkabBE0VwWNDEWRMtbYNCsis+ngXW+ihfP+Zfd33vCZ6o74TczHpfl9DTE/cjKHNWrLCsX+8fO6PaWekwc2v1RqhbZ4ey9oigNiKhA+Imrli8iDab0CuGAz/OE0UzQ1QA4zEqmJAU2aNypdgUiddzUzaMp36sCF5cbkpXjyUldzlKCKJE0wAUGw1SPP6T7xo3iSAGyQzXLp7Klx/chE8NNlGIirf5XeICuBhi2qLO1vQ9wFvz4tI9E9n4ksnEIYrPPWoFpokQbK4xJAEyB2hEiziH0RxbGfb6UDm5jjzGC9qmuZOE5m8MGTJFIyJBI2gzFSCINRpFnDGIw4rJTVv1SKVPn7PG3hka4aemHr5b2bD97m2bNg0APAGwaoWD9ZFu4pg6o9nrFSCpmrdniSoNq0aFIHnd34DFeSH4Po7rqHHpsTMY8HVUzJDXXlOznDz2IUWHCURRiwyluAt5qyXPrKSmCNsZ5/YhKcOnn/JkPrmmK0oxga/oJK9hoghIQprWWTanlZfPm8L6p1MqlbxUXPNBCAZEjY0h07RNrup49fyZvT092zjClKRDR9PKAHssIJPbPP9imf2bZ78iq8Tp1SyqjUYCYIGRa4Zvc9AArAcc+Ea0R6/ApOhSpOhQVHEIYkT0MHvGVIQouSFORCTPCytEDMZUcIVHnHgwPp83ZMA/XcU+yaB/0LjkrjTV2zo2hcefuv0X2/fa+YoVjtmzlZ6eeFCOFKswdBNmXnb6yZnEa+o+IMY4o+wde4kjzXrpXDKbBR0VBgYGwOypezl5BOUeZNj/KiGvETpsWzPkYyIQBIl7jq3Ywqcn99YVtUMiZLLf5Xl7BROVihWuPWke39/4IBntNI3LQ+ciIhqCj61uVm3G9Ot7eeYzTQvHxJ3B4cDw4fxkfNpeFALokiUzpmyL2bfStmSmTyGYfEA+UgEZqdg0X7sgRBORxB2FGqbk/xXdB6Kaz5GJIRmI0US2B8xeFv7JrmEiElUVY8SD7LDGKqqqAak3/JbQmny/QhLT3b0DLYm71UltcPOPt23ue/LJHcMvzS7Ibf1btgiz1ys9PL/J9fk4tUugh9hu3uzbrCF4D7LX/WaJpOJpsTWuOWEmIQ7iYkIwk3debXSOuI5mciC5t7ZIlVBPee3cKbxsiuMXjYSKSffRjwURIgzW7A3nnHPO39/V2RlYv36CGl8y4axC6EbD8bMWpRWZXvepN3Hss/a5/4RiyR0QHfYoFJhAblbLJ5yMRoLgra25sLv37/p/vumjTJ3hyBqHj8OAM7G9D2w2mO1+YtfO4W81u5SsWNeHv9mci9yyRehcH+lGD5GtX7i+JyxbtqyysRbf3JCI6LCJyaEPCdqos3zWNM6dXSNku8G4wmml5KhHwZvcBCQhcmwtcsmSWfzinu3QUoG4911iMFZ9CPV2d/Yvj61fQnf3jYVTWqllHsVkMzs0VL1BoySaT1I9X1lHyP+OBnxRClFze93RKjDzi2MQDIoXcAg1SZ6sP9q/BfonunkHTd/+3lAVVnfmNrp1QGdRAqkb3Wsu8lAOxHNTWNh0srsktpkl+HpE7D6TJNE4bH0XV5+4gA6nDDYqBOeHJQQvObqxoEI0DSrB0h8yrjxhPl/5xTNsDRYrI/PTCCoQXaDWan6zATcOZZkqOfpYt8LA+rgz7b84JBUk1ehtnmFsNGvfSEugUcUGQdQUCUjkKBaYCHmtSIp5TMEFmwDCOec47rrrcB2VjuhDRBnuATIeFqq8k9KYmLf6RLGpRhWMFrdic7YkjbCorZVXL+qgPwsYqqgMoHrU3pYlwxAVkmgJklFRS180nDGllYvmT+HfnqrjqhVQadqLKKZajM0yYrX66/Nf/fKZz/T0bKd0/hkT+0z1HO50AuvBdrQc55OAzVRNgGSYKtm8MYZC12DIyVA0r6GskocweTkaBWahvagErFoCFvBEE6m7Ijiwvf2Fxv6XgKGnJ8y6+Ph5/R2Nq7MoatVaq0rEkbpAe5oRXAI+46JFNZZWW9kWM9qMJwm2yG1bcrSjoiAeiVUyKxgNVGWA3zhxNv++8RHURkw6lcx6aj6QWoOLQerWeOlgCtMG3gb8aVn2a2xkVmnJIK2BQeQ3urCTPjBn2QH66VUYHojzbHBAJhYlAt4oViNG81zawRhaskAwhkwSEo0IGdEYTBE3LnoUh5XsrYDnfx9uriaTkqLyvZ01/S2xNbaZeuajSZyJeXyiEPDGkBlHogO85qTFiARciAQTh/KilpQwNJedZx62IgykDc4+7hiWTX+SX/YanAWnGZnNs7IHEWwQg3jqify3ZcuWffq+np6MUss8MEOPnmA0hp7DPvFDPv2UXC8XEZQgIqmNxCF3CoMXIYpQLTzLRRW1gYbkpthmWsumlDiKBWbJS8K6dWGViPk/rfpbmUIlimlYS5BIog2sCt5VCd5z9jTHBcdMYSDbRYtWyUSLROxlv1YyGoqPMKslcs3iGfzizl5oV0wIpMYheKIxtKQYHzUOTKucuG1JvIj7WEdXlym1zOencHQRFDw6dfqlJ14WsV6IXnXyJBwWERVMUFFTOWbqUxLsPrpODaAOWWWg2l+llVyblCAgRFywaFH9RjRSr/dBW40kCDUfiDgMltTuPTNXCsySQ0cXFpHwV9ecdF6jVZaRaVRjjCHPghMlIjEhJBbT6OWK0+czx2XsbCiW3OQWZE/dzZKSkYhYQtrPVYvm8o8/38WmmCJiMBrxNi+kLnlawJhWo0nbzLuBtRPd7sMBl5dNE41KVjHz0oVTvqsIUfxez+NLknzlBWxToK6NOFo9IBsFW7ME60xmI4RAEkVSl5d1FDV4C0pgRoycd+Jc1j23lYavIMS8ZN4o1q7S/lVyCOkCIG2175VqlMRLTI1QCQHEF9lZamiILEg8nSfMIw19iCQ0rKEaioS2k2YsWzLZEIFGUE6Y1srKBVWiH8BQy8v2YXARvBgygzONhqYteuWUa089kZ6ewKqyv3s+RPNamaK51tVfSeNAkqo3QTMThxY/Yj1R27yJ6l00PslMlmTGF0uWZKZRzUxfS2oGqhne+qL6EuROh7kzT3CR6AdZ2l7j/7l4OcfIIDEI3jiySiCzhUFiWH90xN9AQwmgmtUvpEhUUMRhNj9U6jMvGqGnJyw955xZVN3VMXhEsEhTW4xEdRgLOtjg/AUzOXlqhcEQESzB5B2eoC/pjyHDLEt7j5kPvyVPsG5RimXotXlRyzDfQfIOZpQCwxNG7jxmY+CqpTMxIhiNQMBEl3f6NoIILhCyVtOqNnkbMFQ5p2R0osnTDBqFJERcUJOEIKIiEo2ImtHXE7Ftz3Y1wagN+br52gbUxaAmBrVRh1Ioog4bwScBIwaylEUdCa1hOz42wOSREzYTqmFfr5Yj3iRriyDVIDZPEiieOGT2y92JI2DyWIfJ0iscfhRpyHrn13/dtFSnZmbAR5s6GxMyaxC1KA41vRgVLjtpAe2xjx3agpFINUQaJiFP8vPS/AyiglGTJyGXXBgY8lSBehiOHYW496UaGv+NuH5jtXXt9ZXhQUD5Z2RSDCw1T6fYqHPe/CksnzqVX+zYQeJqmOgIEoGYVzPBGmKGb5HfXLZs2cfuW7++dP45AKLkz0YzI5oUl0uGbq7R1+O9bc/rUe1RzeC1ZilBpdCcMXl5OGnQlnbQJwnL5jiqYgnagWhAbYZohczkOaOHPx+HXy9xkDRjbJ6PPOYGJJYBgC+YPCGCabTZt6cSkSjiYuF1Jrn7NiaQpRVeNsNx3oIOdmfjewOqKMHsySKUy8zcE86qP+wWkQAEkGIpXmvxWpuvZd/Xo23b+7UhiCOKI0iCNwmRicmPOxKrQiqeDlfhukXTCMFhqRFsfe8PCkZDDKY1WbTj5MoKQOnqOuL7vJL9I6YP7xy1Rg2Cp+Yc586fSoiN3Op4AI4KAREFAlokKGiONAqK0YNBSKrJtgls5uFLF5Zu4rTLTnrlQLu5MI1BnYq1EWKebR1FsaJkmXL5cR3Mr3r6+gRnxnewH4uRsqgOqRoRk4+kJ8pzgYPc1twPJlf7mh8q5mgCFJXAixu+eeM3d7C/bQpInl/ZaUozJYDQTDUxORQzFUXEQmOQKxZ18Ne/aGGbBkQ8UGWvdqriK5G+qv+fwC0sWzY5TqJkYggVxHhwbfSl/Vwwy3H21Ok8MdiPmFJgQlHWKmouJZva5vCnRgCioi2VZyaghUcAXUCP2lrlbb4FSEMwUVyQPFWZUckTqgdhVlLn8hNOQLM0T2o8jp1wLiZywdAUAh4wJmLx7BE6TJyp6SC22ZAL/uHv5xaVvc1IB4siZMbmqSNjwBRzmBEhykRrmUKUgIuOVAc5fnorV82fwucff5okaWFkFmKDWJ/V1bQknTMuWXLK9u7u+4pKOkd12LURwSCICGZP6T9G8zg9kjBhCibuxAelFgb5nbOX0hrzQbPogfuiI15gNk2yo5plh5nnjSomi0f89XgJEHp6wpzly9sa7fYKCSkuYLU5yQ6gea7ehvecP6fGSbNayQZSZJyNY7npPQ6lvPIiiBW8OupUDruuwhrBjpIVaSwP/vOhCEEcuVk3EqLHajZprk+edcWQGovVyNVLpvClJ5/Cx6Qo3r0HBUz0QdtaXJjV8QZgVTPH6IQ0fhKgwECa4dWBy8i8AYnkFos4uhXkUFpIXsi20doBBz8oDAFCnWPZyQcuOIfLF0xlZ2MnItUx7eyIFxC5CXZvN4jc1JR7GSJNc5MhlE4/B0+RaD1bHN7Y6HBzNcQgYmws7j1RCCZisVQyz+VLj2WKCr0ISIbRPbUvX2qEXFg2rCPx0OoC9w5E/ujG+xjQ6l7zqYfi+eYl2LanbUrVRFqq1T1a1ZCyqS+yQYqLHq1HbrjoZF55bI3YX8G7FDspnhAF8STqaPhBzpnfwTkzOvjxDk+LUQYSJfEJNgr1xJN4Z0JokLW531z+muWf+vnN6weYTDbmcURVqYjlVbM66PWK2Bo0C6CzJy/vWOXieMxcDDGKPAsxko3BlCoCqjA9DrJk/jwuO+U4zmmtkPXvgurYb4UjXmBC0/w2nBEegEghOEsOms7OyPr1qjX3xmAjmgnDhSWAGsiywNIpjguOPYYwWEetjnuX1fyFg4CLkZpLuOXxzfxoB9BiIB5OSocAFvpeghoBEsEY2K0se3YXrz6uyqAqauIws8HEkXu1B2xMqAfPrIpy1Ynz+fHtD6K1DlSyPKWZSlGsPDExpiG02hOfbpFrgS8djfllBfAKs23GX115Sl5Gryg8PzTdPQlpCs+9emhVRISoRQm452XPVIuNhpoxaNZPlu0kWEctjF0MHhUCs+Qlw9DdHRdceuZJvTW7QkOmouxT99KpI03rXHTyNI6tVaj39yE4JCYwjlNJgQQRT0vIUCtsi5ZbH9uOqVRIrKBm4oXBZMCoATGkLYa7Nz9HOrgQbC+8SFPvoSIfZyleLEgrWZpxyeIZLPw5PBktLuQaaKMCSTAYlKBCENHBdnk78OWj2fnHaAZZRiTXOIeHC8nwsh2TxCTb9FGLw98e1p4E2Z8ZZmg/zbeDWAY0kkhAREaM2Q98S5Q9RMkLZ0UeCN6YKm+rt5PE6PO7cATGQ4sLXL1oJi4bBBGiyeehxk/FLExOAjZ4TGuFDc8NcM+2DHEJMUaiUi6ahyvHKGgl4efb+nlwV8BWLGaSpBMVCr8EBIOjkWUsbVVeu3AWmvbj1ObxhDbkbVYQjI0+EFtZeczKk5bT3a1Ha+afPEFFnuRCxAEWgyMvXjV5F6MO21xivjh1GLUYbL5uLgzbVqwFS6KBinhMUwoXVyTnwPf3UXnDlBwi1q8PLKNSr+n1qgFF97mfRIQ0y3j5rApnzWqhnnmQBBMNIpGDn7V/oQhCGJrPjrbCjY9vZzAIYvZUVCzJQ2+iRKqi7Ewd335mK5Wkgk4Cc+weBEPAqpIlgoQ6v7Z4Pu2mlwxBtQIx/63VFBUqIoEWFT+v5a2AcmrXUfmjC4qIx+Dza9hcdNhax7httO++FNs05HHHQ7HCHhVPFI83Hm+L9fDF7lkH5wnWE03uuxI1z4iV9wtjH7RPpieg5HCiq8sCOuekcy7M2tyJkmZR9iTWGEKAKJ6rFs9hmiV/RMXhoiHIeNboFgSfj6xthR19DX7w5A5sxTKeZuFDiR6CBUaZH0Lx1uOCB9fBd556inp/ijXJ5PCSUQMqWM2w0ROspc8rZ8+axplzOgi+gZUqNuYpF6NEFMEGrGk06KvyW+3nLJ3F9T2B8RuxTRqiCF4swViCGIKMXE/ORTHFb29yR6ViMWqKUlyGPFjG7L2t+TrmmnUUR8QVIVKKHEQVs1JglrwosrbGO0ki3hANobgxExx1orXEoBxX7efiRbPIBg2VGIkmJRjdK6/r+KA0RGhzrdy5eSuP9AVMUsVFxShDzkpG8wqMooJEo6JGh9bDXx/stniIt2EAC1hE914/3zZhz98mCjbmnYkUTjL5dXBkIrTayAPbG/xoS6AtUVIRvBiEgMUTxeR5mseRXMBLnsxfDEkQVJVW1+DXT1gAkoLpIwmuyFaU12GNFgnRhFpiZ+oC+U1AWLViogNLxx2j4FSxUTGqeRIP1dyLfBIvEFEZZaGZ63h43uNhax3xWot9ahz6xh4t04PmIVW593A+z2miYFRKp5+SF4TQ0xMWX7J4znOOK9R7jIpVAZG8RJdVg4jgM8+KhbNY0FEl290PNp+6Fwwmz+Q6Tk3WvHONGd61cvMjWwkYDIFQCG7DHk/BCGBi7oo3KdSqvRHAqkaG1z0v2rmXb46OWI94nTlQEREVK6pYZagKPQhqMkLq+M9Hn6Zz0QlUGwOoTYp5sLyTPWDuyZeI5mnkSY2ERlbnVQvnsvieZ9lYVxKTe0MbpMgfDIhBJaprd28C/pLV6wPdE9L8iWWSzEcfLPtt9QHu832f4X1tYTqUSMWA+H2ukVB6yZa8EIpE6/3T269JO+xUTTPvVFyGzUfyJqC+gg0eNZHXLFpAi2/QMBnB5nMItphfGk+DWABabeTh3jrrn0mxrgVI8aaC1YiNuSOALzSsxCPiY4YRM9mEpqKqzjpxdk/bXsC1bIlKMJGMkIdgRMGq5CEkamgYMK7GLZu28UjvCZzsYDAEonF4AaspezqbiUMQfPAc365cO38mf/7AVuhQXBZQTWgGkKqIrWuIbTV39vGXnXL2k/LA3XRh6TkIu1zJEcOQ248YckE53J9hXylcCsySg6dzfWQ9tr8qb8usJwHJzauGpvO3GkNs1Dl9epVXzJ9KbOxCrRBFsDq8hNT4EVVxtRrff2gnm1JHrSbEXC6A5tmevFEQpy2ppbKp/jbZWr891KQqoZgImwz6piLifGhUKgsq1coxQ139QRoXVdWI+mDazPwwtfqnfZVMg0HQXPyFItrbOcdTDWHdk1tZumw29O8CDIGE3Gg1MiHdRKBEI0g2yGUnz+L/PryJXhwImOFpzyQS0Zi2uKS/VT4IvLlI7TiRjS+ZIPJBu+AjhKjPG48fo5YCs+QgKfJwzrj0rJf11/QVptHQKNY2k3arWExUsJGQBa5cMI1ZlUB/BorFhXwuIDL+ViED7A6O7z22HawlkiGxAiZg1BBFyQyxItbUBuK9W7/7wBfGt4UHzX39h2hHx7zxjN9xVXdyQ7MoYFCDt0ItBqLxYNq4+VdPc+0px9HhFKMNlISIw0wSpykjQpYZXjbHcvG8Fr79TERqDg0U5fy0GZNnGzFVM81dueTyM495uKfnOfaM9kqOJhSMMfT2DzKYZohrQXXPHKgWMZ5ihBBDKTBLDpL7ugR6CDN4Y2g1ktTVe4uLJr/BAo5EPT56plVrXLJ4JjEdIJoEMDQT/ORltnRft9pDRJ65RMjzoQoxWloSw8+393P3lj5cpUIwEecdQoqoJRqDSFAnAg35CiC84xzHvLsmp7nuPoQtK17ssMPRuT5N7w3/qs79gcmyaKKYUBgBkqAMEnCmys+27uS+53Zx8ewEX/dYCUDTIjzxOqaJhkwtLSbl15bM4caNm7BR8CYg0VJk/ctrBMfgs/Zk6s6avgP4BCtWGNYfvfllj3aaIrLJ8IpWWiSCEy1NsiUHh7CmJx573LEtO6rpWzQKHmdzVTEi6jCAMSkhtZw/t40lxziygQxrBDQWAed735CHGkUJAkmoIHaAVGoEKtRM4KanNvOcj0xxht22ghOPIRJM3v5aiJY0i70DyVcBZd5dYXJXtlj/4r6+ikg30V6a/HOc5j9kjVpIiERc8NRtDQBrM7ZLB7c+8iQr5pxAFmtU6cNLQhSbp6KbYCIGsSn9qbLi2KmcNH0zD/YFXBKIUhiOBUAw0ZgQMxrtlTe945xzPvW5zs7A+hd5LUsOYwqzfRRE8vul6VkbJfcrN3GiZ+pLDi9WrLAIpKdNv1CqbhE+RsyeRI5R8oDohmnD+ozXnjidqrghL9TxovAgzdNpaQWjQpumbA/KDx7bBhWHakDU58WtY555KEoM6ipIqrc1brr70aOiDFQ3ka4uu/17d9/f0pDvaKViMhPCSLeHGBVJDDc/uZ0nB8FWUjKxZJMjGzsAagIuCqZhOKbF8rrjZxF9hoyskQmoYMhCDK321H+bm11Cd3csYotLSvZLKTBLxs7s2QrowEz7242aAMSRvttKIEbHwlbLigUJsZGS1/Eav45VyDMoKEqkikZoc3D3tkF+viNCpUJAcRoKzTLJWy9RNVps6v45P7cVR8fzsWWLAFLbLZ93oUIc5awVqDjl4d6E72/cTUsiRM29nSeDOTZPe5jhjWBJCFkfV58wnelVIRvVmmFwKrFRVfqmyHsmoMElhyFHR4dQcigQenrCKa8+ZWZw8eoQvIruXU1YiIhxMDjIiuOmcnxHBTI/IUnNtYghzC1wgeBauWnjLgbUYWweK2piUcdGLaKqGFxlgN21Ru0bAHSvn5xzl4ea9esDoC2Ps87tis8Zi0F1FM1aUWp855GtDGorSRSSMFkEZp71P7WCGqXuIwtnOV49r52YDmBGSa6giAuhrtTiZQtfddLL6OmJR2t+2ZKxUd4cJWNjRZ4RZcuU2lW2JtMl+MBeddOKOaLgqNHgksUz8NHkmWPs+AdJRyOopBj1GANb63Drk7sRZ7CxgacGWsFoJBpDEjQYZ5BMv7flP37ybDP137g3fGJQ1nTZJ372s53VwD85EVHZV2AGBduq3PVsHz/fkVFLDKkwKSJtAGywJAGiSZHYhiHjdScdQy1EvOybLTgYcN6H2CbJrrm13wb0qLEqlLwgypujZGx0dkYFabToDd4FrO4bsGQFYshYOr2Fl8+eQj0LReHW8exQi8LgKiABiUKtUuGO53by6K5BXGKQKKgJRCn0kiL+ygQlDDa+CjTNlEcP9/YoIL4v/aIbNEEQm5u1mykDFRMd4gLbfOSWR7YQqglBRqs3OzEoQlKkORQx+Ebg/AUdnH5MldAQxDRzFwvB5Dmmkig2BE9Wk7fMOG/JFFavPyrzy5aMjVJglowFQ3d3PPZVJyyJ1XhepjEPuNwLxYglhEE6j5vJrKrFZKGoZzee/Y8USQiawhCMOr771HP4KIhK7ghEvchDabCqmjnnXL8+N+uxgZuAppny6KE7z1K489v3/qwyUNlgEgdogKaarYiCRqDq+P6jz/JsQ6kKSJwc8iVKvohakJQYDNOccvXJs5BGWpSTE1zMvbXzXLxGYtQQ25J5bkHbryFo05pSUjKSUmCWHJii7uXA7LbX+TZblSyGkQqmoDTU0WYSXrt4KnUynDqCibnH6jgiRVIe1QpJ0uDZvowfbtyJSWrDjKx72p/ZGMQ5at792xM/e2Inq1Y4jh5z7B46c0FRyeLfCk68CFahErWInc0gWpytct+ufu7e2EulYgijTXdOOIIYIWtkXHncMRw7JRKzGiqKxZP4wtGrCDUJgqozufNPZxmPWTI6pcAsOTDr18cVLKxlVXmnF49VY/YRmCLELOXcGR2cOd2RpnXUgC3mMceToWyQQbE1x4839/H4gOJsMmoSt2hUKqmhuj1+DYD7Zh99whKGtOr+vt5vmd7Qb0xiVVTzihaGaCIu5OnmBmwL//7wc3iqhEkUWjIcAdIQWNKqXLpoKllIcSI0klhom3nSdlFjfcw0bZdXTL3y5JV0o2WIScloNAWmDC1dWFascMztdXR1WT2aKuuKGlascCzCsWKFKzzm9i0XePQgdC2r0NUlD1455bzQKoslzaLKvm6vKgb8AFct6qDNWFQhmIANFaKMv3VTVbAEBmnlu08N5O2TUcSlEsWKrfamjy29r/cHrMLQ0zM5JcBLj9LVZfu++/Bzbf36japYvMSQZ2UiL3ckAWLEVltYt7mPB3Z5Ks4yCfIWjI4RYvBce+Isam4QohBwBJsBkdgc+GnUequiU93vAcqyLXv6xKJfVEnKRC9HOYauLjuU0gCUHgLr13v+6rsNenqCqI5nld8JxSgDrF/v+cL6OuvX+yJoPb8uewTokcsq8gHDihWuUNKUnvtSenrC7mnV94Qq0pJFjbK3vVKAEGBWi+XihW2kqctDSSRDtYKOu8DMS09VXGDzLs+6TX0kTlEN+whMFY3WCDZN16x/4ol68ZsfrSY5Wca9lhUrXFtd/j5JVdWKCRLzJOYxIbMRGz3ORLamlpsffZYOScaxTNvBIRgGMss5x7Ry4expNBoprVmFKBlNW4SoYhSbxnqMNXvVsZeccR7d6z176mwHegiNzRu3Too88yUThqOnJwB28SWnzWL2bHZu3nhuMr+2wItUBxuN12qbfXn0UQ1mFBOFUHhVUAmGhvNIrJLEjMymmJgw0VNBeZrvkDsCRIOLSlrUWGj2i6pis+hJJf1ka9fLTm2p1LZlz/btnlJt/X5iav6x//jJLtavr7/YLGSTnm4iFPM3AgtXvHzu7im7zkzb3CtpDVfHLGhmnVXJE3Jb3waSEZNI7B3k4hOmsGhqG42BOonYvA6hbWBjMq6noUBEabMtfG/TLrYO9lGr1cjYU+9yD2JsahgUc/dpv3b+nEys7d8Sdzx1++2D49royYHe13NfCvAErJv6puW3uZbkIvEaFGw0eQk0UUcqilQ9Nz22g98+9QSmSR+DpkrVGzJXB61gi+QRE4kAGUqbhdefPJMfbOyl0ZaRpAaVIqtj/h8SRbUmbnBW+NOZl578RvNMPQK0LppNfWDnwsFWLvViqw2UvNBwYVmRjKavsJoUGK6DlBxJuNau0/8stuhrt0U5IU12ip7U1pK4ogTTVEsWA7Gwy44+FSUEsaAGwSNaQTBEiUyGIoJ5oVuTm14MBFHQpvpUICIaA9rulqXTzCciENtbyTKpE1NteeMZT8yotj6off7fnvnXO79AV5ctBhpHCiKgL7t02fF9HZXzG44zBlrMRZvx5yVJW6tNhHrI8m7CGKwGTBBUchf+GCtUpI+rT5iHi5CKx2izvpwfZy9ZyOtfReqxnXUbHwMcQRwm7qthChgNnjDVfeGRqfUUW3XeNf4U+OgR+DvvDwFoX7F0Zm167S1OzMWmNZGt1fqSGCOViIkiBNOsWC95brnE8uD2Pn6yaQdXLqzi00iLOvK8whRJgyf0vAClKkK9kXLJcXM5c8ZT3DkQqJkWQtN4VoTNSBQ7SIP6dL240lp9xMyoeLVi+1pSnLa1aOLI8CgBoyJ5BRQKb2vXHH6TWziOGsPcUYVzJr6+PtUsHMgCwYD1aQzBRtQSowoiRgtZOeosuOZJjzNrqGQBR5ZnTomTZc7cgCZDmrA3DhuKyhrF/IWQO61IptFkaQwoapBQlZoK0CqnbGupntKu8iTwhWJ+48igEAozrll2zRNzK19Wo23RgccToyd6ongbg8EpebiGqMXECt5mGLFkqbJ8WgsXz+ugkdaRvbKqjP+lUiJVa3h4V+SuLb2YZDoBT0XzDD/7KplKNGk1YioucYLx7ePe6ImkC0MPQWv2zPrc2p+lLoWYkZoImUcQsVHIDATJKzZYL2hSod9k3PTwE6w48XRMuotAxOpkGCrvQfCYAHOq8F+WHcNPv7+ZbJpBfKTpxiFiCCHgBCxoqISarxmCCUTxRdHU4CXgrObuDnl51Nwj20RLMIqJkyWNQ8lLgVHMjuiJQSVoFLXRGkEdEp1VtS5GSSK4URJM5kI0MsVGPIJVS24MM0WM08STz1FEKrEOGojYosbZiGTMqqhgvCQuSuJQayWI2kxUvE9D1u8jjUNVfnDS0QhxTlrRtgF8I80yr6kPxqtGMMFGpxKLCiMGUUNqbd5ZGEHDLt544nymt0S8xglWKgTVSKXiuH1TL1sa4IxBNO7XPJhaQ2oStd74aipaiSYd50ZPCkQ0y/yAT3WwEfygd6nXasytNN4wVI0+SsQWGQ202soPNu/kiZ2DVK0lmsIDVce/3un+SK1i1dKf7eaKE2Zy2jEVQjqAGXan5pkRFVVDIBGPUa+q+KhJitqguBBcJURczL1rvcnnyqOAKcy6U42QjOZcVnJEYDDGWKxJghEbjIAtLCm5uc1o0zo/IoxAlaBKu4mcOqOG956oFYIIUcKkKPcDFM4KDRZ2tFD1HqtCMMWAcfiHhl7mZy9qsNGJjYkkwZlKFOdUJ8co4CXAWRqJRyselwTrXLTWRieF0YnCwIoouXlbPEYga6Qsn2K48pRjGBisj5qzc3zJh2shwk+f3Q1iMDKIC1p0cPv24kkwuGDEW5XBRMW7CT+JCUFVxUVxLqhLonGVYEU0wRtDNCGfv8SQWYjGY2KGscLGOjzyzC5qzuYGS5FRE7hPBLlcN0QxeDwzapb/evocXNqPFG4Ze5cPEBTBKuIikqgVp4lUgqXi87mLIDGvckOeFCgKJBqR0GBeW40pFYjxaPUbO7Ix3gRRPEYDIoFgi8UEool5LlDxBJsNpcgSwNiE2MhYOnsmJ89oJaQeoUIUi4iSx6O8RP903237M/2pEUI2yMsXH8ucWoJ6ELG5K6Tk8w8ivnAOAoNHJCOaQGYDqYukDrwYUqmM088y/gRFgokSTMTbgLeBzOZOwjYqJoKLeZFe1FIJgDhiGOT3zlzGzJYUCQ7BoCITtuTCXEijsrmeIVLBqseqIdgkn28qJthMMR8nGvOcs2QYMuCoVDDxUFhgDJmxZMaRWkMw+aycHapEH1AJGAIV9ag4suCwMXejM5o71emwqIyxLTk6bHmxCJAEC1hcdPTVM65bPJuL5s2i0fA4EZxGjDb7lTB0Hxg8USINC16E1BrqTshsPnBMYtOh0GGooD7l1ONm0WqV+BLWe32+cy15fkTNnoU8//XBxIkbxaACmY1DjjA2OiQmxMJZQtTgoiEBLIHoEhopzPG7eM8rjqPmDF4i2AZCJIjgCwebKLrXerRtcQyfG/5aRYdONA7bBjGfqyzWTZNhwwtntGa89dxjiQM70BCpCFTI5y6NBpIoSKyh6nIHJjUYFYwqNsJwr9ojkhg0t6EJzXX+AFqiuDw0RDLEZBgTCaZKY9d2fnv5LF6zdCrSWyfafP4Q1QlbREFipMXAcVMdmgrR1EAaJCFDJM07Y1FEQu6cpI5gBMUW5kSXP0FHWz5ZmmbUoiuRgNFcs1TN4xdtFFz0+ZyfbcOHCsckdU6eNx0fPCGJuGAxGtirSvho671e6/BbD22+Zo+z4fD1aNua7HVYZehctEidZ2yDj5x/LDPIaJhIgkHIiC6/HyKWILaY786vRTSRIIqNQtVbrCreBizgpIXd3nNSR4XXnzIXGdhjaRlr21/INhm51mF/D7u8zaLtR+3SvJ8Ab/Ok+7EpQ0wkSCimaw78uO8ViLvnRrOFb2lKREhtFUggbWCyDBcHeVlHC7/feQaXz4SBRgMxdtgc0d6jxeHr0baN9t5Y3h95jsEUzgbDHkTFoKaFrL+fd7xsHtoI/H/3Pcr2ugIdiJ2GNRFvBvG2HxPtBHh1Ti4KQwIAUQIuGiRWGaxawEPfAIkd5PfOWMD/PGMZvr/Orlo7lVjHTgJnL1WDessVSxfw9QcfZqedSkWqtKVCn2uhllq8S2lU64jPqPgyHv3ASKFlGqJtJ4gQwgCkO3jbhadw6hRLozGAq9SAQCNJqQSLiQzzGRi5pnjNkNF/L7l6KB7DPOVTbkESwRqoZynLj2njTy46ng99/352V2Yh1Qo2S8nnanTvXShYLZx5VEgweDF4Ae8N6NMsbRnkU696JYsSZRsJSdFDv5RdSbOvE82FQDGNutd2Vwwij2qGnb/VBkpExSJqccFRMfmAaeTvPhqj9BSCmjoRAXXYGKnUd9Hq4Jjp0zltylQuWdDG+QsXMMcJ2eAurDWojq/3fVMblqbSp0qyj6ORoNTxRuizNdrqO/m9M+bQuXAeNz+5jTs2b+OB3h1sbQzg1WC1ZSzX7ChD8UYRMVTrgxyjfZxz/HS6TjmZFcdOwww8h4ihJXVYNWQ2MrHJoRSskGV9XDiznU9dfAaf+slTPNyANPaBcTjbTjVTkmhIjTBJcodPerxV0qjQm+HEclaHcsOFy7jq5LmkA9tpJAmSJWjU/HmKNncMGtPei9nyZghb8YTvycQzQuCOtm0vIbzntVFgWJCbEctg7wDXnDgbNfDnP3mYB7c7vBWSVmG0eAAbIXWCtxlpfz/iDdOc49hpjksXHMf1L5vPojahMdCLmIRI0R/qUE/1/G1/UduUGCjS/DWnwvKjZnup3sV6z9de/LbhOtJk2DZaO4sXimJjK0YtwebTcIZ8MDRWRhGYig0JmamRGUd1YDN/cMmpXDmvxhxpoaWtQjAN6j4lBrC1dozo6I0d2fD9nehBfm64zTnP0iGIQMxLEAyN7EQFtQMY8Zh0FiGpkZmdnHFMCy+fO5tUZ7Glt8EWaeerD2zjH37yCNrhiEdPcqPnRYGKT/CJwafb+LXZ0/nYpa9lXsduWnxKvV4na23D2V4kChI6SKQx0c0GIEoFq728cdk0Llq8iB89+xRPNfq5/aGMW559hrS9jdog5ObY3Iu2ZP+ICCbzzKsG3nDJIl41tcpZx0xnaqsSBvuIHS2osVR9QkumJLZCcGMt/CUgAdWAMYahODY4JM5DEqvsZfWS3LvfxDrXn76QzsXHcftTO/nnBzey/ukdSKV9n/rZmVQwaYOTp8DrXnk6J1dhyTFTWDSlwmyb0MgG6ZOUKUkLlQANN86WlsI6aBSaceaQOyjlUdbsuahaqJ/N9YvZNtxuPu7bipN+vnY2BxbFxz2BGHPLUogQTIWGTcasJ41qi1LjsQyg0eGTFr704Ha+83ggNHYTYxXVBIuiNhBFcGF8XeKiDCWjwSJYBCMC+3imCSoBq4oNW/EGMpeiGrARnDqqWJKK4/FGxLcmyJE8T3mQ5GaxAASo1Li37vh/b9/IYLoNbxVLFRsN4PEmAFuohMmgrglRLCoN4BkScdSso8XVGBxIQXLntNTlnfSQ+W+Eib9kD6pKxGHVYhqRDZs2s/bpzWQhweW9NKgU854WFyze+gP2vzkCBIwI7a2teVBano1v6Gl8oWNxZW+zaHPaKZrc18FkfdRrnrm1NqZV28lkN6N1n8GBiYFaNHF6S7vZPrCVHz21kx9kQhrBiMtnQos5MhdeGoVu5Lbm+cZCVzARrMl1TKNaOCYd3ciwV1NqwqJpbZw0bRpTnGd32iCYsV+jfQSmAjbUEFXUpgQn3PvsTogWTEtx9AHy1FAWJAHNRr9jh78+lHeHFClem+r2kPll5I2uoAlgwO3M3w62uPszMAHEQewHq9gkQeNExxFOLoIoRLBS4eH+QR7a/iiIASzYXXkPlNYQ8aitk7tSTQKU/J4VAVPPf/OwG1o9znZQHQQhEoyCxj1m2bEONY9CjFOe8oE//fEjxXPlwBYpV9Xkz6H1+f3hXT7YOpBJjWHvAcRte7Y9X38y2v7224+M1iHmw200y9UyLxgSKh0txFGsDUZTtGL4Wd2bn33nR/m5S+59m/cjhbNbKNJuNq1u+zvvQ7Vt5CkNdYVFG0x5Q++FS+gwnrNbq3RdsJRr5rXTlvZSCBYO1AHsIzAFCMYXr/K3K5Xme7mpUnPfsOIbEzEsPxgnjWL0S634arO9lWHv52NKjeXNNZJmGS9RxRlBWmvD3m3JV5XiP50kwnIkkt8vigVNUM3YYxQZq9mwBM3n/1x7x7CNh7vDVPN+FqLPiBryQdZIFEQNiVSRjpa93yg5LFDARKHfGH64E35w4x0krzyJ31o6j6i7GYssG9PdProcmcgb5YUcW/fz+oXu7+gjnx4Z5VpN9ss32dt3mHGkBuWrKjKasBz+GRSNR0N64SOTgAWtYlshbczgr+94mksWzaVizJgm4yZJPo6SkpKJowsA51xhlSpHGCVHJkY9Vj1eB6lW2vhl3XHPpq1UXTK6MjDy++PQxpKSkklNT77yzamYkpIjE6sgpFg8LjZQm/GTTb14kzCWAKg9UbqH26DycGtvScmkpdAwa7VJkAu4pOSlI5KQWSFSRfFg+vnlLiGaCpYDixVX8VHrCGqjmJARJJehVnXcwmnGGvYzPOxmaF/Fx5quPflf7HnzQF5nz+ehWxBsUGujOjmCc2YYjOK9EgJH2XAkmvyHj0a9GMWN5iZ5FNBRadHtpu5VQl4Et8mLjYUY0/No9+sY/1LSPI6RvFDXEXjrS7PPbJ7aoXTaHY/QmYO5rYrPqSFKkIiJDiQaFRWjNk/Conn95kzAuA7u3D7AH9/5KKmrIpLfBXleYd1ndsJVMlfx3iGqVIIgmqCiWI3j4hV9MBep+d3hvZnmQakikkdQ7rVv3XvNKNuaF2S0bUPHCzHp0IT2unFbgRXAeo4QinypzrtacK0OfB5uPt53+gTeWCp5Jhc0OGNbkDBQHculO9IItlKhzTqbqUuMjO4t+lKg5PmhZV+D8Espwvaq2iqCGIMxZsgz/HBlKEXpKIP/owUbFSNCEhMaYYAoGSZaogmYmD/4ChitssMH1j+9HWPNsHxQow/Z5ISrzzk+nZZUaEAVaMCwF5OUYd1ZfaAuvrcxTw2VIJod8mMZUdXg2r2jWnePPfmDnz/G+A2AxwMBdM5lZyzqb9M3evVq1BxVj1kkr8RiVWNIxIS+eOvgTffdQd6nHg3apgB6QtdFx/e3uzf7Rp9miRvXeyAaD2RDuUeMycXZS3nx9zY+x/zYZt93DisUYTA9XqM6RIVABY5gy9h+sIgQbcWqSX1H/I1Ge9ZiPBrE7jMcEvIBUxyhTgo6VMPKCti+iU36WVJSUlJS8pIy9TdO++7AHLkshCygzo61VvNoAtMBhlUvYWvHg/vGSfD3UKQYOiIRVqyY+FIjE00nwPpI91GhWY5EWFXeA4c9980+Uvuog2Nur2Nzh08qj/5UxF+Wu+W8uEtTapglJSUlJUceK1Y41q/3rdec8tFwbK2bNPMqxkUZq2lVC0cwwYpg+vRwNtaXlJSUlJTsh87OCNBB5UabGhBjjebTvHEMS8BQCeDUI0WRhsM9EWRJSUlJSckodOerQfpD0Nho1Wh8NiYfaAGiCKkIURSLkARTmmRLSkpKSo5QFOGkJZUZ5095aHCGHKdZNuZwKUUwQOoiVhOqO8pCDSUlJSUlRzjHX7H8koGqn9NQddGYDNUDyj4roi1Z1F7na6iRpFHpH4+2lpSUlJSUHPaUGmZJSUlJyZFNV1cZLlVSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUjIqYw0rKcNPSkpKXigTXT1DVq1aJZ2dnXvlzl63bl3s7u5+0TWqVVV6enrMMcccs1c/+UL3r/sJqhd5/rqWo31vf9+ZyGMcLCP3/0Lbfqi+X1JSUnLEsWrVKqOqz5svW0RYu3atW7Vq1UEXolizZo090P6NMaxdu9YdKuExDhwu7dwHGVvKuxd1fmP68pLzzpvSckzF7pr6Yg5VUlJyNHE8U3nu8Yf9g7c92Dvex1ZVKyKh+LP1T/7kT04688wzl8+dO1ettTz88MPcf//9P/3IRz7yMJAO+85Yat6KqkrxWc4777wpl1xySedll102ddq0aRpjlF/84hf63HPP/eBDH/rQRshrq65Zs8Zef/314Xn3DNxzzz1tZ5xxRmX4tnXr1mUrV67se57zNcBePfSTTz7Jdddd13fXXXdlIz+/Zs2a9q6urmSvkxIZEJFGjFH2p2398Ic/7LjoootGDhJ6RcQfqD0vlO985zsDV155ZaP402zYsGHOOeecM8gw+bVr1y6mTZu2o/hd9qvxioiuXbvWdXZ2dgz/7tSpU926det2rFy50o/23SbPNzoSBEWRnYvitzdNHVweQ4ymLAlWUlJyAFQI/aZu2+dPuR24jFWYcSrKLaqKiIT3v//9Z1x77bW/u3DhwtfOmjXruLa2tqG+6/TTT+eyyy7L3vzmNz96//33f/ezn/3sZ0TkQWMMMUZhP0Jz1apV5mMf+1gUEf3EJz5x8RVXXPGO2bNnv2bGjBlzWlpahj539tln09/fP/j617/+wS1btvz9Nddc87Xrr7/+2bVr17r9dcqq6kTEt7S0fAr4L4CPMYoxxqrqrcDrRgwEUFVTCO55McafF/tQY0xsaWmxM2fOvBZY29XVZXt6ekLzGNOmTfss8GuABwxg7r777l+dddZZ5xfnvtc1aB5HRP4VOD+EEFRVnHMGeDWwQVUtoEV7FgA/A+yw/R0sHnBbt279MPAZVU1EREMIHweuDyFkImKB0N7ebtesWfO/ReTj+7nG0tPTY4CWRYsWrQNOCiFEVWXq1KnmV7/61bP/8A//cIGqbi801VF//+cv75V/JQlmcPZgm0yRQY9VQQVE2WsNL3xbczwwEdtebNsPi/OW4o4tz/uoOO+JPMfmtijKYIvFpMkUxglVFWutigj/+Z//+dHly5f/4YIFC4ZrUXt1oq2trcmiRYtOXrRo0cnLli274V3velf3FVdc8VciUi9MqPvMnRXCoHLrrbf+3ZlnnvmW6dOnN98OIz/f1tbWsnjx4jMXL17813fdddd/X7du3e+vXLny355PaAKISBswBXKTbrGtY3+fLzCqOsPaPRngkiTBGJPs5/PtwJRicAHAmWeeee4tt9zyf0Xk7YVg3qeNqjoFmGKMGfpelmWjyREDTB9l+0ETY6wBfPrTnzYi0vjmN7/50WOPPfb6+fPnTy/ahDGG888//4+vv/76b7z61a/+ZXOA0NzHhg0b3Lnnnpt9//vf/4NFixadA9C8VlmWccstt9zwxS9+cds//dM/WfLfclTGUg/TZCLYNGpUYkDM0G0xcn04bpvo44/Htok+/kRtm+jjT9S2iT5+/jpYj/Xo85q4DhXNOcIY4+xbb731X1auXLmyeMt7762IqIgMCaAYI6ra1HjjwoUL2xYuXPip73znO6/58Ic/fP0999yze7imsWrVKmOtjUuXLj3lK1/5ypqzzz77dEBjjCGEYEVEjDFaaKhDWqqIqLU2HnvssUuuu+66r69YseJNxx9//L+M1BSHY4xpCt8hDXM04TUSEckAF2NUY0zMsszGGHW0zxpjfNE+X3wHY0xYuXLlW7/2ta/dISKf+du//dvkne9850hzrs8vtwbJL5BJkmS0YyhQZxQNM4Rgm38Pm3fU4rxHHsup5vfQ8uXLQ4zRisjTS5Ysef9b3vKWv7PWZoXWHI4//nj3R3/0R/9rzZo1V7/73e+Wnp4eAXTNmjX2vPPOy/70T//0nHPPPfe/F9fVAMEYk3zve9/7yrvf/e6etWvXugNd57EITPVGyK2/RsY6s1pSUnJUI4JI1HHrL4yIhJtvvrkpLLMYoxMRJyLB5urEkEl2mOAMgPPe45wbvPzyy1+TZdkfi8h7m+bLpjDu7u5OPv/5z//72WeffVKMMStMhM5aG4wxQ/s3xgztP4Sg5AIptLa2inPuK2vXrkVE/mWYOXUviuPttYzRaaj5eQCR5++r99q/MYYQgrXWZitXrvz0Bz/4wYfe+c53fm+Uedd92raf/VugNuobhWanukfONoXviI8mxXutwz4XisHG3y9duvSNF1100asLQeuAcNppp135j//4j7+zcuXKzzXnpI855hiJMSaXXXbZ37XkdvNQnLP91a9+teWDH/zge1RVVq9efcApg7EIzMPXbaqkpOSIp6mtrV279r2dnZ0rY4yZiCSF0IrWWrtp06ZdfX19/37rrbeGGCMXXXRRS1tb2zUnnnhiS9Fxe6Bl165dd1100UWfKpxWmoLCiEi44447/vfLX/7yk0IIKVABMMZEwG7cuPGZ7du337h+/XozZ84cPeuss46bM2fOJVOnTjUxxmiMsSEErVQq8ZRTTvnKhz/84YeAn47VEWg8MMaI997OmDHDfOADH/ib++6771VdXV1bDtKDWAHuv//+3UmS/F9jjIlxSA6ZEEJ0zl1y4oknLmxq+CJitmzZ8vjOnTvXmvxHa26PImI2b978U4DOzs4IsHr1alVVed3rXvfuk0466bbZs2dPizFGVTXW2nDJJZf879e97nX/AWxummK/+tWvrj7ttNPOAoKqWmNMSNPU3njjje+67777tgO2u7v7gL/DmARmSUlJyWRk1apVxhgTrrnmmvmnnHLKH5ObC52IEHN3T7Nhw4avff7zn/8fn/nMZzYO/+7FF1+8ePXq1X9w0UUXvb1arbodO3bcfccdd7z28ssv3970qGxqgX/5l3954rJly95N3pknFOZW77259957P37llVf+xTPPPLNt+P4/8YlPrHzzm9/8l4sWLTo9yzJNkkSAMHfuXPP6179+lYhcM1zLmmhEBOeciTGGuXPnnrRq1aqviMjKwplnrPtQgGXLlm0DbhjtM9/61re+cuKJJy4sBhsAZvfu3T86+eST336AfUeA7u7u2NnZ6b7xjW/86g1veMMH3/CGN3we8CLiYowcd9xxU9773vd+WkS6NmzYwA033HBOZ2fn/wP4whwcrLV2w4YNX37f+9739bGYYpuUHq8lJSWHLZ2dnUZVef/733/d3Llzp5J3hiIiwRhjbrvttq+cd955XZ/5zGc2qqpbu3atK+Ii3Q9/+MPHXv3qV//OT3/60w88+eSTP/uP//iP11x++eXb16xZY4eFJhhAL7nkkne3tbXVgCAiTecic88993z4zDPP/KPNmzdv27BhQzJs//YjH/nI2q997WsXbNq06cEkSSi0IAeEJUuWXPmud73rHBEJXZOkVmNzvtMYY2OM/rzzzuv85je/+WfFXOvBtlFU1Y1YaqrqWlpaqiM/7JyrDv/M8GU0DXflypVh7dq17k1vetM/33777T8wxjhVDYCNMYYLL7zw9WvWrLnq3HPPzW644Ya/nD17diXGKKqKtZaNGzdu/ou/+Iv/rqrS2dk5Zg2/1DBLSkoOV6Qw09mZM2e+gdwJRwrNxTz77LObP/CBD7xfVW1PTw8jtYhVq1aZ1atXIyKfBv4WGFy1apVpmkiLecMwffr0qe3t7b9e7L/pRWkff/zxe17+8pf/L1VNVq9eHc4999y9HGR++ctfVk477bR+Y8zH3vve934pSZKmRqXTpk1z119//QWf+cxn7iocVF7SCzUWjDFCrkEbVbUxxvDa1772f9xyyy23iMh/cnCzczryehceuf7mm2/eR63WXKX3zc+MZf+dnZ1RVfWtb33rOxYvXnzn3LlzW7z36pyjWq3KGWec8am//uu/Puv888+/KIQQRcQaY0KWZfZ73/ve7/b09DzX09NzUCbxUsMsKSk5bBGReM4555gZM2acRO7I0ez0ZdOmTf/2k5/85FmA0TrF7u7uWMyTRWBQVaW7uzuO2L/efPPNyfTp049v7t8YowCPPPLIl5vhJyO/B3Daaadlqiof+MAHvr5x48bHybWfCLnwcM5dCtDZ2XkIr8gL55FHHnmOfJ5RrbWiqqZWq4VTTjnl6zfccMMrCq170ihZIhLXrVtnv/CFLzxw4403fhSwzrkQY7SqypIlS5a97W1v++MYIyJiAG+MsXfccceX3/72t3997dq17mDnj0uBWVJScljSnP/bsGEDCxYsSEe+39vbe7eqyrp1655XM2p6pY7MELN69WoBuOWWW142depUhaHECxJCYMeOHfeIiPb09OxvIlIBKyL1SqVyBww5CSEiLF++fDwSOYyFALBly5YPPvDAA9+31koIIVprBWD+/PnVP/qjP/qsqk5JkmRwYpu6NytXrgyqat/61rf++W233fZDco/k5qBEW1tbg4igqtEYY55++ulnPvrRj/4PVTXr1q076OtfCsySkpLDniLucS+eeeYZs780aSNQ9o4iBeDUU08VgJ07d86JMToKyyGA955nn332YPrPfTSZlpaWUds2zKt0iDFE8+3zgcK8Odbz54ILLnjyIx/5yFuefvppb63VIiTGeu/98ccff8bNN9/8f3bv3r3PwGSC0abX7Gc/+9n/+uyzz/Y755rhPNLUNq21MYRg7rjjjvfeeuutz65bt86MZhU4EKXALCkpOaz53Oc+x+Dg4D4CY+nSpXNF5IAmz1WrVpm1a9fuY2rs6uqKAJ/85CdvDSE0AKuFWlutVlm0aNEcVZWurq7n230sQlQWwN6C/aGHHho1C4+1dh8h570/UPWPtKlxN9cigohUnuc7I5n19a9//Yk77rjjN+v1uhWRGELAWuuA+KpXveq/nnDCCZcU+58UjkqQm9YB88UvfvFX69ev/yPAOOeitbYZDxsA94tf/OIr11133ddV9XkzLT0fpcAsKSk5LGlm7nnnO9+pjzzySKqqzSw7BqC9vb1rWEjEqMJGVU13d3dcuXKl359AuuCCC1qefPJJU3we770CTJ8+/U2FBjdqP7pmzRoL6Lve9a6TkyS5mDybTfOz+uijj24c7Xv9/f37CO/58+fH0bTFnp4eUVXzz//8z6daaw0QC23U1Gq1XVmWPQywbNmysWiaXlXluuuuW3PTTTf9f0UyBl+ct6lUKnrCCSfYYk5wDLsbP5oJDd7whjf8+f3337+OXKCHIuuRPPHEE9s+/elP/56qmrEkKNgfk2YCt6SkpOQg0SItnX/66ad/sHz58kUiMjx049Qvf/nLvy8if6Kqbt26daxbtw7IHW06OztFRLIvfvGLyyqVyqUi8uki/hKKOMsiKcKWHTt23A68qgixcEA888wzL/nzP//zV4nI91W10tPTE7q6uuLq1auls7PTdHZ2BhHRu+++e9WcOXOkyCpki6w68txzz30DYPXq1Xud1COPPLJz+fLlzRAPA+jMmTMvOPXUU48Dnl6zZk3l3nvvjQBdXV1WRBo33XTTmwETY/SFRmsGBgZ6b7nlll8Vx9Du7u4DXtDinKsi8p7bbrvtrAsuuODCEEIoQk2aie2b5t4X9+sdekREOOGEE/4N6CQ3oStgfvnLX27//Oc//9w//dM/EUJ4wQ0vBWZJSclhSzMc49vf/vaXX/WqV72lra1NijlAY62N11xzzao77rjjMRH5l+HfawqPL3/5y+d2dnZ+Y968eQs2b978MhF5V5GsQAEKh6Fsw4YN/3DOOeesGJZST9ra2pJf//Vf/9bWrVuvFpHvD9t902s2uf322z92xhlnvCHGGETEeu+jMcY+88wzP3v729/+/eJYoTiXPOWQ99+JMb6v8PgVIMyePXvql770pY+KyO9QlCMrzsN//OMfv+Kss856M7n51xYZdOITTzzxBIUZeYxzmQDce++9qqrm9a9//Zs/97nP3Txz5syTQgjR5Iz9x5kACu/jfUzdxhi3atUq8/GPf/xFOVqVArOkpOSw5frrrw+FVnjjtddee+Oll156maoGa6313ktbW1v13HPP/crPfvazd2zfvv0f/vEf/9E3Gg25+uqr46mnnnrF8ccf/1szZswwQPqe97znvwEME5qx8MI0IrLm/PPP/9BZZ511WoyxqXHp4sWLOz7wgQ9895prrvnc9773vXXvfve7161aterYM888s/P000//b+eee+6phdemVVWSJAmqmtx5550fBxrr1q1zFGbP66+/XkWET37yk3edf/75W44//vhZFELQe69nnHHGDQ899NCCH/3oR/9y4403prNnz9bLL7/83LPPPvt9s2bNqoQQ1BjT9Pa1P//5z78KhOHHGAunnnpqXLdunfn617/+xIUXXvj2t73tbetmzJhRJE6afGrlKIyaDL67u1uHV3N5IZQCs6Sk5LBm9erVoqpce+21vzNv3rwHTz311BbvvbfWNit3sHz58pXAyvPPP58YI21tbUPfDyFojLGSJMng+973vv+2ffv2HSLyB80yXD09PUZE6t/85jd/a86cOXfPnz9fvPfRWmtCCDp9+vSW88477/fOOuus30uSZPvHP/7xKR0dHc2+NRYxgKhqClR+8pOffOP1r3/9v+q+JbRiUY3juV/+8pd/cfzxx3+yyItrnHMSY9QlS5ZcsWTJkit+4zd+gyJAv/lFNcZIlmWhUqm4jRs33vuhD33on4ZrsAfDypUrfVGt5Icve9nLfu/KK6/8a2OMb6YdPFqZ3Pp1SUlJyQEozJ/yzW9+c+MXvvCFqx577LFB55wTkUxVhzL2AL6lpcW3tbV58hJPoUgHp0W5q5b77rvvmSzL/r2I34yQa7Ff/epXbXd39z3f/e5337x161bjnDOqmhU5axXwSZIEYEYhLH0zIXiRZcYbYyp33HHHfVdfffXvqiqrV6/eRxMq5mDNVVdd9X/uuOOOnxljkqIyihYm2gD4trY2X61WPUW5LfLYUF+pVOy2bdv8t771rXft3LlzV7PE1Qu5ru985zu9qtqrrrrqMz/5yU++DIw55+qRypg0TBWiohHRyRJoW1JSMpkRjaCiwrj0GSISi8ofa/v7+1/7+7//+3+2cOHC8woT3FDCgWaMY1GCq6kqGcD89Kc/vemGG27473fffff9SZLsFadXmH6tiHzl4x//ePqWt7zlr4477rh5xduRwgu3cOyhyAgEoIVwNXffffeXzj///P8hIltWr169vzhAXb16tRhjGu9973uv/rM/+7ObXvnKV75s2HH2OQ9yByVxzrlNmzZlt99++3Xvfve7f/B8lVCK7EaBPfGhowlWFZFordVXvOIV/+XnP//5uaeffvpSICuuWWQ/MawHYJ9jyyhlzl4E2tx/YZ5W1UMju8YiMEN7apM+kxiVzEhZ7KukpOSAqHHqaE9t6+5xOuL1118fCiHxw7/5m7/pvPPOO2+YP3/+786cOfPkpulypNNKb28vO3fuvGvDhg1/c9111/0jELu6ukYt9VSUEHMrV6781x//+Me3f+hDH/qfS5cuvX7evHlzmp8Zuf/+/n527tz5ww0bNvzltdde+zUR4aMf/ejzBs13d3fHVatWme7u7qcuvvjii2677bZ3LVy48Hfnz58/f3/H6e3trW/btu1rX/jCF/5Xd3f3Lw9UNkxVW8lDL4Ym9bz3o8WF6h/+4R+a1atX6x//8R9fM2/evO/PmjVrdvGeBciy7KCm9mKM+xw7hNC6/28cHDHGalH/1A67Tu2HYt/Pd6LNUYNva9gbKv1uCgOTpxRNSUnJ5MZWLC11ux2A7hdmFjxYrr/++rBq1SrzsY99bPDlL3/5XwGf7+np6Zw6deoVp5122vx58+YpwGOPPSYPPPDAQ0899dR33/GOd6wjr5vJH/7hH5rnq4u4cuVKXwijp7/97W+/78ILL/x/P/KRj1w5ZcqUq8477zx9/PHHl86dO/eZ/v7+/jvuuOOprVu3/scNN9xwE+SxjBRa24HOoyk0P/axj+248MILP7ls2bJ/+MQnPnFVcRza29slxqgPPfQQjz766L1bt2792lve8pafQR7/uT9h2fTE/cEPftDzq1/9Ki0qfFDU69w4/DPD23Lqqafaj370ow/u2rXrvSeeeOKbCnO2qVarIiJbgVFNzKMd+8c//vHXHnnkkVREQowRY4zt7e29abRjHwzN7/793//9fc65b6RpGgBJksRs3br1JxTC/4Vk+Gny/wMDZ2jsvbMh0AAAAABJRU5ErkJggg==" alt="Martin County PAL">
+  <div class="tag">Leadership Weekly</div>
+  <div id="app"></div>
+  <div class="foot">Martin County PAL Leadership</div>
+  <div class="admin-link"><button onclick="go('admingate')">Admin</button></div>
+</div>
 <script>
-(function(){
-  "use strict";
-  var root = document.getElementById("wrap");
-  if(!window.PARTY){
-    root.innerHTML = "<p style='padding:24px;font-family:monospace;color:#fff'>data.js did not load. Keep data.js in the SAME folder as index.html, then refresh.</p>";
+const CFG = {"currentLesson": 1, "website": "https://www.martincountypal.org", "youtube": "https://www.youtube.com/@MartinCountyPALLeadershp", "attendanceTarget": 16, "window": {"timezone": "America/New_York", "day": "Wednesday", "open": "17:30", "close": "19:30", "coachOverride": true, "note": "Window must be checked against a trusted time source, not the device clock, or it can be bypassed by changing the phone time. Coach override can manually open/close."}, "lessons": [{"number": 1, "name": "Choices", "word": "Choices", "takeaway": "Your next choice is greater than your last mistake.", "action": "Before one decision this week, pause and ask if it moves you toward who you want to be.", "brief": "rQEdgsx6SZ4", "parent": "z1cpsIgiUIg", "corner": "Ah1ri5_9hTc", "coachBrief": "KXsgH2MIr8U", "icebreaker": "", "folderId": "1cHvPF3cXA2i4p_8RP-oWjZROJVkWe4bk"}, {"number": 2, "name": "Growth", "word": "Growth", "takeaway": "Growth is a choice you make daily, not something that happens to you.", "action": "Pick one small thing to get better at this week and practice it once a day.", "brief": "9ddyr6M6xJ0", "parent": "0ay3AxTr524", "corner": "lT8w5x_H8ow", "coachBrief": "vv6WmbzM3s8", "icebreaker": "", "folderId": "1HXs0F-EIIAu7mYbfDWpA0OUnmbc1JjYM"}, {"number": 3, "name": "Attitude", "word": "Attitude", "takeaway": "Your attitude is the one thing you control, even when the situation is not.", "action": "When something goes wrong this week, catch your first reaction and choose a better one.", "brief": "eZzZVp8Epm0", "parent": "q5cRHji70DY", "corner": "Caox-MMh-lI", "coachBrief": "L7VnTKMtOJU", "icebreaker": "", "folderId": "19Dsy2_F_jYJfzh4Oxw0AZo7P5aLhTb5b"}, {"number": 4, "name": "Commitment", "word": "Commitment", "takeaway": "Commitment is what you keep doing after the excitement wears off.", "action": "Finish one thing this week you would normally quit halfway through.", "brief": "rh10DQTlSyw", "parent": "ZxVVeX2H30o", "corner": "WZRz1Z33HA0", "coachBrief": "5KxdHwaVns0", "icebreaker": "", "folderId": "1ZNVgJKs9bYI9MSEJ88LicgR-m6ctbcQx"}, {"number": 5, "name": "Relationships", "word": "Relationships", "takeaway": "The way you treat people is the clearest picture of who you are.", "action": "Reach out to one person this week and ask how they are actually doing.", "brief": "VqR3ElljWAY", "parent": "aL20EHj-BS8", "corner": "KTtY4ATYRbQ", "coachBrief": "-dcHjYnf8hg", "icebreaker": "", "folderId": "1UaHtIfRpR3vC-oMjbXXcmBrRvs9GCupC"}, {"number": 6, "name": "Character", "word": "Character", "takeaway": "Character is who you are when no one is watching.", "action": "Do one right thing this week that nobody will know about.", "brief": "tr6G00VdwvM", "parent": "", "corner": "juG2C3atu8U", "coachBrief": "N84r6mIydds", "icebreaker": "", "folderId": "1asX2G8Ek3y8i4HwDDyguC7N8qpcb9n0R"}, {"number": 7, "name": "Forgiveness", "word": "Forgiveness", "takeaway": "Holding a grudge costs you more than it costs the person you are mad at.", "action": "Let go of one thing you have been holding against someone, even if only in your own head.", "brief": "Z6GYQygkg2o", "parent": "9XLXxnlm8kk", "corner": "tPKR5_VP6-k", "coachBrief": "dJ1ufIShrAU", "icebreaker": "", "folderId": "1pGlyyOxTTkqiI1Eet0UcYL2ODAhv6yEy"}, {"number": 8, "name": "Self-Worth", "word": "Self-Worth", "takeaway": "Your value is not based on what other people say about you.", "action": "Write down one thing you respect about yourself and read it when you feel low.", "brief": "t80xDNeHC0U", "parent": "lBz0iUmv9OU", "corner": "w5k4OCANVGM", "coachBrief": "uBIiX0Pdbok", "icebreaker": "", "folderId": "1evL6k-epkCi4rIA7kjzyqoJ3-Y5YQzA6"}, {"number": 9, "name": "Responsibility", "word": "Responsibility", "takeaway": "Owning your part is the first step to changing your situation.", "action": "Take responsibility for one thing this week instead of blaming someone else.", "brief": "iXBMM-2aItw", "parent": "", "corner": "OMJGQwgFk5M", "coachBrief": "3kTqnoMxf3E", "icebreaker": "", "folderId": "1d66VPq5nEG1roVu5PgtkW_EOjoP72Sq6"}, {"number": 10, "name": "Courage", "word": "Courage", "takeaway": "Courage is not the absence of fear, it is acting anyway.", "action": "Do one thing this week that scares you a little but is the right move.", "brief": "Mu15T5nHS_0", "parent": "cSvAfOdvzp4", "corner": "U_tPEHyLbM0", "coachBrief": "fGdZCSHIRdQ", "icebreaker": "", "folderId": "1l4jqqenJW93adhX9jYgcTK5JEw6CnkNB"}, {"number": 11, "name": "Initiative", "word": "Initiative", "takeaway": "Do not wait to be told. See what needs doing and do it.", "action": "Start one thing this week without being asked.", "brief": "aE-R5BHYRjY", "parent": "RLOWO9P-VZI", "corner": "vncw6DVNPMQ", "coachBrief": "03avRqmKksg", "icebreaker": "", "folderId": "1kAd3tHUhrk_2FM-dmtw-_7KjDf2wP2-K"}, {"number": 12, "name": "Priorities", "word": "Priorities", "takeaway": "You cannot do everything, so choose what matters most.", "action": "Pick the most important thing in your week and do it first, before the easy stuff.", "brief": "rrlhh3KP5Qs", "parent": "I0KmbZkdhO8", "corner": "mGfQVFCZLeE", "coachBrief": "ZHmJI_JRPgM", "icebreaker": "", "folderId": "1jU28lURpndv-CyETGW42dTS16rNzUlxz"}, {"number": 13, "name": "Teachability", "word": "Teachability", "takeaway": "The day you think you know it all is the day you stop growing.", "action": "Ask someone to teach you something this week and actually listen.", "brief": "YCxBHpiDtXI", "parent": "tV2uuU4q21U", "corner": "hSpkbe6SgPU", "coachBrief": "ba-eLs_kB44", "icebreaker": "", "folderId": "1UTdvI9TMdH2P9vLbeStDOO_FxvmGdOD4"}, {"number": 14, "name": "Self-Discipline", "word": "Self-Discipline", "takeaway": "Discipline is choosing what you want most over what you want right now.", "action": "Say no to one easy distraction this week to get to something better.", "brief": "95zMKrG3TLk", "parent": "-vxVjzaj4k4", "corner": "KxeVP977F7s", "coachBrief": "moG9b8NMmuA", "icebreaker": "", "folderId": "1XmS9NuGFS6XDF7kN6WwPV9NxMRMGunEm"}, {"number": 15, "name": "Resilience", "word": "Resilience", "takeaway": "You are not measured by how hard you fall, but by how you get back up.", "action": "When something knocks you down this week, name one way you will get back up.", "brief": "t8FCVpKlBy8", "parent": "hlM4PRPOJJ8", "corner": "U6XSfL3ZzzM", "coachBrief": "Donx4Og7q8k", "icebreaker": "", "folderId": "1HtSTPDdwcU5ksKK7ueTp5IIPPaDu5Fi4"}, {"number": 16, "name": "Influence", "word": "Influence", "takeaway": "You are leading someone whether you mean to or not.", "action": "Set one example this week you would be proud for a younger kid to copy.", "brief": "CwWHJCRHVxA", "parent": "3mAbydxPmfM", "corner": "zbhqZ9UbvII", "coachBrief": "R6VX4pQ1rEo", "icebreaker": "", "folderId": "1-NMYnUdfDf_zEip4dV6pUtBQMvChMI2M"}], "events": [{"date": "Thu Jul 23", "time": "6:00 – 9:00 PM", "title": "Operation Nutcracker 2026: Christmas in July Kickoff", "location": "", "note": "Cocktails, light bites, networking, and early sponsorship opportunities. Supporting Martin County PAL youth programs."}, {"date": "Sat Sep 19", "time": "9:00 AM – 1:00 PM", "title": "Jeep Riddle Run", "location": "Starting location TBA", "note": "Scavenger-style Jeep run supporting our Youth Mobile Training Unit. Trophies, prizes, costume awards, all paved roads."}, {"date": "Wed Jul 22", "time": "6:00 – 7:00 PM", "title": "Martin County PAL Leadership Program, featuring guest speaker Ryan Zofay", "location": "2701 SW Cornell Ave, Palm City", "note": "A meaningful conversation for youth and parents on growth, relationships, and leadership. Develop Better Decision Making Skills. Free event.", "rsvp": "https://forms.gle/QqJnzjqBUjJuy28N9"}]};
+// File IDs harvested from Google Drive
+const FILE_IDS = {
+  1:  {workbook:"1UDJgLa5vPHQlXXK8f4IngVGC5sdYA0XY",coachesCard:"15SWqgBavsA5yOZqQOZl0XfwQiZsQfCw7",infographic:"18iKiG4wgFnggomy0the2lrqwQIlKgekT",coachesInfographic:"1wO3o6yH4FfvqsWIYSbVUkNq0e9SFyv08"},
+  2:  {workbook:"1yrRkxDAUYjwQkySriWX3Fi1Q7v8l6xQr",coachesCard:"1eXDYgeQkxSei3qb2I0MgTJyPRdSMQPBb",infographic:"15P2jbjNkgL1sdr4MfAwJkEqk01zte-Oz",coachesInfographic:"1kM2sBEZ-JIyVqREWc7F92-N8xQj-vZTy"},
+  3:  {workbook:"1LA_2OvClhrRzo2TqoemYWLohzZQ8Mr3O",coachesCard:"1BUSYL_3GUtm74uJQinlwPUiCOwOZuoou",infographic:"1CxLqTwKZyjPOAl0Cwt9G-sVv-4xgZlKK",coachesInfographic:"1g6DK-65K3cOXFponK9CsOUxuiFtA1axc"},
+  4:  {workbook:"1nuMuc_selpZlIMPHKHCUdeqpt-QMWzOM",coachesCard:"15liHsaf_bxQDmXj5t_3VHq5OrSzSsQE2",infographic:"100A093dDFg0AEwDyPdlqrSqIutMRFRhM",coachesInfographic:"1PbBUcgRGog5yDqdmI-cMKVH6vyou7qDI"},
+  5:  {workbook:"1fadJZ7MtlM0W605mgiX4YbfPslCwn2_t",coachesCard:"1bwvBGUMWygYujgH52SYsaEnKwTVUIXRb",infographic:"1TEc6n0eEynXQJFMS4LvBHSVG1sYmuOOT",coachesInfographic:"1vh-gb0WEdizXmm2WsXzZ6BETD3o4GGUE"},
+  6:  {workbook:"1__h7ijWPB9tgCUziHx8fbBluT6_6pQ0V",coachesCard:"11n1TnNTOWjrWoBqUzTeX5NWpFcztnxXP",infographic:"1p-WIF-I-PP3XfF2IEM9-aLSTiE01lNKF",coachesInfographic:"1Nr6ycELVkkoh3-YRCbFn-zRbx9PT4BVf"},
+  7:  {workbook:"11QHDi53n-5sA08M6iGyVZJ8izvSX5pYE",coachesCard:"1DgC5lgcHwP91H-Qa8VxRelRj3zcQy1BX",infographic:"1RcH1zvpnNSfxP9ylBzRoKtQfi-hai6r-",coachesInfographic:"1FnFhaeCoCdBODSiRPAfBUWkp6zcjmk-S"},
+  8:  {workbook:"1SInBFbfqimJm3VKf_laSX31yQ1Ogwrsc",coachesCard:"1yPhdqGZ1GoJ8vofdhC53m-sIe11h51_O",infographic:"1bt0EUAUAKM7YNiRvbBqYEfbDJwK0IzBS",coachesInfographic:"13_J_7GsL2rrP8lkvzCCxiWGkUa1yFgPp"},
+  9:  {workbook:"1qgZELTLCHFX5lNk3jqrkSaiA7BLVyP-r",coachesCard:"1TcfEsn8ZryLMbFB2vwiK0SRpmhQxphEE",infographic:"1MYPWxSu6NV108ksjns6OEQSWJni84GDY",coachesInfographic:"1ZUn9rkyjK6Dw9IVBecZYZ8N8oVoovUFN"},
+  10: {workbook:"1obkaRlm9lfs96VDsG4fe-BvFTQbFuI5G",coachesCard:"1uX0oEfcdilREhNTDcP7AxrXbzPE5FGPu",infographic:"18vWTT3lHakEarh6QKnzOTIEkmk4r5Hl4",coachesInfographic:"1DxVhaq8ObZTOCWZa2LoRbBTP8ryiLO5G"},
+  11: {workbook:"1eXg4KGn2NViPpwOXQT3tFFwSAmKbjrnH",coachesCard:"1ILUctHwml1dDa0z3Ya-10Ipa8timhIEQ",infographic:"1YLU_ylzr8SLFM8YGwEC7v_ItwvOadQ6Z",coachesInfographic:"1pg0YHxCvTRyJgkDLWm2RCtD5YUfFWprz"},
+  12: {workbook:"1esNJGsp9fF3GkYhaspBWzdgYw2UHS4Eh",coachesCard:"1UDFIxg7Eo21yNF8T-Rv1paM-IiSQ9vgG",infographic:"1xQl2_eBOW8xPIsaj3tI-41W7w-Zp50iW",coachesInfographic:"1o7u-WT4RXOyI01Na8QzZzNeJStgSh6_b"},
+  13: {workbook:"1Evqx4xXnhQ6WnyltbezTa80-qqZF7Gq6",coachesCard:"1TLLhWUY52qj1LI_CIRUKbQX191m4C9Hv",infographic:"1yG6wularR-JCX4XALRO09XWZSJaHjHa9",coachesInfographic:"1Z6lFSp5x4MiPmcDH2LcxMfEyq5Pb7sV6"},
+  14: {workbook:"1xWioKxJkrVcA1FmEb8DsnLgu19jK1lsB",coachesCard:"1G1C3V74iHKsTsBLjaSUIKAnAis-YluhD",infographic:"1ieUoMYssXaFhzGCJIF7isGkYofo9Yq9U",coachesInfographic:"1tQ3cKHatA17rYHGLp4061FKT6o4k2n2j"},
+  15: {workbook:"1tMRAVBFOE_0mdUSMwXeC3BO8bmyi6z8L",coachesCard:"1Z57dTAh7H76-LAfUHym-j-AXSrUw6I5W",infographic:"180KFvROZumKA3xpVhdmqAiLgwSnUKU67",coachesInfographic:"1frVO2AgsASil_i_-WYQIup5kpVL-Doyv"},
+  16: {workbook:"1KBD4thX0VGC79V-ccoN4XJgunYnCXwUy",coachesCard:"1XI04u7IVRqLXcmF2Usn3_yqU2wwtzg5K",infographic:"16s0MtJ5_FGHdbvtVHw3F78HV1BVEcvMz",coachesInfographic:"1zjo4s0TVBTlZarf3XkJuIcSCuWL0synH"}
+};
+const ICEBREAKERS = {
+  1: {
+    "5": {
+      title: "Hands on the Wheel",
+      objective: "Get the youth to feel the difference between deciding for themselves and letting someone else decide.",
+      setup: "Whole group standing in open gym space. No supplies.",
+      instructions: "Call out a simple either or pick (left or right, sit or stand, ball or no ball). On go, everyone moves to their choice. Run it fast for five or six rounds. Then run one round where you say I will pick for you and just point everyone the same direction with no say in it.",
+      debrief: "Which felt better, picking or getting picked for? Where in real life do you let someone else point you? What happens when you do not grab the wheel?"
+    },
+    "10": {
+      title: "The Fork",
+      objective: "Show that choices stack and steer where you end up.",
+      setup: "Two cones marking two paths, open floor. Youth start on a baseline.",
+      instructions: "Read a simple scenario with two options, like a friend wants you to bounce when you said you would stay, do you go or stay. Youth walk to the cone that matches their pick. After each round, those cones become the new starting points and you read a new fork, so their path literally builds across the floor from their stacked choices. Run four or five forks.",
+      debrief: "Did everybody end up in the same spot? Why not? Could you have ended somewhere else with a different pick early on? What is one fork coming up in your real life?"
+    },
+    "15": {
+      title: "Rewrite the Play",
+      objective: "Drive home that a past choice does not lock the next one. Choices can be changed.",
+      setup: "Groups of four to six, scattered around the gym. No supplies.",
+      instructions: "Each group gets two minutes to act out or just talk through a quick scene of a choice that went sideways. Stop them. Then the same group replays the same setup but changes one choice partway through to send it a different direction. Each group shows their rewrite to one mentor, or to the room if they are up for it.",
+      debrief: "What was the one choice that changed the whole ending? In real life, what is a play you would run back differently? Who decides whether you get a do over, you or the situation?"
+    }
+  },
+  2: {
+    "5": {
+      title: "Underground",
+      objective: "Make the invisible part of growth real. You grow before it shows.",
+      setup: "Whole group in open gym space. No supplies.",
+      instructions: "Everyone crouches down low to the floor as a seed. Call out things that feed growth, like showing up, putting in work, good people around you, and on each one everyone rises a little. Then call out things that stunt it, like quitting, a bad circle, giving up after one setback, and everyone drops back down. Run it quick. End standing tall after a string of growth calls.",
+      debrief: "How long were you down before you got to stand? Did standing happen all at once or bit by bit? What feeds your growth in real life?"
+    },
+    "10": {
+      title: "Good Soil, Bad Soil",
+      objective: "Show that environment decides whether the seed grows. Your circle is your soil.",
+      setup: "Two zones marked with cones at opposite ends of the gym, one good soil and one bad soil, open middle.",
+      instructions: "Read out one influence at a time, like a friend who hypes your goals, a habit that wastes your whole day, someone who calls you out when you slip, a group that drags you into trouble. For each one, youth jog to the soil zone where that influence belongs. After a few rounds, ask them to go stand in the soil they actually spend most of their time in right now. No judgment, just where they stand.",
+      debrief: "Was it easy or hard to call where each influence goes? Which soil are you planted in most? What is one thing you could move from bad soil to good?"
+    },
+    "15": {
+      title: "Reintroduce Yourself",
+      objective: "Tie growth to reinvention. You are not stuck as who you were.",
+      setup: "Pairs or groups of three, scattered around the gym. No supplies.",
+      instructions: "Each youth takes a turn finishing two lines out loud to their partner: A year ago I was the kind of person who, and, a year from now when you meet me you will meet someone who. Partners just listen, no clowning. Then, if any are willing, a few share the second line with the whole room. Mentors go first to set the tone and show it is not soft to say it.",
+      debrief: "Was it harder to say the first line or the second? What is one small thing you can do this week to make the second line true? Who in here is going to help you get there?"
+    }
+  },
+  3: {
+    "5": {
+      title: "Shake It Off, Step Up",
+      objective: "Put the donkey\'s move in their body before they talk about it.",
+      setup: "Whole group standing in open gym space. No supplies.",
+      instructions: "Call out a piece of dirt that life throws, like somebody talked about you, you failed a test, plans fell through, somebody let you down. On each one, the whole group does the donkey move: a quick shake of the shoulders like shaking dirt off, then one big step forward. Run it fast, six or seven rounds, so they are physically stepping across the gym on the dirt.",
+      debrief: "Did you notice you ended up further ahead than where you started? Where did all those steps come from? What is the real-life version of shaking it off and stepping up?"
+    },
+    "10": {
+      title: "24 Hours",
+      objective: "Practice the difference between sitting in something and resetting from it.",
+      setup: "Two lines on the floor or two cones a few feet apart. One side is in it, the other is stepping out. Open space.",
+      instructions: "Read a real setback, like you got blamed for something you did not do, or somebody embarrassed you. Everyone starts on the in it side and gets ten seconds to actually say or show how mad that makes them, out loud, no holding back. Then call time, and everyone steps to the stepping out side and says one thing they would do next to climb out of it. Run three or four rounds.",
+      debrief: "Which side felt more natural to you? Was ten seconds enough to be mad, or do you usually live on the in it side a lot longer? What does crossing that line actually look like in your week?"
+    },
+    "15": {
+      title: "The One Thing They Can\'t Take",
+      objective: "Land the idea that the response is the one thing fully theirs.",
+      setup: "Groups of four to six, scattered around the gym. No supplies.",
+      instructions: "Each group gets a scenario where almost everything is out of the kid\'s control, like getting moved to a new school, a plan getting canceled, somebody making a call that affected them. The group lists out loud everything in that scenario the kid cannot control, then names the one thing he still can, his response. Each group shares their one thing with the room. Push them to get specific about what stepping up would actually look like in that scenario.",
+      debrief: "Was it easier to list what you cannot control or what you can? In your own life right now, what is mostly out of your hands? What is the one thing that is still yours?"
+    }
+  },
+  4: {
+    "5": {
+      title: "Interested or Committed",
+      objective: "Make the interest versus commitment line physical and fast.",
+      setup: "Whole group in open gym space. Two sides, one labeled Interested, one labeled Committed. No supplies.",
+      instructions: "Read a scenario, like you said you would work out but it is cold out, you said you would help a friend but you are tired, you promised to show up but something better came up. Youth move to the side that shows what most people do versus what a committed person does. Quick back and forth each round about who chose which and why. Run four or five rounds.",
+      debrief: "Was it easier to land on interested or committed in these? Where in your life are you interested when you should be committed? Who has been committed to you?"
+    },
+    "10": {
+      title: "The Cycle",
+      objective: "Walk them through Test, Fail, Learn, Improve, Re-enter so Fail feels normal, not final.",
+      setup: "Five spots marked with cones around the gym, one for each stage of the cycle. Open space.",
+      instructions: "Name a real goal a kid might have, like make a team, pass a class, fix a relationship. The group physically walks the cycle cone to cone: Test (you try), Fail (it does not work), Learn (what went wrong), Improve (what you would do different), Re-enter (you try again). Walk it twice so they feel the loop. Hammer the point that the cycle does not end at Fail, it keeps moving to Re-enter.",
+      debrief: "Which stage do most people quit at? Which stage are you best at? Which one do you skip? What does Re-enter look like for you right now?"
+    },
+    "15": {
+      title: "Get Back In",
+      objective: "Tie commitment to their real life by naming a race they will re-enter.",
+      setup: "Pairs or groups of three, scattered around the gym. No supplies.",
+      instructions: "Each youth tells their partner about one thing they started and fell off of, no judgment from anyone. Then they finish two lines out loud: I fell off because, and, I am getting back in by. The partner\'s only job is to say back, you are getting back in, like a teammate. Then any who want can say their get back in line to the whole room. Mentors go first.",
+      debrief: "Was it harder to admit you fell off or to say how you would get back in? What is one small first step to re-enter this week? Who in this room can help you stay in the race?"
+    }
+  },
+  5: {
+    "5": {
+      title: "Wall or Bridge",
+      objective: "Make the wall versus bridge choice physical and quick.",
+      setup: "Whole group in open gym space. Two sides, one Wall, one Bridge. No supplies.",
+      instructions: "Read a situation, like somebody new walks up to your group, a friend texts that he is having a bad day, somebody tries to talk to you in line. Youth move to Wall if their gut says shut it down, or Bridge if their gut says let them in. No wrong answers. Quick talk each round about why, and point out that walls make sense sometimes. Run four or five rounds.",
+      debrief: "When does a wall actually make sense? When did a wall cost you something good? What is one place you put up a wall that maybe deserved a bridge?"
+    },
+    "10": {
+      title: "Tell Me Your Story",
+      objective: "Practice the single most useful bridge skill, asking and listening.",
+      setup: "Pairs, scattered around the gym. No supplies.",
+      instructions: "Each youth gets ninety seconds to ask their partner real questions and learn their story, no phones, just talking. Then they switch. After both have gone, each person has to tell the room or a mentor one real thing they learned about their partner. The point they feel is simple: somebody actually paid attention to them.",
+      debrief: "How did it feel to have someone actually listen to you? Was it easier to ask or to answer? When is the last time somebody asked about you and meant it?"
+    },
+    "15": {
+      title: "Build the Bridge",
+      objective: "Connect the metaphor to a real relationship they want to build or repair.",
+      setup: "Groups of four to six, scattered around the gym. No supplies.",
+      instructions: "Each youth thinks of one bridge they want to build or rebuild, a friend they fell out with, a family member, somebody they want in their corner. In the small group they each say who it is and name the first plank, the one small thing they could do this week to start. The group reacts like a crew, gives one piece of real advice or backs the plan. A few share with the room if they want. Mentors go first.",
+      debrief: "Why did that bridge break down or never get built? What is the first plank, the smallest first move? What is one bridge that is worth the effort even when it is hard?"
+    }
+  },
+  6: {
+    "5": {
+      title: "Cameras Off",
+      objective: "Make the difference between the show and the real you concrete and fast.",
+      setup: "Whole group in open gym space. Two sides, one For Show, one For Real. No supplies.",
+      instructions: "Name an action, like you help somebody when the whole room is watching, you help somebody when nobody sees, you keep your word only when there is something in it for you, you keep it when there is nothing. Youth move to For Show or For Real based on what most people do versus what a person of character does. Quick talk each round. Run four or five rounds.",
+      debrief: "Which is harder, doing right for show or doing right when nobody sees? Where in your life are you running on show? What would change if you were the same person with the cameras off?"
+    },
+    "10": {
+      title: "Turn the Car Around",
+      objective: "Land authenticity, not perfection. Character is the turnaround.",
+      setup: "A start line and a far line marked with cones. Open floor. No supplies.",
+      instructions: "Everyone starts walking from the line toward the far cone, which stands for heading down a wrong road. Call out common wrong turns, like lied to cover something, went along with the crowd, ducked something you should have owned. As they walk, randomly call turn around, and on that call each youth stops, turns, and walks back. The point made is that the turn is allowed at any point, no matter how far down the road they got.",
+      debrief: "How far down the road did you get before the turn? In real life, what makes it hard to turn around? Who turns around faster, the person who thinks they have to be perfect or the person who knows they do not?"
+    },
+    "15": {
+      title: "Bigger on the Inside",
+      objective: "Connect character to who they actually want to be on the inside.",
+      setup: "Pairs or groups of three, scattered around the gym. No supplies.",
+      instructions: "Give the group the short list from the lesson: kindness, courage, reliability, trustworthiness, authenticity, forgiveness. Each youth picks the one they most want more of on the inside and tells their group one real situation this week where they could show it. The group backs the choice and, if they want, calls out a time they have already seen that quality in the person. A few share with the room. Mentors go first.",
+      debrief: "Which one did you pick and why that one? Where could you show it this week? Has anybody ever seen that in you before, even once?"
+    }
+  },
+  7: {
+    "5": {
+      title: "Set It Down",
+      objective: "Let future leaders physically feel what carrying weight does, and what setting it down feels like, without anyone having to say what their weight is.",
+      setup: "Open floor. Everyone standing. A ball in each hand is optional and does not change anything.",
+      instructions: "1. Everyone stands and holds both arms straight out in front, ball in hand or empty, does not matter.\n2. Tell them to picture one thing they have been carrying that is not theirs to carry anymore. Keep the arms up.\n3. Hold for about a minute. The arms start to burn. Let them feel it.\n4. Say set it down and have everyone drop their arms at once. Then talk about the difference.",
+      debrief: "What happened to your arms the longer you held that up?\nNothing changed about the weight itself, so why did setting it down feel that good?\nWhat is something you have been holding a lot longer than a minute?"
+    },
+    "10": {
+      title: "The Broken Piece",
+      objective: "Make the mosaic real. Show that a broken piece does not get thrown out. It becomes part of something.",
+      setup: "Circle. No supplies needed. A cone in the middle is optional just to anchor the space.",
+      instructions: "1. Get them in a circle. Tell them a mosaic is built entirely from broken pieces that would normally get swept up and thrown away.\n2. Explain that an artist takes those exact broken pieces and arranges them into something people travel to see.\n3. Go around the circle. Each future leader names one strength they carry that came out of something hard. The strength only, never the hard thing itself. Toughness, loyalty, reading people, whatever it is.\n4. After the last one, point out that the whole circle just built a mosaic out loud, piece by piece.",
+      debrief: "Where do you think that strength of yours actually came from?\nIf some of your best pieces came out of the hard stuff, does that change how you see it?\nA mosaic needs a lot of different pieces to work. What does that say about this group?"
+    },
+    "15": {
+      title: "Two Paths",
+      objective: "Put the three paths in front of them, make them pick one out loud, then own it.",
+      setup: "Use the length of the gym or field. Mark three zones with cones or floor spots: one wall is the Easy Path, the middle is the Better Path, the far wall is the Excellent Path.",
+      instructions: "1. Mark the three zones across the space. Easy Path at one wall, Better Path in the middle, Excellent Path at the far wall.\n2. Explain the three. Easy, you treat people however you feel like. Better, you treat people exactly how they treat you. Excellent, you treat people better than they treat you.\n3. Read a quick everyday scenario. Someone talks behind your back. Someone owes you and does not pay you back. A teammate keeps messing up.\n4. After each scenario, kids walk to the zone for the path they would honestly take, not the one that sounds good.\n5. Pull a couple of kids and ask why they are standing where they are. No wrong spot. Make them own it.",
+      debrief: "Which path is hardest to actually walk, and why?\nThe Excellent Path costs you something every time. What do you get back that makes it worth it?\nWhich path do most people around you live on, and is that the path you want?"
+    }
+  },
+  8: {
+    "5": {
+      title: "The Twenty",
+      objective: "Show that worth does not change based on how something gets treated. Fast, physical, and it lands before anyone can deflect.",
+      setup: "One twenty dollar bill. Any bill works, or even a folded piece of paper standing in for one. Circle, open floor.",
+      instructions: "1. Hold up the bill and ask who wants it. Hands go up.\n2. Crumple it in your fist, drop it, step on it, mess it up. Ask again who still wants it. The hands stay up.\n3. Make the point. You all still want it because messing it up did not change what it is worth. It is still a twenty.\n4. Land it. People are the same. What you have been through did not lower your value. You are still worth full price.",
+      debrief: "Why did you still want the bill after it got crumpled and stepped on?\nIf that is true for a twenty, why do we act like it is not true for people?\nWhat is something you have been through that you figured lowered your value but actually did not?"
+    },
+    "10": {
+      title: "Clearance Rack or Glass Case",
+      objective: "Get them to see the everyday choices that mark a person up or down, and own where they have been parking themselves.",
+      setup: "Mark two zones with cones or two walls. One side is the Clearance Rack. The other side is the Glass Case. Open floor in between.",
+      instructions: "1. Explain the two. The clearance rack is where stuff gets marked down and ignored. The glass case is where the valuables get kept and protected.\n2. Read out one behavior at a time. Examples: letting people talk to you any kind of way, keeping your word, talking yourself down so nobody calls you cocky, showing up when you said you would, copying everybody else just to fit in.\n3. After each one, kids move to the rack or the case depending on whether that behavior marks a person up or down.\n4. Once they have sorted a few, ask which rack their actual week has looked like. No judgment, just honesty.",
+      debrief: "Which of those behaviors marks a person down the fastest?\nWhat is one thing you already do that puts you in the glass case without you even trying?\nWhat is one clearance rack habit you would drop if you fully decided you were valuable?"
+    },
+    "15": {
+      title: "Worth the Hire",
+      objective: "Force them to make the case for their own value out loud, with evidence, like they are selling the most important thing they own, which is themselves.",
+      setup: "Pairs. Open floor or bleachers. No supplies needed.",
+      instructions: "1. Pair everyone up. Tell them they are now each other\'s agent, the person whose whole job is to talk up how valuable their partner is.\n2. Give them two minutes to interview their partner. Find real things. What are they good at, what have they pulled off, who counts on them, what do they bring to a room.\n3. Each agent introduces their partner to the group in about thirty seconds and sells their value out loud. Not roasting. Selling.\n4. The partner just stands there and takes it. No arguing it down, no joking it off. They have to let the value land.",
+      debrief: "Which was harder, hyping up your partner or standing there and letting yours hype you?\nWhy is it so easy to see value in someone else and so hard to claim it for yourself?\nIf everything your agent just said is true, what price tag should you actually be wearing?"
+    }
+  },
+  9: {
+    "5": {
+      title: "In Your Control, Not in Your Control",
+      objective: "Get them sorting fast what they can and cannot control, so responsibility lands as the stuff in their hands, not everything that ever happened to them.",
+      setup: "Two zones with cones or two walls. One side is In My Control. The other side is Not in My Control. Open floor between them.",
+      instructions: "1. Mark the two zones. One side In My Control, the other Not in My Control.\n2. Call out one thing at a time. Examples: the weather, how you treat people, what people say about you, whether you show up, the family you were born into, how you respond when somebody disrespects you, your effort.\n3. After each one, kids move to the side they think it belongs on.\n4. When something splits the room, like what people say about you, name the move. You cannot control what they say. You can control what you do about it.",
+      debrief: "Which one surprised you, something you thought you controlled but do not, or the other way around?\nResponsibility lives on only one of these sides. Which one?\nWhat is one thing on the Not in My Control side that you have been wasting energy on?"
+    },
+    "10": {
+      title: "The Mirror Says",
+      objective: "Make the only I can idea physical. Separate what others can do for you from what only you can do.",
+      setup: "Circle or pairs. No supplies needed.",
+      instructions: "1. Explain the setup. There are things people can do for you and things only you can do, and they are not the same.\n2. Go around and hand each future leader the front half of one of these to finish. You can coach me, but only I can. You can teach me, but only I can. You can believe in me, but only I can.\n3. Let the answers be real, not perfect. The point is they hear themselves say the only I can part out loud.\n4. Close the circle by pointing out that every single answer ended with I. That is the mirror. That is responsibility.",
+      debrief: "Which is harder for you, the part others do or the part only you can do?\nWhere in your life have you been waiting on somebody else to do the part that is actually yours?\nWhat is one only I can move you have been avoiding?"
+    },
+    "15": {
+      title: "Step Up to the Mirror",
+      objective: "Walk the full arc. Own a real area, name the next move, and commit to it in front of the group.",
+      setup: "Open floor. Mark one spot as the mirror with a cone or a taped line. No supplies needed.",
+      instructions: "1. Set one spot as the mirror. Tell them stepping up to it means owning one area of their life out loud, not the fault, the move.\n2. Give them a minute to pick one area they want to take control of. School, attitude, a relationship, a habit, whatever is real for them.\n3. One at a time, a future leader steps up to the mirror spot and says the area and the one move they will make. Keep it short. I am taking control of, and my move is.\n4. After each one, the group gives a single clap or a nod. No roasting, no advice, just witnessed. Being seen making the commitment is the point.",
+      debrief: "How did it feel to say your move out loud with people watching instead of just thinking it?\nWhy is it easier to name the problem than to name the move?\nWho in this room are you going to let check on whether you actually made your move?"
+    }
+  },
+  10: {
+    "5": {
+      title: "Easy Brave or Hard Brave",
+      objective: "Reset the definition fast. Get them sorting the loud kind of courage from the hard quiet kind before anything else happens.",
+      setup: "Two zones with cones or two walls. One side Easy Brave, the other side Hard Brave. Open floor between them.",
+      instructions: "1. Mark the two zones. One side Easy Brave, the other Hard Brave.\n2. Call out a move one at a time. Examples: swinging on somebody who disrespected you, walking away from that same fight, talking trash back, telling a coach the truth about something you did, taking a dare, standing up for a kid getting picked on, going along with the crowd.\n3. After each one, kids move to the side they think it lands on, easy brave or hard brave.\n4. Point out the pattern as it builds. The stuff that looks toughest is usually the easy kind. The stuff that looks soft is usually the hard kind.",
+      debrief: "Which kind of brave gets more respect in your world, and which one actually takes more?\nWhy is walking away harder than swinging?\nWhich kind do you want to be known for?"
+    },
+    "10": {
+      title: "Move Scared",
+      objective: "Make the action-before-feeling idea physical. Show that you do the thing first and the nerve catches up after.",
+      setup: "Line everyone up behind a start line, marked with cones or just a spot on the floor. No supplies needed.",
+      instructions: "1. Line everyone up behind the start line. Tell them you will call out small brave moves and they step across only if they have ever done it.\n2. Start light and build. Step across if you have ever raised your hand when you were not sure. If you have ever apologized first. If you have ever stood up for somebody. If you have ever told the truth knowing it would cost you.\n3. Each step, point out that nobody who crossed felt one hundred percent ready first. They moved anyway.\n4. Land it. That hesitation they felt before stepping is exactly what fear feels like, and stepping anyway is exactly what courage is. They just did reps of it.",
+      debrief: "Did you feel ready before you stepped, or did you just step?\nWhat is one move you did not step across for, that you wish you had?\nIf brave is just moving before you feel ready, what is one move you could make this week?"
+    },
+    "15": {
+      title: "The Cornerstone",
+      objective: "Land the anchor. Each future leader names the one hard thing they will build their courage on, and the group watches the wall go up.",
+      setup: "Circle. If you have cones, blocks, or balled-up paper, you will stack one per person to build a visible pile. No supplies works too, just go around.",
+      instructions: "1. Explain the cornerstone. It is the first stone a builder sets, the one everything else stands on. Courage is that stone for your life.\n2. Go around the circle. Each future leader names one scared-but-right move they are committing to this week. The truth they will tell, the fight they will walk away from, the person they will pull up.\n3. As each one says theirs, they add a stone to the pile in the middle, a cone, a block, whatever you have. If no supplies, they step into the circle and say it.\n4. When the last one goes, point at the pile. Every one of those is a hard thing somebody chose to do scared. That is what a wall of courage looks like, built one stone at a time.",
+      debrief: "Which was harder, picking your move or saying it out loud in front of everybody?\nWhose stone are you going to remember, and why?\nCourage is contagious. Whose courage this week could you be the one to spark?"
+    }
+  },
+  11: {
+    "5": {
+      title: "Wait or Make",
+      objective: "Drive the core split fast. Get them feeling the difference between waiting for something to happen and making it happen.",
+      setup: "Two zones with cones or two walls. One side Wait, the other side Make. Open floor between them.",
+      instructions: "1. Mark the two zones. One side Wait, the other Make.\n2. Read a situation one at a time. Examples: you want to be on the team but tryouts are coming, you and a friend got into it and neither of you has texted, your grade is slipping in one class, somebody new is sitting alone at lunch, you want a job but have not applied anywhere.\n3. After each one, kids move to Wait or Make depending on what they would honestly do, not what sounds good.\n4. Point out the pattern. The Make side is where things actually change. The Wait side is where you hope somebody else throws the stone for you.",
+      debrief: "Which side do you spend most of your life standing on?\nWhat is one thing you have been on the Wait side about for too long?\nWhat would it take to step over to Make on that one?"
+    },
+    "10": {
+      title: "First Ripple",
+      objective: "Make the throw and the ripple physical, and show that one small move sets off more than you can see.",
+      setup: "Circle. No supplies, or one ball or balled-up paper to pass as the stone.",
+      instructions: "1. Get them in a circle. Tell them the circle is a still pond and the stone is about to get thrown.\n2. Start with one future leader doing one small positive action toward the person on their right. A real compliment, a fist bump, calling out one thing that person is good at.\n3. That person then does the same toward the next, and it travels all the way around. The ripple moves one person at a time.\n4. When it gets back to the start, point out that one small first move just touched every single person in the circle. That is a ripple. Nobody planned the whole thing. One person just threw.",
+      debrief: "How far did one small move travel?\nThe first person could not see the whole ripple coming. Does that change how you think about small moves?\nWhat is one small throw you could make tomorrow that might travel further than you think?"
+    },
+    "15": {
+      title: "Name the Throw",
+      objective: "Move from idea to commitment. Each future leader picks one real thing they have been waiting on and commits to the first move.",
+      setup: "Circle or pairs. No supplies needed.",
+      instructions: "1. Give them a quiet minute to think of one thing in their life that is sitting still because they have been waiting instead of throwing.\n2. Have them shrink it down to the smallest first move. Not the whole fix. The first stone. One text, one application, one conversation, one rep.\n3. Go around. Each future leader names the still pond and the one small throw they will make this week. Keep it short. I have been waiting on, and my first throw is.\n4. After each one, the group gives a nod or a single clap. Witnessed, not judged. Then point out that the room just watched a bunch of people stop waiting at the same time.",
+      debrief: "Was it harder to pick the pond or to shrink it down to one small throw?\nWhy do we wait on stuff we already know how to start?\nWho in this room is going to ask you next week whether you actually threw it?"
+    }
+  },
+  12: {
+    "5": {
+      title: "Name Your Rock",
+      objective: "Get every future leader to name one thing that actually matters to them, fast, no overthinking.",
+      setup: "Circle up. No supplies.",
+      instructions: "1. Bring the whole group into one circle.\n2. Go around. Each future leader says their name and one rock, the thing in their life that matters most.\n3. Keep it to one word or one sentence. No explaining, no judging.\n4. If someone freezes, skip them and come back at the end. Do not let it stall.",
+      debrief: "Did anybody\'s rock surprise you?\nHow many of us actually spend our time on the thing we just named?"
+    },
+    "10": {
+      title: "The Jar",
+      objective: "Make the lesson land in their hands instead of just their ears.",
+      setup: "One container (jar, bucket, or cup). A few big rocks or balls, some gravel or smaller balls, and sand or torn paper scraps. Basic gear is fine.",
+      instructions: "1. Hand a future leader the container and have them pour the sand in first, then the gravel.\n2. Now have them try to fit the big rocks on top. They will not go in.\n3. Dump it out. Have them start over: rocks first, then gravel, then sand.\n4. It all fits this time. Let the group call out what just happened before you say a word.",
+      debrief: "What changed? Same stuff, same jar.\nWhat is the sand in your life that you pour in first without even thinking about it?\nWhat would it look like to put your rocks in first this week?"
+    },
+    "15": {
+      title: "Two Out of Ten",
+      objective: "Help future leaders find the small number of things that carry most of the weight, lived instead of lectured.",
+      setup: "Open floor or court. Cones or markers optional. No supplies needed.",
+      instructions: "1. Each future leader lists ten things they spend time on in a normal week, out loud or in their head.\n2. Cut it down to the two that matter most, the two that would change the most if done right.\n3. Pair up. Each one tells their partner their two and why.\n4. A few share with the whole group.\n5. Push the real question: are you spending your time on those two, or on the other eight?",
+      debrief: "Was it hard to pick just two? Why?\nWhat is one of the eight you could let go of, or say \"not right now\" to?\nIf you put your two first this week, who else does that help, not just you?"
+    }
+  },
+  13: {
+    "5": {
+      title: "One Thing I Am Working On",
+      objective: "Get every future leader to admit, out loud, one thing they want to get better at. That admission is teachability in real time.",
+      setup: "Circle up. No supplies.",
+      instructions: "1. Bring the whole group into one circle.\n2. Each future leader says their name and one thing they are trying to get better at. Anything counts. Free throws, keeping their cool, school, a job.\n3. One sentence. Nobody gives advice, they just say it and pass.\n4. If someone freezes, skip them and come back at the end.",
+      debrief: "Was it harder than it sounds to admit out loud that you are working on something?\nYou know somebody who acts like they have nothing to work on. How is that going for them?"
+    },
+    "10": {
+      title: "Coach Me Through It",
+      objective: "Let them feel the difference between fighting direction and trusting a coach. That trust is what teachable feels like.",
+      setup: "Pairs. Open floor with a few cones, water bottles, or markers scattered as obstacles. Basic gear is fine.",
+      instructions: "1. Scatter a simple path of obstacles across the floor.\n2. One future leader closes their eyes. Their partner is the coach, voice only, no touching.\n3. The coach talks them through the path step by step. The walker has to trust the voice and adjust when corrected.\n4. Switch roles so everyone coaches and everyone gets coached.",
+      debrief: "Was it easier to trust your coach, or did part of you want to just do it your own way?\nWhen the coach corrected you, did you get tight or did you adjust? Same thing happens in real life.\nWho is a coach voice in your real life that you actually trust?"
+    },
+    "15": {
+      title: "The Same Hole",
+      objective: "Help future leaders name a mistake they keep repeating and picture what changing the pattern actually looks like.",
+      setup: "Circle or small groups. One cone or object in the middle to stand for \"the hole.\" No other supplies needed.",
+      instructions: "1. Put the cone in the middle. Tell them it stands for a hole people keep falling into, the same mistake over and over.\n2. Walk the stages out loud: first time you fall in, you blame everybody else. Next time you see it coming and still fall in. Then you start stepping around it. Eventually you just walk a different street.\n3. Each future leader names one hole they keep falling in, only what they are willing to share. Skipping school, blowing up when angry, the wrong crowd, whatever it is.\n4. Then they say what \"walking around it\" would actually look like this week.\n5. Share in pairs or small groups first, then a few share with the whole room.",
+      debrief: "What stage are you at with your hole, blaming everyone, seeing it but still falling, or stepping around it?\nWhat is one thing that would move you one stage forward?\nWho could help you walk around it, if you actually let them?"
+    }
+  },
+  14: {
+    "5": {
+      title: "Uphill or Downhill",
+      objective: "Get future leaders to see, fast, that their daily habits are either walking them uphill or downhill.",
+      setup: "Open floor. Mark one side of the room uphill and the other downhill. No supplies, or two cones.",
+      instructions: "1. Mark an uphill side and a downhill side of the room.\n2. Call out a habit, like scrolling your phone until 2am, showing up on time, skipping class, or hitting the gym.\n3. Future leaders walk to the side they think it belongs on, uphill or downhill.\n4. Move fast. Call out eight or ten habits and keep them moving.",
+      debrief: "Which side did you end up on more, uphill or downhill?\nWhat is one downhill habit you would want to flip?"
+    },
+    "10": {
+      title: "Hold the Climb",
+      objective: "Let them feel uphill effort in their legs, and feel how easy it is to quit.",
+      setup: "A clear wall. No other supplies.",
+      instructions: "1. Everyone gets into a wall sit, back flat on the wall, knees bent like sitting in an invisible chair. That burn is the climb.\n2. Hold it while you talk. Point out that this is what uphill feels like. It burns, and your body is begging you to stop.\n3. Tell them they can drop anytime. Quitting is instant and it feels great for a second. That is the downhill slide.\n4. Go again. This time challenge them to hold ten seconds past when they wanted to quit. That ten seconds is self-discipline.\nSafety note: keep it to wall sits, no horseplay against the wall. Anyone with a knee issue can sit this one out and be the timer.",
+      debrief: "How did your body feel right before you wanted to quit?\nWhat does ten seconds past quitting look like in your real life?"
+    },
+    "15": {
+      title: "One Promise",
+      objective: "Move from idea to a concrete, small, kept promise, and connect thinking to habit.",
+      setup: "Circle or small groups. No supplies. Paper optional.",
+      instructions: "1. Walk the chain out loud: how you think sets your habits, and your habits become who you are. Think life is easy and you slide. Think it is hard and you climb.\n2. Each future leader picks one small uphill move for this week. Small on purpose. Make your bed every morning. Show up on time. Ten pushups before bed. Something they can actually do.\n3. The rule: it has to be small enough that they have no excuse. If it sounds impressive, it is too big. Shrink it.\n4. They tell a partner their one promise and why that one. Then they become each other\'s check-in for the week.\n5. A few share with the whole room.",
+      debrief: "Why did you pick that one?\nWhat is the thought that has been keeping you from doing it?\nWho is going to know if you actually do it this week?"
+    }
+  },
+  15: {
+    "5": {
+      title: "Bounce Back",
+      objective: "Get future leaders to name, fast, one thing they have already come back from. Proof they are already resilient.",
+      setup: "Circle up. No supplies.",
+      instructions: "1. Bring the whole group into one circle.\n2. Each future leader says their name and one thing they have already bounced back from. Could be small, could be big, only what they want to share.\n3. One sentence. No need to tell the whole story.\n4. Anybody can pass. Come back to them at the end.",
+      debrief: "Notice how everybody in this circle has already come back from something? That is resilience. You already have it.\nWhat helped you get back up that time?"
+    },
+    "10": {
+      title: "Stop Sign or Lesson",
+      objective: "Let them practice flipping a failure from an enemy into a teacher, out loud.",
+      setup: "Open floor or circle. No supplies.",
+      instructions: "1. Call out a common fail, like bombing a test, getting cut from a team, messing up at a job, or blowing up on somebody.\n2. First ask the group what it looks like to make that a stop sign. Quit, get bitter, give up. Take a couple answers.\n3. Then flip it. What does it look like to make that same fail a lesson? What would you do different, what did it teach you. Take a couple answers.\n4. Run three or four different fails, going enemy first then friend each time.",
+      debrief: "Same exact fail, two totally different roads. Which road do you usually take?\nWhat is one fail in your life right now you could flip from a stop sign to a lesson?"
+    },
+    "15": {
+      title: "The Comeback Plan",
+      objective: "Move from idea to one concrete, hard, real action that earns self-respect, and tie it to feeling, then choosing.",
+      setup: "Circle or small groups. No supplies. Paper optional.",
+      instructions: "1. Talk it through: real self-respect does not come from people hyping you up. It comes from doing something hard and watching yourself do it.\n2. Each future leader picks one hard thing they could actually do this week. Hard enough that doing it earns a little self-respect, real enough that it is possible. Apologize to someone. Show up somewhere they have been avoiding. Finish something they started.\n3. Then they name the feeling that usually stops them, fear, anger, embarrassment, not caring, and say out loud: I am going to feel that and do it anyway.\n4. Share with a partner, then pair up as check-ins for the week.\n5. A few share with the whole room.",
+      debrief: "Why that one? What makes it hard?\nWhat is the feeling that usually stops you, and what would it look like to feel it and move anyway?\nWho is going to know if you actually did it?"
+    }
+  },
+  16: {
+    "5": {
+      title: "Thirty Seconds",
+      objective: "Let future leaders practice the easiest form of influence, saying one real positive thing, right now in the room.",
+      setup: "Pairs. No supplies.",
+      instructions: "1. Everyone grabs a partner, ideally someone they do not know as well.\n2. Each person has thirty seconds to tell their partner one real, positive thing. Something they have noticed, something they respect. No fake stuff.\n3. Switch. The other partner goes.\n4. Quick round, keep it moving, then bring it back together.",
+      debrief: "How did it feel to get told something real? How did it feel to give it?\nThat took thirty seconds and cost nothing. Who in your life needs to hear something real from you?"
+    },
+    "10": {
+      title: "Who Is Watching You",
+      objective: "Move each kid from \"I am the one being helped\" to \"I am someone others watch and learn from.\"",
+      setup: "Circle or small groups. No supplies.",
+      instructions: "1. Ask them to think of one person younger than them, or who looks up to them. A sibling, a cousin, a kid in the neighborhood.\n2. Each future leader names that person out loud and one thing that person might copy from watching them, good or bad.\n3. Then the real question: what is one thing you would want them to catch you doing?\n4. Let a few share. Do not force everyone.",
+      debrief: "Did it change anything to realize someone is actually watching you?\nWhat is one thing you want to be the example of for that person?"
+    },
+    "15": {
+      title: "The Sendoff Circle (Program Closing Ritual)",
+      objective: "Close the full sixteen weeks by making sure every future leader is seen and named, and leaves carrying their own lit candle forward.",
+      setup: "One big circle, the whole group together, coaches included. Optional: battery LED tea lights or phone flashlights, one per person. Do not use real open flames indoors with the group.",
+      instructions: "1. Everyone stands in one circle. This is the last time this whole room is together, so treat it that way.\n2. Going around the circle, each future leader gets named for one real thing, by a coach or by the person next to them. One genuine sentence. Every single kid gets named. Nobody gets skipped.\n3. As each kid is named, they turn on their light, or just put a hand on the shoulder of the next person, and pass it on. The light moving around the circle is the influence moving on.\n4. When it has gone all the way around and everyone is holding a light, close with the message: you came in here being worked on, you are leaving with a lit candle. Somebody out there is waiting for you to light theirs.\n5. Let them have a minute. Then send them off.",
+      debrief: "What is one thing you are taking with you from these sixteen weeks?\nWho is the first candle you are going to light out there?"
+    }
+  }
+};
+
+const AFFIRMATIONS = {
+  1: "The gift was never where you started. The gift is that you get to choose what comes next. Tonight, you choose.",
+  2: "Nothing about tomorrow is promised. The one thing you control is whether you grow today. So plant something, then keep showing up while it is still underground.",
+  3: "You do not get to pick what gets thrown at you. You pick what you do with it. That is the one thing that is always yours, and it colors everything else. So today, you decide how this goes.",
+  4: "Anybody can start. Starting is easy. What counts is who is still in the race when it gets hard. You are going to fall. Everybody does. Just keep getting back in, because the win goes to the one who finishes.",
+  5: "Walls keep you safe, but they also keep you alone. A bridge lets the right people in while you still hold the gate. You do not have to trust everybody. Just stop locking out the ones who would actually show up for you.",
+  6: "What you are on the inside is the only thing that makes you rise. Nobody can see it, nobody can take it, and it is built one choice at a time. Whatever is behind you, you get to build it starting tonight.",
+  7: "Everything you want for your life is sitting on the other side of letting this go. All the possibilities are over there. Forgiveness is the door.",
+  8: "The number you put on yourself tonight is the number the world is going to pay you. So write it high, and back it up. You are not on the clearance rack. You never were.",
+  9: "Nobody is coming to run your life for you. That is the bad news and the best news, because it means nobody gets a vote unless you hand it to them. Step up to your own mirror. The only person who can take it from here is the one looking back.",
+  10: "Nobody in here is waiting to stop being scared. That day is not coming. Brave people are not the ones without fear, they are the ones who move with it. So move. Scared and all. Set the stone, take the step, and let the brave catch up to you.",
+  11: "You cannot win a thing you never start. The water will sit there flat forever, waiting on somebody, and that somebody is you. Pick up the stone. Make the throw. You do not have to see where the ripples go. You just have to begin.",
+  12: "I decide what my priorities are. I put my rocks in the jar first. If I don\'t choose them, someone else will choose for me.",
+  13: "My desire to improve starts with staying teachable. I stay moldable. I stay hungry. I am not done growing.",
+  14: "My success is set by my self-discipline. I keep my promises to myself. Everything worthwhile is uphill, and I climb.",
+  15: "I do not pick the pressure. I pick my comeback. I feel it, I choose my move, and I get back up. I shine through the grind.",
+  16: "My life matters when I light the way for someone else. I keep my candle lit, and I help others find their light. I am the example now."
+};
+
+CFG.lessons.forEach(l => { l.fileIds = FILE_IDS[l.number]; l.icebreakers = ICEBREAKERS[l.number]; l.affirmation = AFFIRMATIONS[l.number]; });
+function driveUrl(id){ return 'https://drive.google.com/file/d/'+id+'/view'; }
+function docLink(id, label){ return id
+  ? '<div class="docrow" onclick="openPdfViewer(\''+id+'\',\''+label+'\')"><span>'+label+'</span><span class="dl">View &rarr;</span></div>'
+  : '<div class="docrow"><span>'+label+'</span><span class="dl missing">Not uploaded</span></div>'; }
+
+function openPdfViewer(id, label){
+  var overlay = document.createElement('div');
+  overlay.className = 'pdf-viewer-overlay';
+  var top = document.createElement('div');
+  top.className = 'img-overlay-top';
+  var title = document.createElement('span');
+  title.textContent = label;
+  var closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '&times; Close';
+  closeBtn.onclick = function(){ overlay.remove(); };
+  top.appendChild(title);
+  top.appendChild(closeBtn);
+  var frame = document.createElement('iframe');
+  frame.src = 'https://drive.google.com/file/d/'+id+'/preview';
+  frame.setAttribute('sandbox','allow-scripts allow-same-origin');
+  frame.style.cssText = 'flex:1;width:100%;border:0';
+  overlay.appendChild(top);
+  overlay.appendChild(frame);
+  document.body.appendChild(overlay);
+}
+
+// Auto-calculate current lesson: Week 1 starts Sun May 31, 2026, changes every Sunday midnight
+function currentWeek(){
+  const start = new Date('2026-05-31T00:00:00-04:00'); // Week 1 Sunday, Eastern
+  const now = new Date();
+  const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+  const weeksElapsed = Math.floor((now - start) / msPerWeek);
+  return (((weeksElapsed % 16) + 16) % 16) + 1; // always 1–16, handles before start too
+}
+let _cur = currentWeek();
+function L(){ return CFG.lessons.find(x=>x.number===_cur) || CFG.lessons[0]; }
+function stepLesson(d){ let n=_cur+d; if(n<1)n=16; if(n>16)n=1; _cur=n; render(); }
+const norm = s => (s||"").toLowerCase().replace(/[\s\-_]/g,"");
+const app = document.getElementById('app');
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwNtae2bM5Lheebk_fm0HKxFUCE83Quqy8J_FH0nVf955ArbUIhjfr779QU6VcNAwO5sA/exec';
+let state = {view:'home', coach:false, demoWindow:false, adminPw:'', adminSettings:null, windowOverride:null};
+
+function embed(id){ return id
+  ? `<div class="video"><iframe src="https://www.youtube.com/embed/${id}?playsinline=1&rel=0" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>`
+  : `<div class="missing">Video coming soon for this week.</div>`; }
+
+function pdfThumb(id, label){ return id
+  ? `<div class="pdf-thumb" onclick="openImgOverlay('${id}','${label||''}')">
+       <img src="https://drive.google.com/thumbnail?id=${id}&sz=w400" alt="${label}" loading="lazy">
+       <div class="pdf-thumb-label">Tap to view full size</div>
+     </div>`
+  : `<div class="missing">${label || 'Document'} coming soon.</div>`; }
+
+function openImgOverlay(id, label){
+  var overlay = document.createElement('div');
+  overlay.className = 'img-overlay';
+  var top = document.createElement('div');
+  top.className = 'img-overlay-top';
+  var title = document.createElement('span');
+  title.textContent = label;
+  var closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '&times; Close';
+  closeBtn.onclick = function(){ overlay.remove(); };
+  top.appendChild(title);
+  top.appendChild(closeBtn);
+  var body = document.createElement('div');
+  body.className = 'img-overlay-body';
+  var img = document.createElement('img');
+  img.src = 'https://drive.google.com/thumbnail?id='+id+'&sz=w1600';
+  img.alt = label;
+  body.appendChild(img);
+  overlay.appendChild(top);
+  overlay.appendChild(body);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+}
+
+function windowOpen(){
+  if(state.demoWindow) return true;
+  // Check for admin override from server
+  if(state.windowOverride==='open') return true;
+  if(state.windowOverride==='closed') return false;
+  const w=CFG.window; const now=new Date();
+  const day=now.getDay(); // 0 Sun ... 3 Wed
+  const dayOk = day===3;
+  const mins=now.getHours()*60+now.getMinutes();
+  const [oh,om]=w.open.split(':').map(Number); const [ch,cm]=w.close.split(':').map(Number);
+  return dayOk && mins>=oh*60+om && mins<=ch*60+cm;
+}
+// Fetch window override on load
+fetch(SHEET_URL.replace('/exec','/exec'))
+  .then(r=>r.json())
+  .then(d=>{ if(d.windowOverride && d.windowOverride!=='auto'){ state.windowOverride=d.windowOverride; render(); }})
+  .catch(function(){});
+
+function home(){
+  app.innerHTML = `
+   <div class="lesson-banner">
+     <div class="lesson-week">This Week &middot; Week ${L().number}</div>
+     <div class="lesson-name">${L().name}</div>
+     <div class="lesson-take">"${L().takeaway}"</div>
+   </div>
+   <div class="switcher">
+     <button onclick="stepLesson(-1)">&larr;</button>
+     <span>Previewing Week ${L().number} of 16</span>
+     <button onclick="stepLesson(1)">&rarr;</button>
+   </div>
+   <button class="btn btn-gold" onclick="go('parent')">I'm a Parent or Family</button>
+   <button class="btn btn-out" onclick="go('coachgate')">I'm a Coach or Mentor</button>
+   ${attendanceCard()}
+   ${eventsCard()}
+   ${homeScreenBanner()}
+   <div class="row-links">
+     <a href="${CFG.website}" target="_blank">Visit MartinCountyPAL.org</a>
+     <a href="${CFG.youtube}" target="_blank">Subscribe on YouTube</a>
+   </div>`;
+  logVisit();
+}
+
+function parentView(){
+  const l=L();
+  app.innerHTML = `
+   <button class="back" onclick="go('home')">&larr; Back</button>
+   <div class="lesson-banner">
+     <div class="lesson-week">This Week &middot; Week ${l.number}</div>
+     <div class="lesson-name">${l.name}</div>
+   </div>
+   <div class="card">
+     <div class="sect-label">Weekly Brief</div>
+     ${embed(l.brief,'the Weekly Brief')}
+   </div>
+   <div class="card">
+     <div class="sect-label">Parent Podcast</div>
+     ${embed(l.parent,'the Parent Podcast')}
+   </div>
+   <div class="card">
+     <div class="sect-label">What Your Young Leader Is Working On</div>
+     <div class="action-box">${l.action}</div>
+   </div>
+   <div class="card">
+     <div class="sect-label">Lesson Infographic</div>
+     ${pdfThumb(l.fileIds.infographic, 'Infographic')}
+   </div>
+   <div class="row-links">
+     <a href="${CFG.website}" target="_blank">MartinCountyPAL.org</a>
+     <a href="${CFG.youtube}" target="_blank">Subscribe on YouTube</a>
+   </div>`;
+  wireAttendance();
+}
+
+function attendanceCard(){
+  const open = windowOpen();
+  if(open){
+    return `<div class="card checkin-live">
+       <div class="live-dot">&#9679; Check-In Open</div>
+       <div class="sect-label" style="margin-top:6px">Tonight's Check-In</div>
+       <p style="margin-bottom:10px;font-size:15px;opacity:.95">Type your name and tonight's word.</p>
+       <input type="text" id="kidname" placeholder="Your name">
+       <input type="text" id="kidword" placeholder="Tonight's word">
+       <button class="btn btn-gold" style="margin-top:8px" onclick="checkIn()">Check In</button>
+       <div id="ci-msg"></div>
+     </div>`;
+  }
+  return `<div class="checkin-quiet">
+     <span>Check-in opens Wednesdays 5:30 to 7:30 PM</span>
+   </div>`;
+}
+
+function eventsCard(){
+  if(!CFG.events || CFG.events.length===0){
+    return `<div class="card"><div class="sect-label">Upcoming Events</div>
+      <div class="missing">No events posted yet. You'll add these in the content file.</div></div>`;
+  }
+  const items = CFG.events.map(e=>`<div class="evt"><div class="d">${e.date||''} ${e.time||''}</div>
+     <div style="font-weight:700">${e.title||''}</div>
+     <div style="font-size:14px;opacity:.8">${e.location ? e.location+'<br>' : ''}${e.note||''}</div>
+     ${e.rsvp ? '<a href="'+e.rsvp+'" target="_blank" style="display:inline-block;margin-top:8px;color:var(--gold);font-family:Oswald;font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:14px">RSVP &rarr;</a>' : ''}</div>`).join('');
+  return `<div class="card"><div class="sect-label">Upcoming Events</div>${items}</div>`;
+}
+
+function wireAttendance(){}
+function toggleDemo(){ state.demoWindow=!state.demoWindow; render(); }
+
+function checkIn(){
+  const n=document.getElementById('kidname').value.trim();
+  const w=document.getElementById('kidword').value;
+  const msg=document.getElementById('ci-msg');
+  if(!n){ msg.innerHTML='<div class="err">Please enter your name.</div>'; return; }
+  if(norm(w)!==norm(L().word)){
+    msg.innerHTML='<div class="err">That is not the word for tonight. Ask a coach.</div>';
     return;
   }
-  var P = window.PARTY, H = P.hero, R = P.rsvp, W = P.wall;
+  msg.innerHTML='<div class="ok">Checking in...</div>';
+  fetch(SHEET_URL, {
+    method: 'POST',
+    body: JSON.stringify({name: n, word: w, lessonNumber: L().number, lessonName: L().name}),
+    headers: {'Content-Type': 'text/plain'}
+  })
+  .then(r => r.json())
+  .then(d => {
+    if(d.status==='already') msg.innerHTML=`<div class="ok">${n}, you're already checked in for tonight!</div>`;
+    else msg.innerHTML=`<div class="ok">You're checked in, ${n}! See you next week.</div>`;
+  })
+  .catch(() => {
+    msg.innerHTML='<div class="err">Could not reach the server. Ask a coach for help.</div>';
+  });
+}
 
-  function esc(s){
-    return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+function coachGate(){
+  app.innerHTML=`
+   <button class="back" onclick="go('home')">&larr; Back</button>
+   <div class="gate-title">Coach Access</div>
+   <div class="gate-sub">Mentor materials for this week</div>
+   <div class="card">
+     <input type="password" id="cpw" placeholder="Mentor password">
+     <button class="btn btn-gold" onclick="coachLogin()">Enter</button>
+     <div id="cg-msg"></div>
+   </div>`;
+}
+function coachLogin(){
+  const pw=document.getElementById('cpw').value;
+  const msg=document.getElementById('cg-msg');
+  msg.innerHTML='<div class="ok">Verifying...</div>';
+  fetch(SHEET_URL, {
+    method:'POST',
+    body:JSON.stringify({action:'coachLogin', password:pw}),
+    headers:{'Content-Type':'text/plain'}
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.status==='ok'){ state.coach=true; logCoachLogin(); go('coach'); }
+    else msg.innerHTML='<div class="err">Incorrect password.</div>';
+  })
+  .catch(()=>msg.innerHTML='<div class="err">Could not reach the server.</div>');
+}
+
+function coachView(){
+  const l=L();
+  app.innerHTML=`
+   <button class="back" onclick="go('home')">&larr; Sign out</button>
+   <div class="lesson-banner">
+     <span class="pill">Mentor Lane</span>
+     <div class="lesson-name" style="margin-top:8px">${l.name}</div>
+     <div class="lesson-week">Week ${l.number} &middot; Word tonight: ${l.word}</div>
+   </div>
+   <div class="card"><div class="sect-label">Coaches Corner (Mentor Prep)</div>${embed(l.corner,'Coaches Corner')}</div>
+   <div class="card"><div class="sect-label">Coaches Brief</div>${embed(l.coachBrief,'the Coaches Brief')}</div>
+   <div class="card">
+     <div class="sect-label">This Week's Documents</div>
+     ${docLink(l.fileIds.workbook, 'Session Workbook')}
+     ${docLink(l.fileIds.coachesCard, 'Coaches Card')}
+   </div>
+   <div class="card">
+     <div class="sect-label">Infographic</div>
+     ${pdfThumb(l.fileIds.infographic, 'Infographic')}
+   </div>
+   <div class="card">
+     <div class="sect-label">Coaches Infographic</div>
+     ${pdfThumb(l.fileIds.coachesInfographic, 'Coaches Infographic')}
+   </div>
+   <div class="card"><div class="sect-label">Icebreaker</div>
+     ${l.icebreakers ? `
+       <div class="time-btns">
+         <button class="time-btn" onclick="showIcebreaker('5')">5 Min</button>
+         <button class="time-btn" onclick="showIcebreaker('10')">10 Min</button>
+         <button class="time-btn" onclick="showIcebreaker('15')">15 Min</button>
+       </div>
+       <div id="ib-content"></div>
+     ` : '<div class="missing">No icebreakers loaded for this week.</div>'}
+   </div>
+   ${l.affirmation ? `<div class="card"><div class="sect-label">Weekly Affirmation</div>
+     <div class="affirm-text">${l.affirmation}</div></div>` : ''}`;
+}
+
+function showIcebreaker(mins){
+  const ib = L().icebreakers[mins];
+  if(!ib) return;
+  document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  const nl2br = s => (s||'').replace(/\n/g,'<br>');
+  document.getElementById('ib-content').innerHTML = `
+    <div class="ib-detail">
+      <h3>${ib.title}</h3>
+      <div class="ib-field"><strong>Objective</strong>${nl2br(ib.objective)}</div>
+      <div class="ib-field"><strong>Setup</strong>${nl2br(ib.setup)}</div>
+      <div class="ib-field"><strong>Instructions</strong>${nl2br(ib.instructions)}</div>
+      <div class="ib-field"><strong>Debrief</strong>${nl2br(ib.debrief)}</div>
+    </div>`;
+}
+
+// ─── Home Screen Banner ────────────────────────────────────────
+function homeScreenBanner(){
+  if(localStorage.getItem('pal-hs-dismissed')) return '';
+  var isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isAndroid = /android/i.test(navigator.userAgent);
+  var isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if(isStandalone) return '';
+  if(!isIos && !isAndroid) return '';
+  var instructions = isIos
+    ? 'Tap the <strong>share button</strong> (square with arrow) then <strong>"Add to Home Screen"</strong>'
+    : 'Tap the <strong>menu (three dots)</strong> then <strong>"Add to Home Screen"</strong>';
+  return `<div class="hs-banner">
+    <div class="hs-icon">📱</div>
+    <div class="hs-text">Save this as an app! ${instructions}</div>
+    <button class="hs-close" onclick="dismissHsBanner()">&times;</button>
+  </div>`;
+}
+function dismissHsBanner(){
+  localStorage.setItem('pal-hs-dismissed','1');
+  document.querySelector('.hs-banner').remove();
+}
+
+// ─── Visit & Coach Login Counters ──────────────────────────────
+function logVisit(){
+  var key = 'pal-visit-' + new Date().toDateString();
+  if(!sessionStorage.getItem(key)){
+    sessionStorage.setItem(key,'1');
+    fetch(SHEET_URL, {
+      method:'POST',
+      body:JSON.stringify({action:'logVisit'}),
+      headers:{'Content-Type':'text/plain'}
+    }).catch(function(){});
   }
+}
+function logCoachLogin(){
+  fetch(SHEET_URL, {
+    method:'POST',
+    body:JSON.stringify({action:'logCoachLogin'}),
+    headers:{'Content-Type':'text/plain'}
+  }).catch(function(){});
+}
 
-  var factsHTML = P.facts.map(function(x){
-    return '<div class="fact"><span class="ic">'+esc(x.icon)+'</span>'+
-      '<div><div class="lab">'+esc(x.label)+'</div>'+
-      '<div class="val">'+esc(x.value)+'</div></div></div>';
-  }).join("");
+// ─── Admin Gate ────────────────────────────────────────────────
+function adminGate(){
+  app.innerHTML=`
+   <button class="back" onclick="go('home')">&larr; Back</button>
+   <div class="gate-title">Admin Panel</div>
+   <div class="gate-sub">Program management</div>
+   <div class="card">
+     <input type="password" id="apw" placeholder="Admin password">
+     <button class="btn btn-gold" onclick="adminLogin()">Enter</button>
+     <div id="ag-msg"></div>
+   </div>`;
+}
+function adminLogin(){
+  const pw=document.getElementById('apw').value;
+  const msg=document.getElementById('ag-msg');
+  msg.innerHTML='<div class="ok">Verifying...</div>';
+  fetch(SHEET_URL, {
+    method:'POST',
+    body:JSON.stringify({action:'adminLogin', password:pw}),
+    headers:{'Content-Type':'text/plain'}
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.status==='ok'){
+      state.adminPw=pw;
+      state.adminSettings=d.settings;
+      state.adminCounts=d.counts||{};
+      go('admin');
+    } else msg.innerHTML='<div class="err">Incorrect password.</div>';
+  })
+  .catch(()=>msg.innerHTML='<div class="err">Could not reach the server.</div>');
+}
 
-  root.innerHTML =
-    '<div class="ribbon"><span>'+esc(P.ribbon)+esc(P.ribbon)+'</span></div>'+
+// ─── Admin Panel ───────────────────────────────────────────────
+function adminView(){
+  const s = state.adminSettings || {};
+  const events = s.events || [];
+  const evtHtml = events.length === 0
+    ? '<div class="missing">No events. Add one below.</div>'
+    : events.map((e,i)=>`<div class="admin-evt">
+        <div class="admin-evt-info">
+          <div style="font-weight:700">${e.title||''}</div>
+          <div style="font-size:13px;opacity:.7">${e.date||''} ${e.time||''} ${e.location||''}</div>
+        </div>
+        <button class="admin-evt-del" onclick="removeEvent(${i})">Remove</button>
+      </div>`).join('');
 
-    '<div class="hero">'+
-      '<div class="kicker">'+esc(H.kicker)+'</div>'+
-      '<div class="l1">'+esc(H.line1)+'</div>'+
-      '<div class="big">'+esc(H.bigNumber)+'</div>'+
-      '<div class="l2">'+esc(H.line2)+'</div>'+
-      '<div class="punch">'+esc(H.punch)+'</div>'+
-      '<div class="sub">'+esc(H.sub)+'</div>'+
-      '<button class="cta" id="cta">'+esc(H.cta)+'</button>'+
-    '</div>'+
+  const ovr = s.windowOverride || 'auto';
 
-    '<div class="countdown" id="countdown">'+
-      '<div class="clab" id="clab">'+esc(P.countdownLabel)+'</div>'+
-      '<div class="clocks" id="clocks">'+
-        '<div class="unit"><div class="num" id="cd">--</div><div class="ulab">Days</div></div>'+
-        '<div class="unit"><div class="num" id="ch">--</div><div class="ulab">Hrs</div></div>'+
-        '<div class="unit"><div class="num" id="cm">--</div><div class="ulab">Min</div></div>'+
-        '<div class="unit"><div class="num" id="cs">--</div><div class="ulab">Sec</div></div>'+
-      '</div>'+
-    '</div>'+
+  const c = state.adminCounts || {};
 
-    '<div class="facts">'+factsHTML+'</div>'+
+  app.innerHTML=`
+   <button class="back" onclick="go('home')">&larr; Sign out</button>
+   <div class="gate-title">Admin Panel</div>
 
-    '<div class="rsvp" id="rsvpZone">'+
-      '<h2>'+esc(R.heading)+'</h2>'+
-      '<div class="rsub">'+esc(R.sub)+'</div>'+
-      '<form id="form" novalidate>'+
-        '<div class="field"><label>'+esc(R.nameLabel)+'</label><input type="text" id="fName" placeholder="'+esc(R.namePlaceholder)+'"></div>'+
-        '<div class="field"><label>'+esc(R.phoneLabel)+'</label><input type="tel" id="fPhone" placeholder="'+esc(R.phonePlaceholder)+'"></div>'+
-        '<div class="field"><label>'+esc(R.comingLabel)+'</label><div class="toggle">'+
-            '<button type="button" id="bYes">'+esc(R.comingYes)+'</button>'+
-            '<button type="button" id="bNo">'+esc(R.comingNo)+'</button></div></div>'+
-        '<div class="field"><label>'+esc(R.headcountLabel)+'</label><input type="text" id="fCount" placeholder="'+esc(R.headcountPlaceholder)+'"></div>'+
-        '<div class="field"><label>'+esc(R.bringingLabel)+'</label><input type="text" id="fBring" placeholder="'+esc(R.bringingPlaceholder)+'"></div>'+
-        '<div class="field"><label>'+esc(R.costumeLabel)+'</label><textarea id="fCostume" placeholder="'+esc(R.costumePlaceholder)+'"></textarea></div>'+
-        '<button type="submit" class="submit">'+esc(R.submit)+'</button>'+
-        '<div class="err" id="err"></div>'+
-      '</form>'+
-      '<div class="success" id="ok"><div class="badge" id="okBadge"></div><h3 id="okHead"></h3><p id="okBody"></p></div>'+
-    '</div>'+
+   <div class="card">
+     <div class="sect-label">This Week</div>
+     <div style="display:flex;gap:12px;text-align:center">
+       <div style="flex:1;background:rgba(255,255,255,.05);border-radius:10px;padding:14px">
+         <div style="font-family:Oswald;font-size:32px;color:var(--gold-lt)">${c.visits||0}</div>
+         <div style="font-size:12px;opacity:.7;margin-top:4px">Visits</div>
+       </div>
+       <div style="flex:1;background:rgba(255,255,255,.05);border-radius:10px;padding:14px">
+         <div style="font-family:Oswald;font-size:32px;color:var(--gold-lt)">${c.coachLogins||0}</div>
+         <div style="font-size:12px;opacity:.7;margin-top:4px">Coach Logins</div>
+       </div>
+       <div style="flex:1;background:rgba(255,255,255,.05);border-radius:10px;padding:14px">
+         <div style="font-family:Oswald;font-size:32px;color:var(--gold-lt)">${c.checkIns||0}</div>
+         <div style="font-size:12px;opacity:.7;margin-top:4px">Check-Ins</div>
+       </div>
+     </div>
+   </div>
 
-    '<div class="roster" id="roster">'+
-      '<h2>WHO\u2019S IN</h2>'+
-      '<div class="rstsub">Confirmed patriots. Updated live.</div>'+
-      '<div class="count" id="rosterCount"></div>'+
-      '<div class="roster-list" id="rosterList"><div class="roster-empty">Loading...</div></div>'+
-    '</div>'+
+   <div class="card">
+     <div class="sect-label">Coach Password</div>
+     <div class="admin-row">
+       <input type="text" id="admin-cpw" value="${s.coachPassword||''}" placeholder="Coach password">
+       <button class="btn btn-gold" style="width:auto;margin:0;padding:12px 20px" onclick="saveCoachPw()">Save</button>
+     </div>
+     <div id="cpw-msg"></div>
+   </div>
 
-    '<div class="wall">'+
-      '<h2>'+esc(W.heading)+'</h2>'+
-      '<div class="wsub">'+esc(W.sub)+'</div>'+
-      '<div class="poster">'+
-        '<input type="text" id="wName" placeholder="'+esc(W.namePlaceholder)+'">'+
-        '<textarea id="wMsg" placeholder="'+esc(W.msgPlaceholder)+'"></textarea>'+
-        '<button type="button" class="post" id="wPost">'+esc(W.postButton)+'</button>'+
-        '<div class="werr" id="wErr"></div>'+
-      '</div>'+
-      '<div class="feed" id="feed"></div>'+
-    '</div>'+
+   <div class="card">
+     <div class="sect-label">Attendance Window</div>
+     <p style="font-size:14px;opacity:.8;margin-bottom:8px">Override the Wednesday 5:30–7:30 PM schedule</p>
+     <div class="override-btns">
+       <button class="override-btn ${ovr==='auto'?'active':''}" onclick="saveOverride('auto')">Auto</button>
+       <button class="override-btn ${ovr==='open'?'active':''}" onclick="saveOverride('open')">Force Open</button>
+       <button class="override-btn ${ovr==='closed'?'active':''}" onclick="saveOverride('closed')">Force Closed</button>
+     </div>
+     <div id="ovr-msg"></div>
+   </div>
 
-    '<div class="foot">'+esc(P.footer)+'</div>';
+   <div class="card">
+     <div class="sect-label">Upcoming Events</div>
+     <div id="evt-list">${evtHtml}</div>
+     <div style="margin-top:14px;border-top:1px solid rgba(216,168,72,.2);padding-top:14px">
+       <div class="sect-label" style="font-size:12px">Add Event</div>
+       <input type="text" id="evt-title" placeholder="Event title">
+       <div class="admin-row">
+         <input type="text" id="evt-date" placeholder="Date (e.g. Sat Sep 19)">
+         <input type="text" id="evt-time" placeholder="Time">
+       </div>
+       <input type="text" id="evt-loc" placeholder="Location">
+       <input type="text" id="evt-note" placeholder="Note (optional)">
+       <input type="text" id="evt-rsvp" placeholder="RSVP link (optional)">
+       <button class="btn btn-out" style="margin-top:8px" onclick="addEvent()">Add Event</button>
+     </div>
+     <div id="evt-msg"></div>
+   </div>
 
-  /* ---- RSVP behavior ---- */
-  var coming = null;
-  var bYes = document.getElementById("bYes");
-  var bNo  = document.getElementById("bNo");
-  bYes.addEventListener("click", function(){ coming=true; bYes.classList.add("on-yes"); bNo.classList.remove("on-no"); });
-  bNo.addEventListener("click", function(){ coming=false; bNo.classList.add("on-no"); bYes.classList.remove("on-yes"); });
-  document.getElementById("cta").addEventListener("click", function(){
-    document.getElementById("rsvpZone").scrollIntoView({behavior:"smooth", block:"start"});
-  });
-  document.getElementById("form").addEventListener("submit", function(e){
-    e.preventDefault();
-    var err = document.getElementById("err");
-    var name = document.getElementById("fName").value.trim();
-    if(!name){ err.textContent = "Need a name, patriot."; return; }
-    if(coming === null){ err.textContent = "You coming or not? Tap one."; return; }
-    err.textContent = "";
-    var payload = { name:name, phone:document.getElementById("fPhone").value.trim(), coming:coming,
-      headcount:document.getElementById("fCount").value.trim(),
-      bringing:document.getElementById("fBring").value.trim(),
-      costume:document.getElementById("fCostume").value.trim() };
-    var btn = document.querySelector(".submit");
-    var btnText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = "SENDING...";
-    fetch(P.endpointUrl, { method: "POST", mode: "no-cors", body: JSON.stringify(payload) })
-      .then(function(){
-        document.getElementById("form").style.display = "none";
-        var S = coming ? R.successYes : R.successNo;
-        document.getElementById("okBadge").textContent = S.badge;
-        document.getElementById("okHead").textContent = S.head;
-        document.getElementById("okBody").textContent = S.body;
-        var ok = document.getElementById("ok"); ok.classList.add("show");
-        ok.scrollIntoView({behavior:"smooth", block:"center"});
-        setTimeout(loadRoster, 3000);
-      })
-      .catch(function(){
-        btn.disabled = false;
-        btn.textContent = btnText;
-        err.textContent = "Something broke. Try again in a sec.";
-      });
-  });
+   <div class="card">
+     <div class="sect-label">Quick Links</div>
+     <a class="docrow" href="https://docs.google.com/spreadsheets" target="_blank">
+       <span>Attendance Spreadsheet</span><span class="dl">Open &rarr;</span></a>
+   </div>`;
+}
 
-  /* ---- WALL behavior (saved to Google Sheet) ---- */
-  var feed = document.getElementById("feed");
-  function renderFeed(messages){
-    if(!messages.length){
-      feed.innerHTML = '<div class="roster-empty">No posts yet. Be the first.</div>';
-      return;
+function saveCoachPw(){
+  const pw = document.getElementById('admin-cpw').value.trim();
+  const msg = document.getElementById('cpw-msg');
+  if(!pw){ msg.innerHTML='<div class="status-msg status-err">Password cannot be empty.</div>'; return; }
+  msg.innerHTML='<div class="status-msg">Saving...</div>';
+  fetch(SHEET_URL, {
+    method:'POST',
+    body:JSON.stringify({action:'saveCoachPassword', adminPassword:state.adminPw, coachPassword:pw}),
+    headers:{'Content-Type':'text/plain'}
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.status==='ok'){
+      state.adminSettings.coachPassword=pw;
+      msg.innerHTML='<div class="status-msg status-ok">Password updated.</div>';
+    } else msg.innerHTML='<div class="status-msg status-err">Failed to save.</div>';
+  })
+  .catch(()=>msg.innerHTML='<div class="status-msg status-err">Could not reach server.</div>');
+}
+
+function saveOverride(val){
+  const msg = document.getElementById('ovr-msg');
+  msg.innerHTML='<div class="status-msg">Saving...</div>';
+  fetch(SHEET_URL, {
+    method:'POST',
+    body:JSON.stringify({action:'saveWindowOverride', adminPassword:state.adminPw, windowOverride:val}),
+    headers:{'Content-Type':'text/plain'}
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.status==='ok'){
+      state.adminSettings.windowOverride=val;
+      document.querySelectorAll('.override-btn').forEach(b=>b.classList.remove('active'));
+      event.target.classList.add('active');
+      msg.innerHTML='<div class="status-msg status-ok">Window set to '+val+'.</div>';
     }
-    feed.innerHTML = messages.map(function(m){
-      return '<div class="bubble"><div class="who">'+esc(m.name)+'</div>'+
-        '<div class="txt">'+esc(m.text)+'</div></div>';
-    }).join("");
-  }
-  fetch(P.endpointUrl + "?action=wall")
-    .then(function(r){ return r.json(); })
-    .then(function(posts){ renderFeed(posts); })
-    .catch(function(){ feed.innerHTML = '<div class="roster-empty">Couldn\u2019t load posts. Refresh to try again.</div>'; });
-  document.getElementById("wPost").addEventListener("click", function(){
-    var wErr = document.getElementById("wErr");
-    var nm = document.getElementById("wName").value.trim();
-    var tx = document.getElementById("wMsg").value.trim();
-    if(!nm){ wErr.textContent = "Add your name first."; return; }
-    if(!tx){ wErr.textContent = "Say something, patriot."; return; }
-    wErr.textContent = "";
-    var postBtn = document.getElementById("wPost");
-    var postText = postBtn.textContent;
-    postBtn.disabled = true;
-    postBtn.textContent = "POSTING...";
-    fetch(P.endpointUrl, { method: "POST", mode: "no-cors", body: JSON.stringify({ type: "wall", name: nm, text: tx }) })
-      .then(function(){
-        postBtn.disabled = false;
-        postBtn.textContent = postText;
-        document.getElementById("wMsg").value = "";
-        // reload wall posts
-        fetch(P.endpointUrl + "?action=wall")
-          .then(function(r){ return r.json(); })
-          .then(function(posts){ renderFeed(posts); });
-      })
-      .catch(function(){
-        postBtn.disabled = false;
-        postBtn.textContent = postText;
-        wErr.textContent = "Something broke. Try again in a sec.";
-      });
-  });
+  })
+  .catch(()=>msg.innerHTML='<div class="status-msg status-err">Could not reach server.</div>');
+}
 
-  /* ---- ROSTER (fetch guest list) ---- */
-  function loadRoster(){
-    fetch(P.endpointUrl)
-      .then(function(r){ return r.json(); })
-      .then(function(guests){
-        var list = document.getElementById("rosterList");
-        var count = document.getElementById("rosterCount");
-        if(!guests.length){
-          list.innerHTML = '<div class="roster-empty">No confirmed patriots yet. Be the first.</div>';
-          count.textContent = "0";
-          return;
-        }
-        count.textContent = guests.length;
-        list.innerHTML = guests.map(function(g){
-          return '<div class="roster-item"><div class="rname">'+esc(g.name)+'</div>'+
-            (g.costume ? '<div class="rdash">\u2014 \u2605 \u2014</div><div class="rcostume">'+esc(g.costume)+'</div>' : '')+
-            '</div>';
-        }).join("");
-      })
-      .catch(function(){
-        document.getElementById("rosterList").innerHTML = '<div class="roster-empty">Couldn\u2019t load the list. Refresh to try again.</div>';
-      });
-  }
-  loadRoster();
+function addEvent(){
+  const title = document.getElementById('evt-title').value.trim();
+  const date = document.getElementById('evt-date').value.trim();
+  const time = document.getElementById('evt-time').value.trim();
+  const loc = document.getElementById('evt-loc').value.trim();
+  const note = document.getElementById('evt-note').value.trim();
+  const rsvp = document.getElementById('evt-rsvp').value.trim();
+  const msg = document.getElementById('evt-msg');
+  if(!title){ msg.innerHTML='<div class="status-msg status-err">Title is required.</div>'; return; }
+  const events = state.adminSettings.events || [];
+  const evt = {title:title, date:date, time:time, location:loc, note:note};
+  if(rsvp) evt.rsvp = rsvp;
+  events.push(evt);
+  msg.innerHTML='<div class="status-msg">Saving...</div>';
+  fetch(SHEET_URL, {
+    method:'POST',
+    body:JSON.stringify({action:'saveEvents', adminPassword:state.adminPw, events:events}),
+    headers:{'Content-Type':'text/plain'}
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.status==='ok'){
+      state.adminSettings.events=events;
+      go('admin');
+    } else msg.innerHTML='<div class="status-msg status-err">Failed to save.</div>';
+  })
+  .catch(()=>msg.innerHTML='<div class="status-msg status-err">Could not reach server.</div>');
+}
 
-  /* ---- COUNTDOWN (real, client-side) ---- */
-  var target = new Date(P.countdownTo).getTime();
-  var cd=document.getElementById("cd"), ch=document.getElementById("ch"),
-      cm=document.getElementById("cm"), cs=document.getElementById("cs");
-  function pad(n){ return (n<10?"0":"")+n; }
-  function tick(){
-    if(isNaN(target)) return;
-    var diff = target - Date.now();
-    if(diff <= 0){
-      document.getElementById("clocks").style.display="none";
-      var box=document.getElementById("countdown"); box.classList.add("fired");
-      document.getElementById("clab").textContent = P.countdownDone;
-      clearInterval(timer); return;
+function removeEvent(idx){
+  const events = state.adminSettings.events || [];
+  events.splice(idx,1);
+  fetch(SHEET_URL, {
+    method:'POST',
+    body:JSON.stringify({action:'saveEvents', adminPassword:state.adminPw, events:events}),
+    headers:{'Content-Type':'text/plain'}
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.status==='ok'){
+      state.adminSettings.events=events;
+      go('admin');
     }
-    var s=Math.floor(diff/1000);
-    cd.textContent = Math.floor(s/86400);
-    ch.textContent = pad(Math.floor((s%86400)/3600));
-    cm.textContent = pad(Math.floor((s%3600)/60));
-    cs.textContent = pad(s%60);
-  }
-  tick();
-  var timer = setInterval(tick, 1000);
+  });
+}
 
-})();
+// ─── Routing ───────────────────────────────────────────────────
+function go(v){ state.view=v; if(v==='home'){state.coach=false; state.adminPw=''; state.adminSettings=null;} render(); }
+function render(){
+  if(state.view==='home') home();
+  else if(state.view==='parent') parentView();
+  else if(state.view==='coachgate') coachGate();
+  else if(state.view==='coach') coachView();
+  else if(state.view==='admingate') adminGate();
+  else if(state.view==='admin') adminView();
+}
+render();
 </script>
 </body>
 </html>
