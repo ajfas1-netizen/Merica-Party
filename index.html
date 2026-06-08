@@ -330,7 +330,7 @@
         '<div class="txt">'+esc(m.text)+'</div></div>';
     }).join("");
   }
-  fetch(P.endpointUrl + "?action=wall")
+  fetch(P.endpointUrl + "?action=wall&_=" + Date.now())
     .then(function(r){ return r.json(); })
     .then(function(posts){ renderFeed(posts); })
     .catch(function(){ feed.innerHTML = '<div class="roster-empty">Couldn\u2019t load posts. Refresh to try again.</div>'; });
@@ -351,7 +351,7 @@
         postBtn.textContent = postText;
         document.getElementById("wMsg").value = "";
         // reload wall posts
-        fetch(P.endpointUrl + "?action=wall")
+        fetch(P.endpointUrl + "?action=wall&_=" + Date.now())
           .then(function(r){ return r.json(); })
           .then(function(posts){ renderFeed(posts); });
       })
@@ -364,9 +364,10 @@
 
   /* ---- ROSTER (fetch guest list) ---- */
   function loadRoster(){
-    fetch(P.endpointUrl)
+    fetch(P.endpointUrl + "?_=" + Date.now())
       .then(function(r){ return r.json(); })
-      .then(function(guests){
+      .then(function(data){
+        var guests = data.guests;
         var list = document.getElementById("rosterList");
         var count = document.getElementById("rosterCount");
         if(!guests.length){
@@ -374,7 +375,7 @@
           count.textContent = "0";
           return;
         }
-        count.textContent = guests.length;
+        count.textContent = data.totalHeadcount;
         list.innerHTML = guests.map(function(g){
           return '<div class="roster-item"><div class="rname">'+esc(g.name)+'</div>'+
             (g.costume ? '<div class="rdash">\u2014 \u2605 \u2014</div><div class="rcostume">'+esc(g.costume)+'</div>' : '')+
@@ -388,7 +389,7 @@
   loadRoster();
 
   /* ---- FALLEN (fetch no-shows) ---- */
-  fetch(P.endpointUrl + "?action=fallen")
+  fetch(P.endpointUrl + "?action=fallen&_=" + Date.now())
     .then(function(r){ return r.json(); })
     .then(function(fallen){
       if(!fallen.length) return;
