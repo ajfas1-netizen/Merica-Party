@@ -294,11 +294,6 @@
       '<div class="speedo-q">Who wants to see Mike in his Speedo?</div>'+
       '<div class="st-count" id="speedoCount">...</div>'+
       '<div class="st-label">say <strong>YES</strong></div>'+
-      '<div class="speedo-btns" id="speedoBtns">'+
-        '<button type="button" class="sv-yes" id="svYes">HECK YES 🨲</button>'+
-        '<button type="button" class="sv-no" id="svNo">Hard pass</button>'+
-      '</div>'+
-      '<div class="voted-msg" id="svMsg"></div>'+
       '<div class="mike-verdict">'+
         '<div class="mv-badge">OFFICIAL STATEMENT</div>'+
         '<div class="mv-no">NO.</div>'+
@@ -408,12 +403,15 @@
         var guests = data.guests;
         var list = document.getElementById("rosterList");
         var count = document.getElementById("rosterCount");
+        var sc = document.getElementById("speedoCount");
         if(!guests.length){
           list.innerHTML = '<div class="roster-empty">No confirmed patriots yet. Be the first.</div>';
           count.textContent = "0";
+          if(sc) sc.textContent = "0";
           return;
         }
         count.textContent = data.totalHeadcount;
+        if(sc) sc.textContent = Math.max(0, guests.length - 1);
         list.innerHTML = guests.map(function(g){
           return '<div class="roster-item"><div class="rname">'+esc(g.name)+'</div>'+
             (g.costume ? '<div class="rdash">\u2014 \u2605 \u2014</div><div class="rcostume">'+esc(g.costume)+'</div>' : '')+
@@ -437,31 +435,6 @@
       }).join("");
     })
     .catch(function(){});
-
-  /* ---- SPEEDO SURVEY ---- */
-  var speedoVoted = false;
-  function loadSpeedoCount(){
-    fetch(P.endpointUrl + "?action=speedo&_=" + Date.now())
-      .then(function(r){ return r.json(); })
-      .then(function(d){ document.getElementById("speedoCount").textContent = d.count || 0; })
-      .catch(function(){ document.getElementById("speedoCount").textContent = "0"; });
-  }
-  loadSpeedoCount();
-  function castSpeedoVote(msg){
-    if(speedoVoted) return;
-    speedoVoted = true;
-    document.getElementById("speedoBtns").style.display = "none";
-    document.getElementById("svMsg").textContent = msg;
-    fetch(P.endpointUrl, { method:"POST", mode:"no-cors", body:JSON.stringify({ type:"speedo" }) })
-      .then(function(){ setTimeout(loadSpeedoCount, 2000); })
-      .catch(function(){});
-  }
-  document.getElementById("svYes").addEventListener("click", function(){
-    castSpeedoVote("Logged. You’re in good company.");
-  });
-  document.getElementById("svNo").addEventListener("click", function(){
-    castSpeedoVote("Bold of you to think that’s an option. Counted as a yes.");
-  });
 
   /* ---- COUNTDOWN (real, client-side) ---- */
   var target = new Date(P.countdownTo).getTime();
