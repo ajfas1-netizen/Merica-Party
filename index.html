@@ -177,6 +177,26 @@
   .fallen-list{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
   .fallen-name{ background:var(--navy2); border:2px solid var(--navy3); border-radius:3px; padding:6px 14px; font-weight:700; font-size:13px; color:#7f88a5; text-transform:uppercase; letter-spacing:0.5px; text-decoration:line-through; }
 
+  /* ---------- SPEEDO SURVEY ---------- */
+  .speedo-section{
+    background:var(--navy); padding:32px 22px 36px; border-top:3px solid var(--gold); text-align:center;
+    background-image:radial-gradient(circle at 50% 0%, rgba(237,183,58,0.14), transparent 55%);
+  }
+  .speedo-section h2{ font-family:"Black Ops One", system-ui; font-size:clamp(28px,8vw,40px); line-height:0.92; color:var(--cream); letter-spacing:0.5px; margin-bottom:6px; }
+  .speedo-section .ssub{ font-size:14px; font-style:italic; color:var(--aqua); margin:6px auto 20px; max-width:38ch; }
+  .speedo-q{ font-size:clamp(16px,4.5vw,20px); font-weight:600; color:var(--cream); margin-bottom:20px; line-height:1.25; }
+  .st-count{ font-family:"Black Ops One",system-ui; font-size:clamp(52px,15vw,80px); color:var(--gold); line-height:1; }
+  .st-label{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--aqua); margin-top:4px; margin-bottom:20px; }
+  .speedo-btns{ display:flex; gap:10px; margin-bottom:14px; }
+  .speedo-btns button{ flex:1; cursor:pointer; font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:15px; padding:13px 6px; border:2px solid var(--navy3); border-radius:3px; background:var(--navy2); color:var(--cream); transition:transform .05s ease; }
+  .speedo-btns button:active{ transform:translateY(2px); }
+  .sv-yes{ background:var(--red) !important; border-color:var(--red) !important; }
+  .voted-msg{ font-size:14px; font-style:italic; color:var(--gold); min-height:18px; margin-bottom:20px; }
+  .mike-verdict{ background:var(--navy2); border:3px solid var(--red); border-radius:6px; padding:16px 22px 14px; }
+  .mv-badge{ display:inline-block; font-family:"Black Ops One",system-ui; font-size:10px; letter-spacing:2px; color:#fff; background:var(--red); padding:4px 10px; border-radius:2px; margin-bottom:10px; }
+  .mv-no{ font-family:"Black Ops One",system-ui; font-size:clamp(44px,13vw,68px); color:var(--red); line-height:0.9; text-shadow:3px 3px 0 rgba(0,0,0,0.4); }
+  .mv-attr{ font-size:15px; font-style:italic; color:var(--cream); margin-top:8px; opacity:0.8; }
+
   /* footer */
   .foot{ background:var(--navy); color:#7f88a5; text-align:center; font-size:11px; letter-spacing:0.5px; padding:16px 20px 24px; line-height:1.6; }
 </style>
@@ -266,6 +286,24 @@
         '<div class="werr" id="wErr"></div>'+
       '</div>'+
       '<div class="feed" id="feed"></div>'+
+    '</div>'+
+
+    '<div class="speedo-section" id="speedoZone">'+
+      '<h2>THE SPEEDO VOTE</h2>'+
+      '<div class="ssub">The people have a constitutional right to weigh in on this.</div>'+
+      '<div class="speedo-q">Who wants to see Mike in his Speedo?</div>'+
+      '<div class="st-count" id="speedoCount">...</div>'+
+      '<div class="st-label">say <strong>YES</strong></div>'+
+      '<div class="speedo-btns" id="speedoBtns">'+
+        '<button type="button" class="sv-yes" id="svYes">HECK YES 🨲</button>'+
+        '<button type="button" class="sv-no" id="svNo">Hard pass</button>'+
+      '</div>'+
+      '<div class="voted-msg" id="svMsg"></div>'+
+      '<div class="mike-verdict">'+
+        '<div class="mv-badge">OFFICIAL STATEMENT</div>'+
+        '<div class="mv-no">NO.</div>'+
+        '<div class="mv-attr">— Mike</div>'+
+      '</div>'+
     '</div>'+
 
     '<div class="fallen" id="fallen" style="display:none">'+
@@ -399,6 +437,31 @@
       }).join("");
     })
     .catch(function(){});
+
+  /* ---- SPEEDO SURVEY ---- */
+  var speedoVoted = false;
+  function loadSpeedoCount(){
+    fetch(P.endpointUrl + "?action=speedo&_=" + Date.now())
+      .then(function(r){ return r.json(); })
+      .then(function(d){ document.getElementById("speedoCount").textContent = d.count || 0; })
+      .catch(function(){ document.getElementById("speedoCount").textContent = "0"; });
+  }
+  loadSpeedoCount();
+  function castSpeedoVote(msg){
+    if(speedoVoted) return;
+    speedoVoted = true;
+    document.getElementById("speedoBtns").style.display = "none";
+    document.getElementById("svMsg").textContent = msg;
+    fetch(P.endpointUrl, { method:"POST", mode:"no-cors", body:JSON.stringify({ type:"speedo" }) })
+      .then(function(){ setTimeout(loadSpeedoCount, 2000); })
+      .catch(function(){});
+  }
+  document.getElementById("svYes").addEventListener("click", function(){
+    castSpeedoVote("Logged. You’re in good company.");
+  });
+  document.getElementById("svNo").addEventListener("click", function(){
+    castSpeedoVote("Bold of you to think that’s an option. Counted as a yes.");
+  });
 
   /* ---- COUNTDOWN (real, client-side) ---- */
   var target = new Date(P.countdownTo).getTime();
