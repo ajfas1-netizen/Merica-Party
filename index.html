@@ -192,10 +192,18 @@
   .speedo-btns button:active{ transform:translateY(2px); }
   .sv-yes{ background:var(--red) !important; border-color:var(--red) !important; }
   .voted-msg{ font-size:14px; font-style:italic; color:var(--gold); min-height:18px; margin-bottom:20px; }
-  .mike-verdict{ background:var(--navy2); border:3px solid var(--red); border-radius:6px; padding:16px 22px 14px; }
-  .mv-badge{ display:inline-block; font-family:"Black Ops One",system-ui; font-size:10px; letter-spacing:2px; color:#fff; background:var(--red); padding:4px 10px; border-radius:2px; margin-bottom:10px; }
-  .mv-no{ font-family:"Black Ops One",system-ui; font-size:clamp(44px,13vw,68px); color:var(--red); line-height:0.9; text-shadow:3px 3px 0 rgba(0,0,0,0.4); }
-  .mv-attr{ font-size:15px; font-style:italic; color:var(--cream); margin-top:8px; opacity:0.8; }
+  .bring-btn{ width:100%; cursor:pointer; border:none; font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; font-size:15px; color:var(--navy); background:var(--gold); padding:14px; border-radius:3px; transition:transform .05s ease; }
+  .bring-btn:active{ transform:translateY(2px); }
+  .bring-modal{ display:none; position:fixed; inset:0; background:rgba(12,26,60,0.88); z-index:100; align-items:flex-end; justify-content:center; }
+  .bring-modal.open{ display:flex; }
+  .bring-sheet{ background:var(--navy2); border-top:3px solid var(--gold); width:100%; max-width:560px; max-height:72vh; overflow-y:auto; border-radius:8px 8px 0 0; padding:22px 22px 32px; }
+  .bring-hdr{ display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
+  .bring-hdr span{ font-family:"Black Ops One",system-ui; font-size:clamp(18px,5vw,24px); color:var(--cream); letter-spacing:0.5px; }
+  .bring-close{ cursor:pointer; border:none; background:var(--navy3); color:var(--cream); font-size:18px; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .bring-entry{ background:var(--navy); border:2px solid var(--navy3); border-radius:4px; padding:10px 14px; margin-bottom:8px; }
+  .bring-who{ font-weight:700; font-size:12px; color:var(--gold); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3px; }
+  .bring-what{ font-size:15px; color:var(--cream); line-height:1.3; }
+  .bring-empty{ text-align:center; font-style:italic; color:#7f88a5; font-size:14px; padding:12px; }
 
   /* footer */
   .foot{ background:var(--navy); color:#7f88a5; text-align:center; font-size:11px; letter-spacing:0.5px; padding:16px 20px 24px; line-height:1.6; }
@@ -294,10 +302,16 @@
       '<div class="speedo-q">Who wants to see Mike in his Speedo?</div>'+
       '<div class="st-count" id="speedoCount">...</div>'+
       '<div class="st-label">say <strong>YES</strong></div>'+
-      '<div class="mike-verdict">'+
-        '<div class="mv-badge">OFFICIAL STATEMENT</div>'+
-        '<div class="mv-no">NO.</div>'+
-        '<div class="mv-attr">— Mike</div>'+
+      '<button type="button" class="bring-btn" id="bringBtn">SEE WHAT EVERYONE IS BRINGING 🍔</button>'+
+    '</div>'+
+
+    '<div class="bring-modal" id="bringModal">'+
+      '<div class="bring-sheet">'+
+        '<div class="bring-hdr">'+
+          '<span>WHAT\'S ON THE TABLE</span>'+
+          '<button type="button" class="bring-close" id="bringClose">✕</button>'+
+        '</div>'+
+        '<div id="bringItems"></div>'+
       '</div>'+
     '</div>'+
 
@@ -308,6 +322,28 @@
     '</div>'+
 
     '<div class="foot">'+esc(P.footer)+'</div>';
+
+  /* ---- BRINGING LIST MODAL ---- */
+  var cachedGuests = [];
+  document.getElementById("bringBtn").addEventListener("click", function(){
+    var items = document.getElementById("bringItems");
+    var withFood = cachedGuests.filter(function(g){ return g.bringing && g.bringing.trim(); });
+    if(!withFood.length){
+      items.innerHTML = '<div class="bring-empty">Nobody has filled this in yet. Check back after more RSVPs come in.</div>';
+    } else {
+      items.innerHTML = withFood.map(function(g){
+        return '<div class="bring-entry"><div class="bring-who">'+esc(g.name)+'</div>'+
+          '<div class="bring-what">'+esc(g.bringing)+'</div></div>';
+      }).join("");
+    }
+    document.getElementById("bringModal").classList.add("open");
+  });
+  document.getElementById("bringClose").addEventListener("click", function(){
+    document.getElementById("bringModal").classList.remove("open");
+  });
+  document.getElementById("bringModal").addEventListener("click", function(e){
+    if(e.target === this) this.classList.remove("open");
+  });
 
   /* ---- RSVP behavior ---- */
   var coming = null;
@@ -412,6 +448,7 @@
         }
         count.textContent = data.totalHeadcount;
         if(sc) sc.textContent = Math.max(0, guests.length - 1);
+        cachedGuests = guests;
         list.innerHTML = guests.map(function(g){
           return '<div class="roster-item"><div class="rname">'+esc(g.name)+'</div>'+
             (g.costume ? '<div class="rdash">\u2014 \u2605 \u2014</div><div class="rcostume">'+esc(g.costume)+'</div>' : '')+
