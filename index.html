@@ -177,21 +177,7 @@
   .fallen-list{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
   .fallen-name{ background:var(--navy2); border:2px solid var(--navy3); border-radius:3px; padding:6px 14px; font-weight:700; font-size:13px; color:#7f88a5; text-transform:uppercase; letter-spacing:0.5px; text-decoration:line-through; }
 
-  /* ---------- SPEEDO SURVEY ---------- */
-  .speedo-section{
-    background:var(--navy); padding:32px 22px 36px; border-top:3px solid var(--gold); text-align:center;
-    background-image:radial-gradient(circle at 50% 0%, rgba(237,183,58,0.14), transparent 55%);
-  }
-  .speedo-section h2{ font-family:"Black Ops One", system-ui; font-size:clamp(28px,8vw,40px); line-height:0.92; color:var(--cream); letter-spacing:0.5px; margin-bottom:6px; }
-  .speedo-section .ssub{ font-size:14px; font-style:italic; color:var(--aqua); margin:6px auto 20px; max-width:38ch; }
-  .speedo-q{ font-size:clamp(16px,4.5vw,20px); font-weight:600; color:var(--cream); margin-bottom:20px; line-height:1.25; }
-  .st-count{ font-family:"Black Ops One",system-ui; font-size:clamp(52px,15vw,80px); color:var(--gold); line-height:1; }
-  .st-label{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--aqua); margin-top:4px; margin-bottom:20px; }
-  .speedo-btns{ display:flex; gap:10px; margin-bottom:14px; }
-  .speedo-btns button{ flex:1; cursor:pointer; font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:15px; padding:13px 6px; border:2px solid var(--navy3); border-radius:3px; background:var(--navy2); color:var(--cream); transition:transform .05s ease; }
-  .speedo-btns button:active{ transform:translateY(2px); }
-  .sv-yes{ background:var(--red) !important; border-color:var(--red) !important; }
-  .voted-msg{ font-size:14px; font-style:italic; color:var(--gold); min-height:18px; margin-bottom:20px; }
+  /* ---------- BRINGING LIST ---------- */
   .bring-btn{ width:100%; cursor:pointer; border:none; font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; font-size:15px; color:var(--navy); background:var(--gold); padding:14px; border-radius:3px; transition:transform .05s ease; }
   .bring-btn:active{ transform:translateY(2px); }
   .bring-modal{ display:none; position:fixed; inset:0; background:rgba(12,26,60,0.88); z-index:100; align-items:flex-end; justify-content:center; }
@@ -282,6 +268,7 @@
       '<div class="rstsub">Confirmed patriots. Updated live.</div>'+
       '<div class="count" id="rosterCount"></div>'+
       '<div class="roster-list" id="rosterList"><div class="roster-empty">Loading...</div></div>'+
+      '<button type="button" class="bring-btn" id="bringBtn" style="margin-top:22px">SEE WHAT EVERYONE IS BRINGING 🍔</button>'+
     '</div>'+
 
     '<div class="wall">'+
@@ -294,15 +281,6 @@
         '<div class="werr" id="wErr"></div>'+
       '</div>'+
       '<div class="feed" id="feed"></div>'+
-    '</div>'+
-
-    '<div class="speedo-section" id="speedoZone">'+
-      '<h2>THE SPEEDO VOTE</h2>'+
-      '<div class="ssub">The people have a constitutional right to weigh in on this.</div>'+
-      '<div class="speedo-q">Who wants to see Mike in his Speedo?</div>'+
-      '<div class="st-count" id="speedoCount">...</div>'+
-      '<div class="st-label">say <strong>YES</strong></div>'+
-      '<button type="button" class="bring-btn" id="bringBtn">SEE WHAT EVERYONE IS BRINGING 🍔</button>'+
     '</div>'+
 
     '<div class="bring-modal" id="bringModal">'+
@@ -439,15 +417,12 @@
         var guests = data.guests;
         var list = document.getElementById("rosterList");
         var count = document.getElementById("rosterCount");
-        var sc = document.getElementById("speedoCount");
         if(!guests.length){
           list.innerHTML = '<div class="roster-empty">No confirmed patriots yet. Be the first.</div>';
           count.textContent = "0";
-          if(sc) sc.textContent = "0";
           return;
         }
         count.textContent = data.totalHeadcount;
-        if(sc) sc.textContent = Math.max(0, guests.length - 1);
         cachedGuests = guests;
         list.innerHTML = guests.map(function(g){
           return '<div class="roster-item"><div class="rname">'+esc(g.name)+'</div>'+
