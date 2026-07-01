@@ -177,6 +177,19 @@
   .fallen-list{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
   .fallen-name{ background:var(--navy2); border:2px solid var(--navy3); border-radius:3px; padding:6px 14px; font-weight:700; font-size:13px; color:#7f88a5; text-transform:uppercase; letter-spacing:0.5px; text-decoration:line-through; }
 
+  /* ---------- GATE ACCESS ---------- */
+  .gate-strip{ background:var(--navy); padding:0 22px 22px; }
+  .gate-btn{ width:100%; cursor:pointer; border:2px solid var(--gold); font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; font-size:14px; color:var(--gold); background:transparent; padding:13px; border-radius:3px; transition:transform .05s ease; }
+  .gate-btn:active{ transform:translateY(2px); }
+  .gate-modal{ display:none; position:fixed; inset:0; background:rgba(12,26,60,0.92); z-index:200; align-items:center; justify-content:center; padding:22px; }
+  .gate-modal.open{ display:flex; }
+  .gate-sheet{ background:#fff; border-radius:8px; padding:22px 18px 26px; width:100%; max-width:340px; text-align:center; }
+  .gate-hdr{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+  .gate-title{ font-family:"Black Ops One",system-ui; font-size:18px; color:var(--navy); letter-spacing:0.5px; }
+  .gate-close{ cursor:pointer; border:none; background:#e8e8e8; color:#333; font-size:16px; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .gate-sub{ font-family:"Oswald",sans-serif; font-size:13px; color:#777; margin-bottom:16px; font-style:italic; }
+  .gate-qr{ width:100%; display:block; border-radius:4px; }
+
   /* ---------- BRINGING LIST ---------- */
   .bring-btn{ width:100%; cursor:pointer; border:none; font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; font-size:15px; color:var(--navy); background:var(--gold); padding:14px; border-radius:3px; transition:transform .05s ease; }
   .bring-btn:active{ transform:translateY(2px); }
@@ -245,6 +258,21 @@
 
     '<div class="facts">'+factsHTML+'</div>'+
 
+    '<div class="gate-strip">'+
+      '<button type="button" class="gate-btn" id="gateBtn">🔑 SCAN TO GET THROUGH THE GATE</button>'+
+    '</div>'+
+
+    '<div class="gate-modal" id="gateModal">'+
+      '<div class="gate-sheet">'+
+        '<div class="gate-hdr">'+
+          '<span class="gate-title">GATE ACCESS</span>'+
+          '<button type="button" class="gate-close" id="gateClose">✕</button>'+
+        '</div>'+
+        '<div class="gate-sub">Hold your phone up to the gate scanner</div>'+
+        '<img class="gate-qr" src="gate-qr.jpg" alt="Gate QR Code">'+
+      '</div>'+
+    '</div>'+
+
     '<div class="rsvp" id="rsvpZone">'+
       '<h2>'+esc(R.heading)+'</h2>'+
       '<div class="rsub">'+esc(R.sub)+'</div>'+
@@ -300,6 +328,17 @@
     '</div>'+
 
     '<div class="foot">'+esc(P.footer)+'</div>';
+
+  /* ---- GATE QR MODAL ---- */
+  document.getElementById("gateBtn").addEventListener("click", function(){
+    document.getElementById("gateModal").classList.add("open");
+  });
+  document.getElementById("gateClose").addEventListener("click", function(){
+    document.getElementById("gateModal").classList.remove("open");
+  });
+  document.getElementById("gateModal").addEventListener("click", function(e){
+    if(e.target === this) this.classList.remove("open");
+  });
 
   /* ---- BRINGING LIST MODAL ---- */
   var cachedGuests = [];
