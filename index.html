@@ -178,9 +178,9 @@
   .fallen-name{ background:var(--navy2); border:2px solid var(--navy3); border-radius:3px; padding:6px 14px; font-weight:700; font-size:13px; color:#7f88a5; text-transform:uppercase; letter-spacing:0.5px; text-decoration:line-through; }
 
   /* ---------- GATE ACCESS ---------- */
-  .gate-strip{ background:var(--navy); padding:0 22px 22px; }
-  .gate-btn{ width:100%; cursor:pointer; border:2px solid var(--gold); font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; font-size:14px; color:var(--gold); background:transparent; padding:13px; border-radius:3px; transition:transform .05s ease; }
-  .gate-btn:active{ transform:translateY(2px); }
+  .gate-strip{ background:var(--navy); padding:14px 22px 22px; }
+  .gate-btn{ width:100%; cursor:pointer; border:none; font-family:"Black Ops One",system-ui; font-size:clamp(18px,5.5vw,26px); letter-spacing:1px; color:#fff; background:var(--red); padding:16px 22px; border-radius:2px; box-shadow:0 5px 0 #7d0f1c, 0 10px 20px rgba(0,0,0,0.35); transition:transform .07s ease, box-shadow .07s ease; display:block; }
+  .gate-btn:active{ transform:translateY(4px); box-shadow:0 1px 0 #7d0f1c, 0 4px 10px rgba(0,0,0,0.3); }
   .gate-modal{ display:none; position:fixed; inset:0; background:rgba(12,26,60,0.92); z-index:200; align-items:center; justify-content:center; padding:22px; }
   .gate-modal.open{ display:flex; }
   .gate-sheet{ background:#fff; border-radius:8px; padding:22px 18px 26px; width:100%; max-width:340px; text-align:center; }
@@ -211,7 +211,7 @@
 <body>
   <div class="wrap" id="wrap"><!-- injected --></div>
 
-<script src="data.js"></script>
+<script src="data.js?v=2"></script>
 <script>
 (function(){
   "use strict";
