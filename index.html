@@ -103,30 +103,22 @@
   .fact .lab{ font-weight:700; letter-spacing:1.5px; font-size:12px; color:var(--gold); text-transform:uppercase; }
   .fact .val{ font-size:14.5px; color:var(--cream); line-height:1.25; }
 
-  /* rsvp card */
-  .rsvp{ background:var(--cream); color:var(--ink); padding:30px 22px 34px;
-    background-image:radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px); background-size:5px 5px; }
-  .rsvp h2{ font-family:"Black Ops One", system-ui; font-size:clamp(30px,8.5vw,44px); line-height:0.92; text-align:center; color:var(--navy); letter-spacing:0.5px; }
-  .rsvp .rsub{ text-align:center; font-size:14.5px; font-style:italic; margin:8px auto 22px; max-width:38ch; color:#5a5345; }
-  .field{ margin-bottom:16px; }
-  .field label{ display:block; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:12px; margin-bottom:6px; color:var(--navy); }
-  .field input, .field textarea{ width:100%; font-family:"Oswald", sans-serif; font-size:16px; padding:12px 13px; color:var(--ink); background:#fff; border:2px solid var(--navy); border-radius:3px; }
-  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--red); }
-  .field textarea{ resize:vertical; min-height:52px; }
-  .toggle{ display:flex; gap:10px; }
-  .toggle button{ flex:1; cursor:pointer; font-family:"Oswald",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:15px; padding:13px 6px; border:2px solid var(--navy); border-radius:3px; background:#fff; color:var(--navy); transition:transform .05s ease; }
-  .toggle button:active{ transform:translateY(2px); }
-  .toggle button.on-yes{ background:var(--red); color:#fff; border-color:var(--red); }
-  .toggle button.on-no{ background:var(--navy); color:var(--cream); }
-  .submit{ width:100%; cursor:pointer; margin-top:6px; border:none; font-family:"Black Ops One", system-ui; font-size:clamp(22px,6.5vw,30px); letter-spacing:1px; color:#fff; background:var(--navy); padding:16px; border-radius:3px; box-shadow:0 5px 0 #061029; transition:transform .07s ease, box-shadow .07s ease; }
-  .submit:active{ transform:translateY(4px); box-shadow:0 1px 0 #061029; }
-  .err{ color:var(--red); font-weight:600; text-align:center; margin-top:12px; min-height:16px; font-size:14px; }
-  .success{ display:none; text-align:center; padding:14px 6px; }
-  .success.show{ display:block; animation:pop .45s ease; }
-  @keyframes pop{ from{ transform:scale(.8); opacity:0; } to{ transform:scale(1); opacity:1; } }
-  .badge{ display:inline-block; font-family:"Black Ops One", system-ui; font-size:clamp(26px,8vw,40px); color:#fff; background:var(--red); padding:10px 26px; border-radius:3px; transform:rotate(-3deg); box-shadow:0 6px 0 #7d0f1c; margin-bottom:18px; letter-spacing:1px; }
-  .success h3{ font-family:"Black Ops One",system-ui; color:var(--navy); font-size:clamp(20px,6vw,28px); line-height:1; margin-bottom:10px; }
-  .success p{ font-size:15px; font-style:italic; color:#5a5345; max-width:36ch; margin:0 auto; }
+  /* ---------- LCR GAME ---------- */
+  .lcr-section{
+    background:var(--navy); padding:32px 22px 36px; border-top:3px solid var(--gold); text-align:center;
+    background-image:radial-gradient(circle at 18% 80%, rgba(204,31,51,0.22), transparent 48%),
+                     radial-gradient(circle at 82% 18%, rgba(237,183,58,0.18), transparent 48%);
+  }
+  .lcr-dice{ font-size:42px; letter-spacing:8px; margin-bottom:14px; }
+  .lcr-section h2{ font-family:"Black Ops One",system-ui; font-size:clamp(32px,9vw,52px); color:var(--gold); line-height:0.88; letter-spacing:1px; margin-bottom:6px; }
+  .lcr-name{ font-size:11px; letter-spacing:4px; color:var(--aqua); text-transform:uppercase; margin-bottom:24px; }
+  .lcr-card{ background:var(--navy2); border:3px solid var(--gold); border-radius:6px; padding:22px 18px 20px; margin-bottom:18px; }
+  .lcr-bring-lbl{ font-size:11px; letter-spacing:3px; color:var(--aqua); text-transform:uppercase; margin-bottom:2px; }
+  .lcr-amount{ font-family:"Black Ops One",system-ui; font-size:clamp(60px,18vw,96px); color:var(--gold); line-height:0.88; text-shadow:4px 4px 0 rgba(0,0,0,0.4); }
+  .lcr-bills{ font-size:12px; letter-spacing:3px; color:var(--cream); text-transform:uppercase; margin-bottom:18px; }
+  .lcr-divider{ height:2px; background:var(--navy3); margin-bottom:16px; border-radius:1px; }
+  .lcr-rule{ font-size:16px; font-style:italic; color:var(--cream); line-height:1.4; }
+  .lcr-note{ font-size:13px; color:#7f88a5; font-style:italic; margin-top:14px; }
 
   /* ---------- ROSTER ---------- */
   .roster{
@@ -211,7 +203,7 @@
 <body>
   <div class="wrap" id="wrap"><!-- injected --></div>
 
-<script src="data.js?v=2"></script>
+<script src="data.js?v=3"></script>
 <script>
 (function(){
   "use strict";
@@ -220,7 +212,7 @@
     root.innerHTML = "<p style='padding:24px;font-family:monospace;color:#fff'>data.js did not load. Keep data.js in the SAME folder as index.html, then refresh.</p>";
     return;
   }
-  var P = window.PARTY, H = P.hero, R = P.rsvp, W = P.wall;
+  var P = window.PARTY, H = P.hero, W = P.wall;
 
   function esc(s){
     return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;")
@@ -273,22 +265,18 @@
       '</div>'+
     '</div>'+
 
-    '<div class="rsvp" id="rsvpZone">'+
-      '<h2>'+esc(R.heading)+'</h2>'+
-      '<div class="rsub">'+esc(R.sub)+'</div>'+
-      '<form id="form" novalidate>'+
-        '<div class="field"><label>'+esc(R.nameLabel)+'</label><input type="text" id="fName" placeholder="'+esc(R.namePlaceholder)+'"></div>'+
-        '<div class="field"><label>'+esc(R.phoneLabel)+'</label><input type="tel" id="fPhone" placeholder="'+esc(R.phonePlaceholder)+'"></div>'+
-        '<div class="field"><label>'+esc(R.comingLabel)+'</label><div class="toggle">'+
-            '<button type="button" id="bYes">'+esc(R.comingYes)+'</button>'+
-            '<button type="button" id="bNo">'+esc(R.comingNo)+'</button></div></div>'+
-        '<div class="field"><label>'+esc(R.headcountLabel)+'</label><input type="text" id="fCount" placeholder="'+esc(R.headcountPlaceholder)+'"></div>'+
-        '<div class="field"><label>'+esc(R.bringingLabel)+'</label><input type="text" id="fBring" placeholder="'+esc(R.bringingPlaceholder)+'"></div>'+
-        '<div class="field"><label>'+esc(R.costumeLabel)+'</label><textarea id="fCostume" placeholder="'+esc(R.costumePlaceholder)+'"></textarea></div>'+
-        '<button type="submit" class="submit">'+esc(R.submit)+'</button>'+
-        '<div class="err" id="err"></div>'+
-      '</form>'+
-      '<div class="success" id="ok"><div class="badge" id="okBadge"></div><h3 id="okHead"></h3><p id="okBody"></p></div>'+
+    '<div class="lcr-section" id="lcrZone">'+
+      '<div class="lcr-dice">🎲 🎲 🎲</div>'+
+      '<h2>GAME TIME</h2>'+
+      '<div class="lcr-name">LEFT • CENTER • RIGHT</div>'+
+      '<div class="lcr-card">'+
+        '<div class="lcr-bring-lbl">BRING</div>'+
+        '<div class="lcr-amount">$10</div>'+
+        '<div class="lcr-bills">IN SINGLES</div>'+
+        '<div class="lcr-divider"></div>'+
+        '<div class="lcr-rule">Last patriot holding dollars wins the whole pot.</div>'+
+      '</div>'+
+      '<div class="lcr-note">No skill required. Maximum chaos. Fully American.</div>'+
     '</div>'+
 
     '<div class="roster" id="roster">'+
@@ -362,46 +350,8 @@
     if(e.target === this) this.classList.remove("open");
   });
 
-  /* ---- RSVP behavior ---- */
-  var coming = null;
-  var bYes = document.getElementById("bYes");
-  var bNo  = document.getElementById("bNo");
-  bYes.addEventListener("click", function(){ coming=true; bYes.classList.add("on-yes"); bNo.classList.remove("on-no"); });
-  bNo.addEventListener("click", function(){ coming=false; bNo.classList.add("on-no"); bYes.classList.remove("on-yes"); });
   document.getElementById("cta").addEventListener("click", function(){
-    document.getElementById("rsvpZone").scrollIntoView({behavior:"smooth", block:"start"});
-  });
-  document.getElementById("form").addEventListener("submit", function(e){
-    e.preventDefault();
-    var err = document.getElementById("err");
-    var name = document.getElementById("fName").value.trim();
-    if(!name){ err.textContent = "Need a name, patriot."; return; }
-    if(coming === null){ err.textContent = "You coming or not? Tap one."; return; }
-    err.textContent = "";
-    var payload = { name:name, phone:document.getElementById("fPhone").value.trim(), coming:coming,
-      headcount:document.getElementById("fCount").value.trim(),
-      bringing:document.getElementById("fBring").value.trim(),
-      costume:document.getElementById("fCostume").value.trim() };
-    var btn = document.querySelector(".submit");
-    var btnText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = "SENDING...";
-    fetch(P.endpointUrl, { method: "POST", mode: "no-cors", body: JSON.stringify(payload) })
-      .then(function(){
-        document.getElementById("form").style.display = "none";
-        var S = coming ? R.successYes : R.successNo;
-        document.getElementById("okBadge").textContent = S.badge;
-        document.getElementById("okHead").textContent = S.head;
-        document.getElementById("okBody").textContent = S.body;
-        var ok = document.getElementById("ok"); ok.classList.add("show");
-        ok.scrollIntoView({behavior:"smooth", block:"center"});
-        setTimeout(loadRoster, 3000);
-      })
-      .catch(function(){
-        btn.disabled = false;
-        btn.textContent = btnText;
-        err.textContent = "Something broke. Try again in a sec.";
-      });
+    document.getElementById("lcrZone").scrollIntoView({behavior:"smooth", block:"start"});
   });
 
   /* ---- WALL behavior (saved to Google Sheet) ---- */

@@ -38,6 +38,7 @@ window.PARTY = {
   facts: [
     { icon: "\uD83C\uDF7B", label: "WHEN",  value: "Sun July 5th \u2022 12PM\u20135PM" },
     { icon: "\uD83C\uDFE1", label: "WHERE", value: "3560 SW Racquet Club Way \u2022 Martin Downs" },
+    { icon: "\uD83D\uDE97", label: "PARK",  value: "Our driveway or the house directly across the street" },
     { icon: "\uD83E\uDDE2", label: "DRESS", value: "Red, white & questionable \u2022 trashy encouraged, never required" }
   ],
 
